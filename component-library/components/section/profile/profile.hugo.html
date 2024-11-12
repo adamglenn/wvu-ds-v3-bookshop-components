@@ -1,3 +1,7 @@
+{{ $imgClasses := "" }}
+{{ if eq .Params.use_cutout true }}
+  {{ $imgClasses = "mb-n5 mt-n6" }}
+{{ end }}
 <section class="py-0">
   <div class="container py-6">
     {{ range .profiles }}
@@ -48,7 +52,7 @@
                     {{- else -}}
                       {{- $alt = printf "Profile picture of %s" .name -}}
                     {{- end -}}
-                    <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid mb-n5 mt-n6" src="{{ $img.RelPermalink }}" alt="{{ $alt }}" /></div>
+                    <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid {{ $imgClasses }}" src="{{ $img.RelPermalink }}" alt="{{ $alt }}" /></div>
                   </div>
                 </div>
               </div>
