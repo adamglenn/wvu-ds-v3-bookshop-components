@@ -1,9 +1,25 @@
+{{ $image := "" }}
+{{ $blendMode := "" }}
+{{ $alt := "" }}
 
-<main id="big-search-1" aria-labelledby="big-search-1-label" class="pt-8 pb-9 text-center bg-wvu-gold text-wvu-blue position-relative">  
+{{ if .Params.topper.background_image }}{{ $image = .Params.topper.background_image }}{{ end }}
+{{ if .Params.topper.alt_text }}{{ $alt = .Params.topper.alt_text }}{{ end }}
+
+<main id="big-search-1" aria-labelledby="big-search-1-label" class="pt-8 pb-9 text-center bg-wvu-gold text-wvu-blue position-relative">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "blendMode" $blendMode "alt" $alt)) }}
+  <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
+    <div class="container">
+      {{ partial "bookshop_partial" (slice "breadcrumbs" .) }}
+    </div>
+  </div>
   <div class="container wvu-z-index-content">
-    <h1 class="wvu-shout wvu-text-letter-spacing-lg mb-6">{{ .Title  }}</h1>
-    <h2 id="big-search-1-label" class="display-2 wvu-shout mb-3">Big Search Header</h2>
-    <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>
+    <div class="row">
+      <div class="col-xl-16 mx-xl-auto">
+        <h1 class="wvu-shout wvu-text-letter-spacing-lg mb-6">{{ .Title  }}</h1>
+        <h2 id="big-search-1-label" class="display-3 oliviar-black text-uppercase mb-3">{{ .Params.topper.heading }}</h2>
+        <p class="helvetica-neue-light h3 mb-0">{{ .Params.topper.lead }}</p>
+      </div>
+    </div>
     <div class="row d-flex justify-content-center my-2">
       <div class="col-md-12 mx-auto">
         <div class="row mb-4">
