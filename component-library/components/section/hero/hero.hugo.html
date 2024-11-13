@@ -37,6 +37,7 @@
 {{ end }}
 
 <main id="{{ .config.id }}" class="position-relative bg-dark text-white" aria-labelledby="{{ .config.aria_labelledby }}-label">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "blendMode" $blendMode "alt" $alt)) }}
   <div class="container position-relative py-8 py-xxl-9">
     <div class="row">
       <div class="col col-md-14 col-xl-12">
