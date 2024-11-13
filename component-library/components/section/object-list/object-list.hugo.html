@@ -4,51 +4,49 @@
       <h2 id="featurettes-1-label" class="display-3 wvu-shout text-wvu-blue">Page Collection Headline</h2>
       <p class="h3 helvetica-neue-light text-wvu-blue mb-6">Subhead goes here.</p>
     {{ end }}
+    <div class="text-start">
+      <div class="d-inline-block mb-n5 ms-n5 position-relative d-inline-flex align-items-center wvu-z-index-max">
+        <div class="d-block bg-wvu-accent--blue wvu-bleed-start" style="height: 1px; content: '';"></div>
+        <h2 class="oliviar-black-italic text-wvu-accent--blue mb-n1 px-3 py-4 bg-white border border-1 border-wvu-accent--blue border-solid">Colleges and Schools</h2>
+      </div>
+    </div>
     <div class="row justify-content-start">          
       <div class="mb-5 col-lg-16 mx-md-auto text-start">
-        <div class="bg-white shadow">
-          <div class="row">
-            <div class="col-lg-12 wvu-col-page-collection-thumbnail">                  
-              <div class="mb-2 position-relative">                    
-                <a aria-hidden="true" tabindex="-1" title="Read More: Lorem Ipsum Dolor Sit Amet Consectetur" href="https://designsystem.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">                      
-                  <img class="card-img-top" src="https://placehold.co/960x640" alt="">
-                </a>
-              </div>              
+        {{ range .items }}
+          <div class="bg-white shadow mb-5">
+            <div class="row gx-0">
+              <div class="col-lg-12 wvu-col-page-collection-thumbnail">                  
+                <div class="position-relative h-100">                    
+                  <a class="d-block h-100" aria-hidden="true" tabindex="-1" title="Read More: Lorem Ipsum Dolor Sit Amet Consectetur" href="https://designsystem.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">                      
+                    <img class="card-img-top img-fluid h-100 object-fit-cover" src="https://placehold.co/960x640" alt="">
+                  </a>
+                </div>              
+              </div>
+              <div class="col-lg-12">
+                <div class="p-5">
+                  <h3 class="card-title" id="lorem-ipsum-dolor-sit-amet-consectetur-page-collection-vertical-1-139968">
+                    <a title="Read More: Lorem Ipsum Dolor Sit Amet Consectetur" class="h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue" href="https://designsystem.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">{{ .title }}</a>
+                  </h3>
+                  <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                  
+                  {{ if .ctas }}
+                    <ul class="wvu-ul-chevrons">
+                      {{ range .ctas }}
+                        <li>
+                          <a class="text-decoration-none" href="https://designsystem.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">Read More
+                            <span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span>
+                          </a>
+                        </li>
+                      {{ end }}
+                    </ul>
+                  {{ end }}
+                </div>
+              </div>
             </div>
-            <div class="col-lg-12">
-              <h3 class="card-title" id="lorem-ipsum-dolor-sit-amet-consectetur-page-collection-vertical-1-139968">
-                <a title="Read More: Lorem Ipsum Dolor Sit Amet Consectetur" class="h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue" href="https://designsystem.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">Lorem Ipsum Dolor Sit Amet Consectetur</a>
-              </h3>
-              <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                  
-              <a class="btn btn-primary btn-sm" href="https://designsystem.wvu.edu/people/lorem-ipsum-dolor-sit-amet-consectetur">Read More
-                <span class="visually-hidden">: Lorem Ipsum Dolor Sit Amet Consectetur</span>
-              </a>              
-            </div>
           </div>
-        </div>
-      </div>          
-      <div class="mb-5 col-lg-16 mx-md-auto text-start">            
-        <div class="row">
-          <div class="col-lg-8 wvu-col-page-collection-thumbnail">                  
-            <div class="mb-2 position-relative">                    
-              <a aria-hidden="true" tabindex="-1" title="Read More: Adipiscing Elit Sed" href="https://designsystem.wvu.edu/people/adipiscing-elit-sed">                      
-                <img class="card-img-top" src="https://placehold.co/960x640" alt="">
-              </a>
-            </div>              
-          </div>
-          <div class="col-lg-16">
-            <h3 class="card-title" id="adipiscing-elit-sed-page-collection-vertical-1-139980">
-              <a title="Read More: Adipiscing Elit Sed" class="h2 d-block wvu-shout wvu-bar mb-2 text-decoration-none text-wvu-blue" href="https://designsystem.wvu.edu/people/adipiscing-elit-sed">Adipiscing Elit Sed</a>
-            </h3>
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>                  
-            <a class="btn btn-primary btn-sm" href="https://designsystem.wvu.edu/people/adipiscing-elit-sed">Read More
-              <span class="visually-hidden">: Adipiscing Elit Sed</span>
-            </a>              
-          </div>
-        </div>
-      </div>      
-    </div>        
-    <div class="mt-4">          
+        {{ end }}
+      </div>
+    </div>
+    <div class="mt-4">
       <p class="mb-0">Put additional info or 
         <a href="#">links</a> here.
       </p>

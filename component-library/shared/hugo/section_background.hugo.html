@@ -1,11 +1,11 @@
 <div class="wvu-bg-img">
   {{ if .image }}
-    <img class="object-fit-cover w-100 {{ .styles.section.blend_mode }}" width="1780px" height="1184px" src="{{ .image }}" />
+    <img class="object-fit-cover w-100 {{ .layerStyles.img.blend_mode }}" width="1780px" height="1184px" src="{{ .image }}" style="opacity: 0.{{ .layerStyles.img.opacity }}" />
   {{ end }}
-  {{ if .styles.background_layers.pattern }}
-    <div class="{{ .styles.background_layers.pattern.option }} {{ .styles.background_layers.pattern.color }}" style="opacity: 0.{{ .styles.background_layers.pattern.opacity }}"></div>
+  {{ if .layerStyles.pattern }}
+    <div class="{{ .layerStyles.pattern.option }} {{ .layerStyles.pattern.c }}" style="opacity: 0.{{ .layerStyles.pattern.opacity }}"></div>
   {{ end }}
-  {{ if eq .styles.background_layers.texture.enable true }}
+  {{ if eq .layerStyles.texture true }}
     <div class="d-flex w-100 h-100 justify-content-between position-absolute">
       <img class="align-self-end" src="/textures/halftone-grunge-dark.svg" width="400px" />
       <img class="align-self-start" src="/textures/halftone-grunge-dark.svg" width="400px" style="transform: rotate(180deg);"/>
