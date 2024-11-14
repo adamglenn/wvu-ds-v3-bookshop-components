@@ -1,8 +1,8 @@
 {{ $backgroundColor := "bg-dark" }}
+{{ $backgroundImage := "" }}
 {{ $textColor := "text-dark" }}
 {{ $leadClass := "" }}
 {{ $image := "" }}
-{{ $blendMode := "" }}
 {{ $alt := "" }}
 {{ $vibe := "" }}
 {{ $headingStyles := "" }}
@@ -16,27 +16,12 @@
 {{ if .background_image }}{{ $image = .background_image }}{{ end }}
 {{ if .alt_text }}{{ $alt = .alt_text }}{{ end }}
 
-{{ if and .styles .styles.vibe }}
-  {{ if eq .styles.vibe "wvu-experience-1" }}
-    {{ $headingStyles = "oliviar-black text-uppercase" }}
-    {{ $leadStyles = "h3 iowan-old-style-black-italic" }}
-  {{ else if eq .styles.vibe "down-to-business-1" }}
-    {{ $headingStyles = "wvu-shout" }}
-    {{ $leadStyles = "h3 iowan-old-style-black-italic" }}
-  {{ else if eq .styles.vibe "nostalgic-1" }}
-    {{ $headingStyles = "oliviar-black" }}
-    {{ $leadStyles = "h3 helvetica-neue-light" }}
-  {{ else }}
-    {{ $headingStyles = "display-2 wvu-shout text-uppercase" }}
-    {{ $leadStyles = "h4 helvetica-neue-light" }}
-  {{ end }}
-{{ end }}
-
 {{ if and .styles .styles.heading_extras }}
   {{ $headingExtras = .styles.heading_extras }}
 {{ end }}
 
 <main id="{{ .config.id }}" class="position-relative bg-dark text-white" aria-labelledby="{{ .config.aria_labelledby }}-label">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "blendMode" $blendMode "alt" $alt)) }}
   <div class="container position-relative py-8 py-xxl-9">
     <div class="row">
       <div class="col col-md-14 col-xl-12">
