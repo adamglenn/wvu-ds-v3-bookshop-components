@@ -1,11 +1,45 @@
-<div class="wvu-bg-img">
-  {{ if .image }}
-    <img class="object-fit-cover w-100 {{ .layerStyles.img.blend_mode }}" width="1780px" height="1184px" src="{{ .image }}" style="opacity: 0.{{ .layerStyles.img.opacity }}" />
+{{ $blendMode := "" }}
+{{ $opacity := "" }}
+{{ $pattern := "" }}
+{{ $patternColor := "" }}
+{{ $patternOpacity := "" }}
+{{ $texture := false }}
+
+{{ if and .layerStyles }}
+  {{ if .layerStyles.img }}
+    {{ if .layerStyles.img.blend_mode }}
+      {{ $blendMode = .layerStyles.img.blend_mode }}
+    {{ end }}
+    {{ if .layerStyles.img.opacity }}
+      {{ $opacity = .layerStyles.img.opacity }}
+    {{ end }}
   {{ end }}
   {{ if .layerStyles.pattern }}
-    <div class="{{ .layerStyles.pattern.option }} {{ .layerStyles.pattern.c }}" style="opacity: 0.{{ .layerStyles.pattern.opacity }}"></div>
+    {{ if .layerStyles.pattern.option }}
+      {{ $pattern = .layerStyles.pattern.option }}
+    {{ end }}
+    {{ if .layerStyles.pattern.c }}
+      {{ $patternColor = .layerStyles.pattern.c }}
+    {{ end }}
+    {{ if .layerStyles.pattern.opacity }}
+      {{ $patternOpacity = .layerStyles.pattern.opacity }}
+    {{ end }}
   {{ end }}
-  {{ if eq .layerStyles.texture true }}
+  {{ if .layerStyles.texture }}
+    {{ if eq .layerStyles.texture.enable true }}
+      {{ $texture = true }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="wvu-bg-img">
+  {{ if .image }}
+    <img class="object-fit-cover w-100 {{ $blendMode }}" width="1780px" height="1184px" src="{{ .image }}" style="opacity: 0.{{ $opacity }}" />
+  {{ end }}
+  {{ if and .layerStyles .layerStyles.pattern }}
+    <div class="{{ $pattern }} {{ $patternColor }}" style="opacity: 0.{{ $patternOpacity }}"></div>
+  {{ end }}
+  {{ if eq $texture true }}
     <div class="d-flex w-100 h-100 justify-content-between position-absolute">
       <img class="align-self-end" src="/textures/halftone-grunge-dark.svg" width="400px" />
       <img class="align-self-start" src="/textures/halftone-grunge-dark.svg" width="400px" style="transform: rotate(180deg);"/>
