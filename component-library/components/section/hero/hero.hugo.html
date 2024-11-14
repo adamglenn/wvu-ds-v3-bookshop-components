@@ -1,33 +1,30 @@
-{{ $backgroundColor := "bg-dark" }}
-{{ $backgroundImage := "" }}
-{{ $textColor := "text-dark" }}
-{{ $leadClass := "" }}
+{{ $id := "hero" }}
+{{ $ariaLabelledBy := "" }}
+{{ $backgroundColor := "" }}
 {{ $image := "" }}
 {{ $alt := "" }}
-{{ $vibe := "" }}
-{{ $headingStyles := "" }}
-{{ $headingExtras := "" }}
-{{ $leadStyles := "" }}
-{{ $bodyStyles := "" }}
+{{ $backgroundColor := "bg-dark" }}
+{{ $textColor := "text-white" }}
+{{ $layerStyles := "" }}
+{{ $headingColor := "" }}
 
-{{ if and .styles .styles.background_c }}{{ $backgroundColor = .styles.background_c }}{{ end }}
-{{ if and .styles .styles.text_c }}{{ $textColor = .styles.text_c }}{{ end }}
-
+{{ if .config.id }}{{ $id = .config.id }}{{ end }}
+{{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
+{{ if .styles.section.background_c }}{{ $backgroundColor = .styles.section.background_c }}{{ end }}
+{{ if .styles.section.text_c }}{{ $textColor = .styles.section.text_c }}{{ end }}
 {{ if .background_image }}{{ $image = .background_image }}{{ end }}
 {{ if .alt_text }}{{ $alt = .alt_text }}{{ end }}
+{{ if .styles.background_layers }}{{ $layerStyles = .styles.background_layers }}{{ end }}
+{{ if .styles.heading.c }}{{ $headingColor = .styles.heading.c }}{{ end }}
 
-{{ if and .styles .styles.heading_extras }}
-  {{ $headingExtras = .styles.heading_extras }}
-{{ end }}
-
-<main id="{{ .config.id }}" class="position-relative bg-dark text-white" aria-labelledby="{{ .config.aria_labelledby }}-label">
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "blendMode" $blendMode "alt" $alt)) }}
+<main id="{{ $id }}" class="position-relative {{ $backgroundColor }} {{ $textColor }}" aria-labelledby="{{ $ariaLabelledBy }}-label">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="container position-relative py-8 py-xxl-9">
     <div class="row">
       <div class="col col-md-14 col-xl-12">
         <div class="wvu-bg-tint p-5">
           <div class="wvu-z-index-content">
-            <h1 id="{{ .config.aria_labelledby }}-label" class="display-2 wvu-shout wvu-bar mb-3" data-text="{{ .content.heading }}">{{ .heading }}</h1>
+            <h1 id="{{ $ariaLabelledBy }}-label" class="display-2 wvu-shout wvu-bar mb-3" data-text="{{ .heading }}">{{ .heading }}</h1>
 
             {{ if .lead }}
               <p class="lead py-1">
@@ -36,7 +33,7 @@
             {{ end }}
     
             {{ if .body }}
-              <div class="{{ $bodyStyles }} mb-4">
+              <div class="mb-4">
                 {{- range $i, $l := .body }}
                   {{- if eq $i 0 }}
                     <p class="lead">{{- . }}</p>
