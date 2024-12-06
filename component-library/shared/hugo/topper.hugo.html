@@ -1,1 +1,5 @@
-{{ partial "bookshop" . }}
+{{ if eq .name "Hero - Big Search" }}
+  {{ partial "bookshop" (slice "topper/hero-big-search") }}
+{{ else }}
+  {{ partial "bookshop" (slice "topper/default" )}}
+{{ end }}
