@@ -2,18 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-5">
-        Menu
+        Menu goes here.
       </div>
-      <div class="col-xl-14">
-        {{ range .main }}
-          {{ partial "bookshop_bindings" `.Params.detail_blocks` }}
-          {{ partial "bookshop_partial" (slice "column" .detail_blocks) }}
+      <div class="col-xl-10 mx-xl-auto">
+        {{ with .main }}
+          {{ partial "bookshop_bindings" `.` }}
+          {{ partial "bookshop_partial" (slice "page" .) }}
         {{ end }}
       </div>
       <div class="col-xl-5">
-        {{ range .sidebar }}
-          {{ partial "bookshop_bindings" `.Params.column_blocks` }}
-          {{ partial "bookshop_partial" (slice "column" .column_blocks) }}
+        {{ with .sidebar }}
+          {{ partial "bookshop_bindings" `.` }}
+          {{ partial "bookshop_partial" (slice "page" .) }}
         {{ end }}
       </div>
     </div>

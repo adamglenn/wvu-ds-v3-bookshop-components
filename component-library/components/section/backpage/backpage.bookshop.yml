@@ -9,10 +9,8 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  main:
-    - detail_blocks: [bookshop:structure:detail_blocks]
-  sidebar:
-    - column_blocks: [bookshop:structure:column_blocks]
+  main: [bookshop:structure:detail_blocks]
+  sidebar: [bookshop:structure:column_blocks]
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
