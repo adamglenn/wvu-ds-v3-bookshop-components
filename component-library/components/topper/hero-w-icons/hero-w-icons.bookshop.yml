@@ -2,7 +2,7 @@
 spec:
   structures:
     - topper
-  label: "Topper - Big Search"
+  label: "Topper - Hero w/Icons"
   description:
   icon:
   tags: []
@@ -11,10 +11,6 @@ spec:
 blueprint:
   heading: Heading
   subheading: Subheading.
-  styles:
-    section:
-      background_c: bg-wvu-gold
-      text_c: text-wvu-blue
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
