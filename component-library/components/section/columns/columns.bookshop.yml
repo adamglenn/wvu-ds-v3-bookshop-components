@@ -23,6 +23,16 @@ blueprint:
           md:
           sm: col
         text_align: text-center
+    - column_blocks: [bookshop:structure:column_blocks]
+      layout:
+        column_widths:
+          xxxl:
+          xxl:
+          xl:
+          lg:
+          md:
+          sm: col
+        text_align: text-center
   postscript: Test Postscript
   layout:
     padding:
