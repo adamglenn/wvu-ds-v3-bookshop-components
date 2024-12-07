@@ -1,4 +1,6 @@
-{{ if eq .topper_type "Hero - Big Search" }}
+{{ if eq .topper_type "Article Hero" }}
+  {{ partial "bookshop" (slice "topper/article-hero" .) }}
+{{ else if eq .topper_type "Hero - Big Search" }}
   {{ partial "bookshop" (slice "topper/hero-big-search" .) }}
 {{ else }}
   {{ partial "bookshop" (slice "topper/default" .) }}
