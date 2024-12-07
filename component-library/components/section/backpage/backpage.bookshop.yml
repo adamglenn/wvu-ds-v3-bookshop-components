@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - article_blocks
   label: "Backpage"
   description:
   icon:
