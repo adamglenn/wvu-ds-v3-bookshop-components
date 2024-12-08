@@ -6,6 +6,8 @@
 <section class="py-0">
   <div class="container py-6">
     {{ site.Data.people }}
-    Test.
+    {{ range .profiles }}
+      {{ . }}
+    {{ end }}
   </div>
 </section>
