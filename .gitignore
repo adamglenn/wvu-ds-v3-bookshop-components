@@ -16,6 +16,7 @@ data/
 go.sum
 layouts/
 package.json
+package-lock.json
 resources/
 static/
 
