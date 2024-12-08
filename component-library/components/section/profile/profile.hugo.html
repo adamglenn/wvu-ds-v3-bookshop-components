@@ -57,21 +57,7 @@
                         {{ end }}
                       {{- end -}}
                     </div>
-                    {{- if .thumbnail -}}
-                      {{- $src := .thumbnail }}
-                      {{ if not site.Params.env_bookshop_live }}
-                        {{- $img := resources.Get $src -}}
-                        {{- $img = $img.Process "resize 960x webp" -}}
-                        {{- $src = $img.RelPermalink }}
-                      {{- end -}}
-                      {{- $alt := "" -}}
-                      {{- with .thumbnail_alt }}
-                        {{- $alt = . -}}
-                      {{- else -}}
-                        {{- $alt = printf "Profile picture of %s" .name -}}
-                      {{- end -}}
-                      <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid {{ $imgClasses }}" src="{{ $src }}" alt="{{ $alt }}" /></div>
-                    {{ end }}
+
                   </div>
                 </div>
               </div>
