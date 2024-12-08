@@ -10,7 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   profiles:
-    - person: Person A
+    - person:
       name: Firstname Lastname
       heading: Heading
       quote: Quote.
@@ -28,7 +28,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  person:
-    type: select
-    options:
-      values: collections.people
