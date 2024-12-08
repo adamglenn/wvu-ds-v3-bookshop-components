@@ -5,6 +5,21 @@
 <section class="py-0">
   <div class="container py-6">
     {{ range .profiles }}
+      {{- $person := . }}
+      {{- $name := $person.name }}
+      {{- $quote := $person.quote }}
+      {{- $peopleData := site.Data.people -}}
+      {{- if .person -}}
+        {{- $name = .person -}}
+      {{- end -}}
+
+      {{- range $peopleData }}
+        {{ if eq .name $name }}
+          {{ $name = .name }}
+          {{ $quote = .quote }}
+        {{ end }}
+      {{- end -}}
+
       {{- $now := time.Now -}}
       {{- $start := time.AsTime .show -}}
       {{- $end := time.AsTime (default "3000-01-01" .hide) }}
@@ -15,7 +30,7 @@
               <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .heading }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
               <blockquote class="ms-0 border-0 border-wvu-gold">
                 <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
-                <p class="iowan-old-style fs-2 mb-0">{{ .quote | markdownify }}</p>   
+                <p class="iowan-old-style fs-2 mb-0">{{ $quote | markdownify }}</p>   
               </blockquote>
             </div>
           </div>
@@ -31,7 +46,7 @@
                   <div class="row h-100">
                     <div class="col-xxl-7">
                       <div class="wvu-bg-filter-blur border border-1 border-dark border-opacity-10 text-dark p-3 mt-3 ms-n6">
-                        <h3 class="iowan-old-style-black-italic h5">{{ .name }}</h3>
+                        <h3 class="iowan-old-style-black-italic h5">{{ $name }}</h3>
                         <p class="small mb-0">{{ .subline }}<br>Wheeling, WV</p>
                       </div>
                       {{- with .also_see -}}
@@ -42,16 +57,20 @@
                         {{ end }}
                       {{- end -}}
                     </div>
-                    {{- $img := .thumbnail }}
-                    {{- $img = resources.Get $img -}}
-                    {{- $img = $img.Process "resize 960x webp" -}}
-                    {{- $alt := "" -}}
-                    {{- with .thumbnail_alt }}
-                      {{- $alt = . -}}
-                    {{- else -}}
-                      {{- $alt = printf "Profile picture of %s" .name -}}
-                    {{- end -}}
-                    <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid {{ $imgClasses }}" src="{{ $img.RelPermalink }}" alt="{{ $alt }}" /></div>
+                    {{- if .thumbnail -}}
+                      {{- $img := .thumbnail }}
+                      {{ if not site.Params.env_bookshop_live }}
+                        {{- $img = resources.Get $img -}}
+                        {{- $img = $img.Process "resize 960x webp" -}}
+                      {{- end -}}
+                      {{- $alt := "" -}}
+                      {{- with .thumbnail_alt }}
+                        {{- $alt = . -}}
+                      {{- else -}}
+                        {{- $alt = printf "Profile picture of %s" .name -}}
+                      {{- end -}}
+                      <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid {{ $imgClasses }}" src="{{ $img.RelPermalink }}" alt="{{ $alt }}" /></div>
+                    {{ end }}
                   </div>
                 </div>
               </div>
