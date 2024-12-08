@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - topper
   label: "Hero"
   description:
   icon:
@@ -11,12 +12,14 @@ spec:
 blueprint:
   background_image:
   alt_text:
-  heading:
+  heading: Heading
   body:
+    - Lede.
+    - Body.
   ctas:
-    - text: 
+    - text: Call to Action
       url:
-      icon:
+      icon: arrow-circle-right
   postscript_links:
     - text: 
       url:

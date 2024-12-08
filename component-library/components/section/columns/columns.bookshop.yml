@@ -11,10 +11,18 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   background_image:
-    image:
-    alt:
   heading: Test Heading
   columns:
+    - column_blocks: [bookshop:structure:column_blocks]
+      layout:
+        column_widths:
+          xxxl:
+          xxl:
+          xl:
+          lg:
+          md:
+          sm: col
+        text_align: text-center
     - column_blocks: [bookshop:structure:column_blocks]
       layout:
         column_widths:

@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Section Icon Bar"
+  label: "Icon Bar"
   description:
   icon:
   tags: []
@@ -11,8 +11,8 @@ spec:
 blueprint:
   text: "Hello World!"
   items:
-    - icon:
-      text:
+    - icon: book
+      text: Text
       url:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

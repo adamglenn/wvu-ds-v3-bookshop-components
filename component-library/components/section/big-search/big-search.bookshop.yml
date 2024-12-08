@@ -9,17 +9,6 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  content:
-    background_image:
-    alt_text:
-    heading:
-    lead:
-    body:
-    postscript:
-    postscript_links:
-  config:
-    is_main: false
-    id:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

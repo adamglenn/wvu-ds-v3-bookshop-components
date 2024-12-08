@@ -2,18 +2,25 @@
 spec:
   structures:
     - content_blocks
-  label: "Section Profile"
+  label: "Profile"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  name:
-  quote:
-  subline:
-  thumbnail:
-  thumbnail_alt:
+  profiles:
+    - name: Firstname Lastname
+      heading: Heading
+      quote: Quote.
+      thumbnail:
+      thumbnail_alt:
+      also_see:
+        - url:
+          text:
+          ref:
+      show: 2024-09-01
+      hide: 2030-09-01
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

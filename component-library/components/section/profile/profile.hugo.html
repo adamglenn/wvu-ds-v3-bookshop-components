@@ -12,7 +12,7 @@
         <div class="row gx-4">
           <div class="col-12 mx-auto text-center">
             <div class="bg-white shadow-sm h-100 p-5 d-flex flex-column justify-content-center px-xxl-6">
-              <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .headline }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
+              <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .heading }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
               <blockquote class="ms-0 border-0 border-wvu-gold">
                 <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
                 <p class="iowan-old-style fs-2 mb-0">{{ .quote | markdownify }}</p>   
@@ -36,9 +36,8 @@
                       </div>
                       {{- with .also_see -}}
                         {{ range . }}
-                          {{ $link := partial "func/getQuicklink" . }}
                           <div class="bg-wvu-accent--blue-light border border-1 border-dark border-opacity-10 text-dark p-3 mt-3 ms-n6 wvu-shadow-hard-dark">
-                            <p class="small mb-0"><a href="{{ $link.url }}">{{ $link.text }}</a></p>
+                            <p class="small mb-0">{{ partial "bookshop" (slice "generic/link" .) }}</p>
                           </div>
                         {{ end }}
                       {{- end -}}

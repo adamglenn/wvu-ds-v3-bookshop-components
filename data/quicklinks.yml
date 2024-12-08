@@ -1,0 +1,24 @@
+- ref: alumni
+- ref: apply_to_wvu
+- ref: bog
+- url: https://campusmap.wvu.edu/
+  text: Campus Map
+- ref: wvu_tours
+- ref: wvu_emergency
+- ref: give
+- url: /academics/programs
+  text: Majors
+- url: https://admissions.wvu.edu/request-information
+  text: Request Admissions Info
+- ref: wvu_bookstore
+  text: Shop for WVU Gear
+- ref: wvu_virtual_tour
+- url: /info-for/visitors
+  text: Visit Us
+- ref: wvu_bookstore
+- url: https://careers.wvu.edu/career-opportunities
+  text: WVU Careers
+- ref: wvu_magazine
+- ref: wvu_portal
+- url: /sitemap
+  text: Sitemap
