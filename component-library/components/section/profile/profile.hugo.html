@@ -2,23 +2,13 @@
 {{ if eq .Params.use_cutout true }}
   {{ $imgClasses = "mb-n5 mt-n6" }}
 {{ end }}
+
 <section class="py-0">
   <div class="container py-6">
+    {{ site.Data.people }}
     {{ range .profiles }}
-      {{- $person := . }}
-      {{- $name := $person.name }}
-      {{- $quote := $person.quote }}
-      {{- $peopleData := site.Data.people -}}
-      {{- if .person -}}
-        {{- $name = .person -}}
-      {{- end -}}
-
-      {{- range $peopleData }}
-        {{ if eq .name $name }}
-          {{ $name = .name }}
-          {{ $quote = .quote }}
-        {{ end }}
-      {{- end -}}
+      {{- $name := .name }}
+      {{- $quote := .quote }}
 
       {{- $now := time.Now -}}
       {{- $start := time.AsTime .show -}}
@@ -47,7 +37,7 @@
                     <div class="col-xxl-7">
                       <div class="wvu-bg-filter-blur border border-1 border-dark border-opacity-10 text-dark p-3 mt-3 ms-n6">
                         <h3 class="iowan-old-style-black-italic h5">{{ $name }}</h3>
-                        <p class="small mb-0">{{ .subline }}<br>Wheeling, WV</p>
+                        <p class="small mb-0">{{ if .subline }}{{ .subline }}<br>{{ end }}Wheeling, WV</p>
                       </div>
                       {{- with .also_see -}}
                         {{ range . }}
@@ -57,7 +47,21 @@
                         {{ end }}
                       {{- end -}}
                     </div>
-
+                    {{- if .thumbnail -}}
+                      {{- $src := .thumbnail }}
+                      {{ if not site.Params.env_bookshop_live }}
+                        {{- $img := resources.Get $src -}}
+                        {{- $img = $img.Process "resize 960x webp" -}}
+                        {{- $src = $img.RelPermalink }}
+                      {{- end -}}
+                      {{- $alt := "" -}}
+                      {{- with .thumbnail_alt }}
+                        {{- $alt = . -}}
+                      {{- else -}}
+                        {{- $alt = printf "Profile picture of %s" .name -}}
+                      {{- end -}}
+                      <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid {{ $imgClasses }}" src="{{ $src }}" alt="{{ $alt }}" /></div>
+                    {{ end }}
                   </div>
                 </div>
               </div>
