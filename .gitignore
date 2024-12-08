@@ -1,0 +1,16 @@
+.DS_Store
+_vendor/
+node_modules/
+deploy/
+public/
+resources/_gen/
+contentful/content/
+scratch/
+component-library/bookshop/
+
+# Temporary layout files from imported modules
+_TMP-*
+
+.envrc
+.env
+*.lock
