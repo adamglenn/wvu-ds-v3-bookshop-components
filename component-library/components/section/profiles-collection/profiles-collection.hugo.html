@@ -32,24 +32,9 @@
                       <h3 class="iowan-old-style-black-italic h5">{{ .name }}</h3>
                       <p class="small mb-0">{{ if .subline }}{{ .subline }}<br>{{ end }}Wheeling, WV</p>
                     </div>
-                    {{- with .also_see -}}
-                      {{ range . }}
-                        <div class="bg-wvu-accent--blue-light border border-1 border-dark border-opacity-10 text-dark p-3 mt-3 ms-n6 wvu-shadow-hard-dark">
-                          <p class="small mb-0">{{ partial "bookshop" (slice "generic/link" .) }}</p>
-                        </div>
-                      {{ end }}
-                    {{- end -}}
+
                   </div>
-                  {{- if .thumbnail -}}
-                    {{- $src := .thumbnail }}
-                    {{- $alt := "" -}}
-                    {{- with .thumbnail_alt }}
-                      {{- $alt = . -}}
-                    {{- else -}}
-                      {{- $alt = printf "Profile picture of %s" .name -}}
-                    {{- end -}}
-                    <div class="col-xxl-17 mx-xxl-auto d-flex align-items-end"><img class="img-fluid {{ $imgClasses }}" src="{{ $src }}" alt="{{ $alt }}" /></div>
-                  {{ end }}
+
                 </div>
               </div>
             </div>
