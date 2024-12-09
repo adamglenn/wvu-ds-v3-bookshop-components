@@ -1,15 +1,17 @@
 {{ .topper.topper_type }}
 
-{{ if and .topper .topper.topper_type }}
-  {{ if eq .topper.topper_type "Article Hero" }}
-    {{ partial "bookshop" (slice "topper/article-hero" .) }}
-  {{ else if eq .topper.topper_type "Hero" }}
-    {{ partial "bookshop" (slice "topper/hero" .) }}
-  {{ else if eq .topper.topper_type "Hero - Big Search" }}
-    {{ partial "bookshop" (slice "topper/hero-big-search" .) }}
-  {{ else if eq .topper.topper_type "Hero w/Icons" }}
-    {{ partial "bookshop" (slice "topper/hero-w-icons" .) }}
-  {{ else }}
-    {{ partial "bookshop" (slice "topper/default" .) }}
+{{ if .topper }}
+  {{ if .topper_type }}
+    {{ if eq .topper.topper_type "Article Hero" }}
+      {{ partial "bookshop" (slice "topper/article-hero" .) }}
+    {{ else if eq .topper.topper_type "Hero" }}
+      {{ partial "bookshop" (slice "topper/hero" .) }}
+    {{ else if eq .topper.topper_type "Hero - Big Search" }}
+      {{ partial "bookshop" (slice "topper/hero-big-search" .) }}
+    {{ else if eq .topper.topper_type "Hero w/Icons" }}
+      {{ partial "bookshop" (slice "topper/hero-w-icons" .) }}
+    {{ else }}
+      {{ partial "bookshop" (slice "topper/default" .) }}
+    {{ end }}
   {{ end }}
 {{ end }}
