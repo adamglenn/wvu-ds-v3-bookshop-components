@@ -1,4 +1,6 @@
-{{ if and .topper .topper_type }}
+{{ .topper.topper_type }}
+
+{{ if and .topper .topper.topper_type }}
   {{ if eq .topper.topper_type "Article Hero" }}
     {{ partial "bookshop" (slice "topper/article-hero" .) }}
   {{ else if eq .topper.topper_type "Hero" }}
