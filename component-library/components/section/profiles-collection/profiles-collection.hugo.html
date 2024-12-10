@@ -6,10 +6,10 @@
 <section class="py-0">
   <div class="container py-6">
     Test.
-    {{ $profilesData := site.Data.people }}
+    {{ $peopleData := site.Data.people }}
     {{ range .profiles }}
       {{ $person := .person }}
-      {{ range $profilesData }}
+      {{ range $peopleData }}
         {{ if eq .name $person }}
           <div class="row gx-4">
             <div class="col-12 mx-auto text-center">
