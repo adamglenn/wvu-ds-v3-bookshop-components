@@ -1,4 +1,10 @@
+{{ $image := "" }}
+{{ $alt := "" }}
+{{ $layerStyles := "" }}
+{{ if .background_image }}{{ $image = .background_image }}{{ end }}
+{{ if .alt_text }}{{ $alt = .alt_text }}{{ end }}
 <main id="big-search-1" aria-labelledby="big-search-1-label" class="py-9 text-center bg-wvu-gold text-wvu-blue position-relative {{ .Params.topper.layout.buffer }}">  
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
     <div class="container">
       Breadcrumbs
