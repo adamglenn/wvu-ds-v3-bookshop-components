@@ -11,14 +11,12 @@
         {{ $person := .person }}
         {{ range $peopleData }}
           {{ if eq .name $person }}
-            <div class="col-6 mx-auto text-center">
-              <div class="bg-white shadow-sm h-100 p-5 d-flex flex-column justify-content-center px-xxl-6">
-                <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .heading }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
-                <blockquote class="ms-0 border-0 border-wvu-gold">
-                  <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
-                  <p class="iowan-old-style fs-4 mb-0">{{ .quote | markdownify }}</p>   
-                </blockquote>
-              </div>
+            <div class="col-6 text-center">
+              <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .heading }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
+              <blockquote class="ms-0 border-0 border-wvu-gold">
+                <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
+                <p class="iowan-old-style fs-4 mb-0">{{ .quote | markdownify }}</p>   
+              </blockquote>
             </div>
           {{ end }}
         {{ end }}
