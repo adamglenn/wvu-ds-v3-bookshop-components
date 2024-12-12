@@ -1,11 +1,19 @@
 {{ $sectionMargin := "py-6" }}
+{{ $layerStyles := "" }}
 
 {{ if .layout.section.margin }}
   {{ $sectionMargin = .layout.section.margin }}
 {{ end }}
 
 {{ $panelStyles := "rounded-2" }}
-{{ $itemHeadingStyles := "iowan-old-style h1" }}
+{{ $itemHeadingStyles := "oliviar-black h2 text-wvu-blue" }}
+
+{{ if .config.id }}{{ $id = .config.id }}{{ end }}
+{{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
+{{ if .styles.section.background_c }}{{ $backgroundColor = .styles.section.background_c }}{{ end }}
+{{ if .styles.section.text_c }}{{ $textColor = .styles.section.text_c }}{{ end }}
+{{ if .styles.background_layers }}{{ $layerStyles = .styles.background_layers }}{{ end }}
+{{ if .styles.heading.c }}{{ $headingColor = .styles.heading.c }}{{ end }}
 
 {{ if and .styles .styles.panels }}
   {{ $panelStyles = .styles.panels }}
@@ -15,6 +23,7 @@
 {{ end }}
 
 <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "layerStyles" $layerStyles)) }}
   <!-- 
   <div class="wvu-bg-img">
     <div class="position-absolute w-50 h-100 d-flex justify-content-start align-items-end" style="left: 50%">
@@ -24,7 +33,7 @@ background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"><
   </div>
   -->
   <div class="container position-relative {{ .layout.margin_y }}">
-    <div class="p-4 p-xl-5 p-xxl-6 bg-white">
+    <div class="p-4 p-xl-5 p-xxl-6 bg-white wvu-z-index-content">
       <div class="row">
         <div class="col-xl-10">
           <div class="">

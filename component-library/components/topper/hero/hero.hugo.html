@@ -1,5 +1,6 @@
 {{ $image := "" }}
 {{ $alt := "" }}
+{{ $layerStyles := "" }}
 
 {{ $sectionMargin := "py-6" }}
 
@@ -7,23 +8,34 @@
   {{ $sectionMargin = .topper.layout.margin }}
 {{ end }}
 
-{{ $layerStyles := "" }}
-
 {{ if .topper.background_image }}{{ $image = .topper.background_image }}{{ end }}
 {{ if .topper.alt_text }}{{ $alt = .topper.alt_text }}{{ end }}
 
-<main class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center bg-dark text-white position-relative {{ .Params.topper.layout.buffer }}">  
+{{ $backgroundColor := "" }}
+{{ $backgroundColor := "bg-dark" }}
+{{ $textColor := "text-white" }}
+{{ $layerStyles := "" }}
+{{ $headingColor := "" }}
+
+{{ if .config.id }}{{ $id = .config.id }}{{ end }}
+{{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
+{{ if .topper.styles.background_c }}{{ $backgroundColor = .topper.styles.background_c }}{{ end }}
+{{ if .topper.styles.text_c }}{{ $textColor = .topper.styles.text_c }}{{ end }}
+{{ if .topper.styles.background_layers }}{{ $layerStyles = .topper.styles.background_layers }}{{ end }}
+{{ if .topper.styles.heading.c }}{{ $headingColor = .topper.styles.heading.c }}{{ end }}
+
+<main class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative {{ .Params.topper.layout.buffer }}">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
     <div class="container">
-      Breadcrumbs
+      <p class="small mb-0">Breadcrumbs</p>
     </div>
   </div>
   <div class="container wvu-z-index-content mb-5">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
-          <h1 class="h2 wvu-shout wvu-text-letter-spacing-lg mb-6">{{ .title }}</h1>
+          <h1 class="h2 wvu-shout text-wvu-gold wvu-text-letter-spacing-lg mb-6">{{ .title }}</h1>
         {{ end }}
         <h1 id="big-search-1-label" class="display-2 oliviar-black text-uppercase mb-4">{{ if .topper.heading }}{{ .topper.heading  }}{{ else }}{{ .title }}{{ end }}</h1>
         <p class="helvetica-neue-light h2 mb-0">{{ .topper.subheading }}</p> 

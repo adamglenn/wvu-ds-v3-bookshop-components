@@ -5,7 +5,7 @@
 {{ $patternOpacity := "" }}
 {{ $texture := false }}
 
-{{ if and .layerStyles }}
+{{ if .layerStyles }}
   {{ if .layerStyles.img }}
     {{ if .layerStyles.img.blend_mode }}
       {{ $blendMode = .layerStyles.img.blend_mode }}
@@ -36,8 +36,8 @@
   {{ if .image }}
     <img class="object-fit-cover h-100 w-100 {{ $blendMode }}" src="{{ .image }}" style="opacity: 0.{{ $opacity }}" />
   {{ end }}
-  {{ if and .layerStyles .layerStyles.pattern }}
-    <div class="{{ $pattern }} {{ $patternColor }}" style="opacity: 0.{{ $patternOpacity }}"></div>
+  {{ if and .layerStyles .layerStyles.pattern .layerStyles.pattern.option }}
+    <div class="{{ $pattern }} {{ $patternColor }} h-100 w-100" style="opacity: 0.{{ $patternOpacity }}"></div>
   {{ end }}
   {{ if eq $texture true }}
     <div class="d-flex w-100 h-100 justify-content-between position-absolute">
