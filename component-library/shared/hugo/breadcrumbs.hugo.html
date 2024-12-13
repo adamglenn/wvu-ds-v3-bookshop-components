@@ -1,13 +1,11 @@
 {{- $color := "text-dark" -}}
-{{- if and .Params.topper.styles.breadcrumbs .Params.topper.styles.breadcrumbs.c -}}{{ $color = .Params.topper.styles.breadcrumbs.c }}{{- end -}}
-
 <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
   <div class="container">
     <ul class="list-inline small mt-2 {{ $color }}">
-      {{- range .Ancestors.Reverse }}
-        <li class="list-inline-item me-0"><a class="{{ $color }}" href="{{ .RelPermalink }}">{{ .Title }}</a> / </li>
-      {{- end }}
-      <li class="list-inline-item">{{ .Title }}</li>
+      {{ range .ancestors.Reverse }}
+        <li class="list-inline-item"><a href="{{ .RelPermalink}}">{{ .Name }}</a></li>
+      {{ end }}
+      <li class="list-inline-item">{{ .title }}</li>
     </ul>
   </div>
 </div>
