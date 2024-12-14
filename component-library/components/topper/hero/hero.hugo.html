@@ -26,11 +26,6 @@
 
 <main class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative {{ .Params.topper.layout.buffer }}">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
-    <div class="container">
-      <p class="small mb-0">Breadcrumbs</p>
-    </div>
-  </div>
   <div class="container wvu-z-index-content mb-5">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">

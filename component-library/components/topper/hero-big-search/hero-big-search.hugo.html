@@ -16,11 +16,6 @@
 
 <main id="big-search-1" aria-labelledby="big-search-1-label" class="pt-8 pb-9 text-center {{ $backgroundColor }} {{ $textColor }} position-relative">
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  <div class="position-absolute mt-3 w-100 text-start" style="top: 0px;">
-    <div class="container">
-      {{ partial "bookshop_partial" (slice "breadcrumbs" .) }}
-    </div>
-  </div>
   <div class="container wvu-z-index-content">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">

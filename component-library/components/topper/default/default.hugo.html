@@ -12,8 +12,7 @@
 
 <header class="pt-6 pb-5 position-relative bg-light">
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  {{ partial "bookshop_partial" (slice "breadcrumbs" (dict "ancestors" .ancestors "title" .title)) }}
-  <div class="container">
+  <div class="container wvu-z-index-content">
     <h1 class="oliviar-black display-3 text-wvu-blue">{{ $title }}</h1>
   </div>
 </header>
