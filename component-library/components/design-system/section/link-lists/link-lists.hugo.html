@@ -1,24 +1,35 @@
-<section class="c-link-lists py-7">
-  <div class="container">
+{{ $sectionMargin := "py-7" }}
+{{ $layerStyles := "" }}
+
+{{ if .layout.section.margin }}
+  {{ $sectionMargin = .layout.section.margin }}
+{{ end }}
+
+{{ if .styles.background_layers }}{{ $layerStyles = .styles.background_layers }}{{ end }}
+
+<section class="c-link-lists {{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
+  <div class="container">    
     <div class="row">
       <div class="col-xxl-18 mx-xxl-auto">
-        {{ range .lists }}
-          <div class="border-top border-1 border-wvu-neutral--warm-gray-light py-5">
-            <div class="row">
-              <div class="col-10 me-auto">
-                <h2 class="oliviar-black text-wvu-blue">{{ .topic }}</h2>
-                <p class="mb-0">{{ .description }}</p>
-              </div>
-              <div class="col-12">
-                <ul class="wvu-ul-chevrons">
-                  {{ range .items }}
-                    <li><a class="text-decoration-none text-wvu-neutral--warm-gray-dark" href="{{ .url }}">{{ .text }}</a></li>
-                  {{ end }}
-                </ul>
+        <div class="p-4 p-xl-5 p-xxl-6 bg-white wvu-z-index-content">
+          {{ range $index, $element := .lists }}
+            <div class="{{ if ne $index 0 }}border-top border-1 border-wvu-neutral--warm-gray-light py-5{{ else }}pb-5{{ end }}">
+              <div class="row">
+                <div class="col-10 me-auto">
+                  <h2 class="oliviar-black text-wvu-blue">{{ .topic }}</h2>
+                  <p class="mb-0">{{ .description }}</p>
+                </div>
+                <div class="col-12">
+                  <ul class="wvu-ul-chevrons">
+                    {{ range .items }}
+                      <li><a class="text-decoration-none text-wvu-neutral--warm-gray-dark" href="{{ .url }}">{{ .text }}</a></li>
+                    {{ end }}
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
-        {{ end }}
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>
