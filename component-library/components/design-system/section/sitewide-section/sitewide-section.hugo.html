@@ -1,2 +1,9 @@
-{{ . }}
-{{ partial "bookshop" ._bookshop_name . }}
+{{ $section := .sitewide_section }}
+{{ range site.Data.sitewide_components }}
+  {{ . }}
+  {{ $title := .title | urlize }}
+  {{ if eq $section $title }}
+    Found it.
+    {{ partial "bookshop" (slice ._bookshop_name .) }}
+  {{ end }}
+{{ end }}
