@@ -13,19 +13,16 @@ blueprint:
   items:
     - title: Item 1 Title
       text: Item 1 text.
-      button:
-        site_page:
-        url:
+      site_page:
+      url:
     - title: Item 2 Title
       text: Item 2 text.
-      button:
-        site_page:
-        url:
+      site_page:
+      url:
     - title: Item 3 Title
       text: Item 3 text.
-      button:
-        site_page:
-        url:
+      site_page:
+      url:
   lead: Lead text.
   layout:
     margin_y:
