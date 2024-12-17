@@ -40,12 +40,10 @@
         {{ if .site_page }}
           {{ $sitePage := .site_page }}
           {{ range $sitePages }}
-            {{ range . }}
-              {{ if and .id (eq $sitePage .id) }}
-                {{ $pageTitle = .title }}
-                {{ $description = .description }}
-                {{ $url = .path }}
-              {{ end }}
+            {{ if eq $sitePage .id }}
+              {{ $pageTitle = .title }}
+              {{ $description = .description }}
+              {{ $url = .path }}
             {{ end }}
           {{ end }}
         {{ end }}
