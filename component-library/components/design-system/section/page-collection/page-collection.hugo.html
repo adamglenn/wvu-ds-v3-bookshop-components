@@ -1,4 +1,10 @@
+{{ $sectionMargin := "py-6" }}
+{{ if .layout.section.margin }}
+  {{ $sectionMargin = .layout.section.margin }}
+{{ end }}
+
 {{ $panelStyles := "bg-wvu-accent--blue-dark text-white rounded-2" }}
+{{ $gridClasses := "col" }}
 {{ $itemHeadingStyles := "iowan-old-style h1" }}
 {{ if and .styles .styles.panels }}
   {{ $panelStyles = .styles.panels }}
@@ -6,7 +12,7 @@
 {{ if and .styles .styles.item_headings }}
   {{ $itemHeadingStyles = .styles.item_headings }}
 {{ end }}
-<section class="pt-9 pb-6 position-relative">
+<section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
   <!-- 
   <div class="wvu-bg-img">
     <div class="position-absolute w-50 h-100 d-flex justify-content-start align-items-end" style="left: 50%">
@@ -30,16 +36,33 @@ background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"><
     <div class="row gx-4 text-center">
       {{ range .items }}
         {{ $pageTitle := "" }}
+        {{ $description := "" }}
+        {{ $url := "" }}
+        
         {{ if .title }}
           {{ $pageTitle = .title }}
         {{ end }}
-        <div class="col-8">
+        {{ if .text }}
+          {{ $description = .text }}
+        {{ end }}
+
+        {{ if .site_page }}
+          {{ range site.Data.site_pages }}
+            {{ if eq $pageTitle .title }}
+              {{ $pageTitle = .title }}
+              {{ $description = .description }}
+              {{ $url = .path }}
+            {{ end }}
+          {{ end }}
+        {{ else if .url }}
+          {{ $url = .url }}
+        {{ end }}
+
+        <div class="{{ $gridClasses }}">
           <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }}">
             <h3 class="{{ $itemHeadingStyles }}">{{ $pageTitle }}</h3>
-            {{ with .text }}
-              <p>{{ . }}</p>
-            {{ end }}
-            <a class="stretched-link" href="{{ .button.url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
+            <p>{{ $description }}</p>
+            <a class="stretched-link" href="{{ $url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
           </div>
         </div>
       {{ end }}
