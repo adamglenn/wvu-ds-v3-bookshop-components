@@ -1,8 +1,7 @@
 {{ $image := "" }}
 {{ $alt := "" }}
 {{ $layerStyles := "" }}
-
-{{ $sectionMargin := "py-6" }}
+{{ $sectionMargin := "" }}
 
 {{ if .topper.layout.margin }}
   {{ $sectionMargin = .topper.layout.margin }}
@@ -26,7 +25,7 @@
 
 <main class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative {{ .Params.topper.layout.buffer }}">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  <div class="container wvu-z-index-content mb-5">
+  <div class="container wvu-z-index-content py-7">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}

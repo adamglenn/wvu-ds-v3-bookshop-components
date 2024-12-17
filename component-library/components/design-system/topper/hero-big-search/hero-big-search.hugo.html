@@ -5,6 +5,7 @@
 {{ $backgroundColor := "bg-dark" }}
 {{ $textColor := "text-white" }}
 {{ $layerStyles := "" }}
+{{ $sectionMargin := "" }}
 {{ $headingColor := "" }}
 
 {{ if $topper.styles.section.background_c }}{{ $backgroundColor = $topper.styles.section.background_c }}{{ end }}
@@ -14,9 +15,9 @@
 {{ if $topper.styles.background_layers }}{{ $layerStyles = $topper.styles.background_layers }}{{ end }}
 {{ if $topper.styles.heading.c }}{{ $headingColor = $topper.styles.heading.c }}{{ end }}
 
-<main id="big-search-1" aria-labelledby="big-search-1-label" class="pt-8 pb-9 text-center {{ $backgroundColor }} {{ $textColor }} position-relative">
+<main id="big-search-1" aria-labelledby="big-search-1-label" class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative">
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  <div class="container wvu-z-index-content">
+  <div class="container wvu-z-index-content py-7">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}

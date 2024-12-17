@@ -1,19 +1,19 @@
 {{- if not site.Params.env_bookshop_live -}}
   {{- if eq . "pull-up" -}}
-    mt-n9 py-7
+    mt-n6
   {{- else if eq . "pull-down" -}}
-    mb-n9 py-7
+    mb-n6
   {{- else if eq . "pull-both" -}}
-    my-n9 py-7
+    my-n6
   {{- else if eq . "buffer-top" -}}
-    pt-10 pb-7
+    pt-6
   {{- else if eq . "buffer-bottom" -}}
-    pt-7 pb-10
+    pb-6
   {{- else if eq . "buffer-both" -}}
-    py-10
+    py-6
   {{- else -}}
-    py-7
+    {{ . }}
   {{- end -}}
-{{ else }}
-  py-7
+{{- else -}}
+  {{ . }}
 {{- end -}}

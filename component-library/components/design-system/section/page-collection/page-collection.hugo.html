@@ -30,14 +30,16 @@
     
     <div class="row gx-4 text-center">
       {{ range .items }}
+        {{ $sitePages := .site.Data.site_pages }}
+        
         {{ $pageTitle := "" }}
         {{ $description := "" }}
         {{ $url := "" }}
 
+        <!-- Needs re-written, along with site-pages.json -->
         {{ if .site_page }}
-          {{ .site.Data.site_pages }}
           {{ $sitePage := .site_page }}
-          {{ range site.Data.site_pages }}
+          {{ range $sitePages }}
             {{ range . }}
               {{ if eq $sitePage .title }}
                 {{ $pageTitle = .title }}
@@ -46,8 +48,6 @@
               {{ end }}
             {{ end }}
           {{ end }}
-        {{ else if .url }}
-          {{ $url = .url }}
         {{ end }}
 
         {{ if .title }}
@@ -55,6 +55,9 @@
         {{ end }}
         {{ if .text }}
           {{ $description = .text }}
+        {{ end }}
+        {{ if .url }}
+          {{ $url = .url }}
         {{ end }}
 
         <div class="{{ $gridClasses }}">
