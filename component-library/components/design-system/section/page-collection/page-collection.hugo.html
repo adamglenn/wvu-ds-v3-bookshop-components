@@ -1,27 +1,22 @@
 {{ $sectionMargin := "py-6" }}
+{{ $panelStyles := "bg-wvu-accent--blue-dark text-white rounded-2" }}
+{{ $gridClasses := "col" }}
+{{ $itemHeadingStyles := "iowan-old-style h1" }}
+
 {{ if .layout.section.margin }}
   {{ $sectionMargin = .layout.section.margin }}
 {{ end }}
 
-{{ $panelStyles := "bg-wvu-accent--blue-dark text-white rounded-2" }}
-{{ $gridClasses := "col" }}
-{{ $itemHeadingStyles := "iowan-old-style h1" }}
 {{ if and .styles .styles.panels }}
   {{ $panelStyles = .styles.panels }}
 {{ end }}
+
 {{ if and .styles .styles.item_headings }}
   {{ $itemHeadingStyles = .styles.item_headings }}
 {{ end }}
+
 <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
-  <!-- 
-  <div class="wvu-bg-img">
-    <div class="position-absolute w-50 h-100 d-flex justify-content-start align-items-end" style="left: 50%">
-      <div class="h-100 position-absolute" style="content: ''; transform: skew(340deg); left: 0; width: 200% !important; background: rgb(0,0,0);
-background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"></div>
-    </div>
-  </div>
-  -->
-  <div class="container position-relative {{ .layout.margin_y }}">
+  <div class="container position-relative">
     {{ if .heading }}
       <div class="row text-center mb-5">
         <div class="col-xl-12 mx-xl-auto">
@@ -38,13 +33,6 @@ background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"><
         {{ $pageTitle := "" }}
         {{ $description := "" }}
         {{ $url := "" }}
-        
-        {{ if .title }}
-          {{ $pageTitle = .title }}
-        {{ end }}
-        {{ if .text }}
-          {{ $description = .text }}
-        {{ end }}
 
         {{ if .site_page }}
           {{ .site.Data.site_pages }}
@@ -60,6 +48,13 @@ background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"><
           {{ end }}
         {{ else if .url }}
           {{ $url = .url }}
+        {{ end }}
+
+        {{ if .title }}
+          {{ $pageTitle = .title }}
+        {{ end }}
+        {{ if .text }}
+          {{ $description = .text }}
         {{ end }}
 
         <div class="{{ $gridClasses }}">
