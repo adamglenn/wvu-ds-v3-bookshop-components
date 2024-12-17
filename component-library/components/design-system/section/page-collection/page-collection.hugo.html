@@ -30,7 +30,7 @@
     
     <div class="row gx-4 text-center">
       {{ range .items }}
-        {{ $sitePages := .site.Data.site_pages }}
+        {{ $sitePages := site.Data.site_pages }}
         
         {{ $pageTitle := "" }}
         {{ $description := "" }}
