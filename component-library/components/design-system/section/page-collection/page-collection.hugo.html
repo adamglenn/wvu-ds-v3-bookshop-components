@@ -41,7 +41,7 @@
           {{ $sitePage := .site_page }}
           {{ range $sitePages }}
             {{ range . }}
-              {{ if eq $sitePage .title }}
+              {{ if eq $sitePage .page_id }}
                 {{ $pageTitle = .title }}
                 {{ $description = .description }}
                 {{ $url = .path }}
