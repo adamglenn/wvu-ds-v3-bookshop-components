@@ -47,12 +47,15 @@ background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"><
         {{ end }}
 
         {{ if .site_page }}
+          {{ .site.Data.site_pages }}
           {{ $sitePage := .site_page }}
           {{ range site.Data.site_pages }}
-            {{ if eq $sitePage .title }}
-              {{ $pageTitle = .title }}
-              {{ $description = .description }}
-              {{ $url = .path }}
+            {{ range . }}
+              {{ if eq $sitePage .title }}
+                {{ $pageTitle = .title }}
+                {{ $description = .description }}
+                {{ $url = .path }}
+              {{ end }}
             {{ end }}
           {{ end }}
         {{ else if .url }}
