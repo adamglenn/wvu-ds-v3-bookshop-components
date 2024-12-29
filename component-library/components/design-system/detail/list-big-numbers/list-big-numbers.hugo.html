@@ -1,0 +1,5 @@
+<ol class="wvu-ol-big-numbers wvu-ol-big-numbers-wvu-blue fs-5">
+  {{ range .items }}
+    <li>{{ .text | markdownify }}</li>
+  {{ end }}
+</ol>

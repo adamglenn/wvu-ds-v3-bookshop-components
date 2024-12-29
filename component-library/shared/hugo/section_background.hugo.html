@@ -35,6 +35,9 @@
 <div class="wvu-bg-img">
   {{ if .image }}
     <img class="object-fit-cover h-100 w-100 {{ $blendMode }}" src="{{ .image }}" style="opacity: 0.{{ $opacity }}" />
+    {{ if eq $blendMode "" }}
+      <div class="position-absolute wvu-bg-tint w-100 h-100"></div>
+    {{ end }}
   {{ end }}
   {{ if and .layerStyles .layerStyles.pattern .layerStyles.pattern.option }}
     <div class="{{ $pattern }} {{ $patternColor }} h-100 w-100" style="opacity: 0.{{ $patternOpacity }}"></div>

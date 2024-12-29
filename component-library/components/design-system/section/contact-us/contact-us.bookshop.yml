@@ -1,23 +1,25 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - topper
-  label: "Topper - Hero w/Icons"
+    - content_blocks
+  label: "Contact Us"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  background_image:
-  alt_text:
-  heading:
-    - text: Heading
-  subheading: Subheading.
-  items:
-    - icon: book
-      text: Text
-      url:
+  heading: Heading
+  subheading:
+  address: []
+  phone:
+  fax:
+  email:
+  contacts:
+    - contact:
+  config:
+    is_main: true
+    section_id: directory
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

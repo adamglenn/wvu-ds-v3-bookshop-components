@@ -1,23 +1,15 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - topper
-  label: "Topper - Hero w/Icons"
-  description:
-  icon:
+  label: "Image"
+  description: Display an image
+  icon: image
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  background_image:
-  alt_text:
-  heading:
-    - text: Heading
-  subheading: Subheading.
-  items:
-    - icon: book
-      text: Text
-      url:
+  src:
+  alt:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

@@ -1,16 +1,41 @@
-<main id="big-search-1" aria-labelledby="big-search-1-label" class="py-9 text-center bg-wvu-gold text-wvu-blue position-relative {{ .Params.topper.layout.buffer }}">  
-  <div class="container wvu-z-index-content mb-5">
+{{ $image := "" }}
+{{ $alt := "" }}
+{{ $layerStyles := "" }}
+{{ $sectionMargin := "" }}
+
+{{ $authorData := site.Data.people.authors }}
+
+{{ $authors := slice }}
+{{ if .authors }}
+  {{ $authors = .authors }}
+{{ end }}
+
+{{ $authorList := slice }}
+{{ range $authorData }}
+  {{ $author := . }}
+  {{ range $authors }}
+    {{ if eq .author $author.id }}
+      {{ $authorList = $authorList | append $author }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<main id="big-search-1" aria-labelledby="big-search-1-label" class="py-9 text-center bg-dark text-white position-relative {{ .Params.topper.layout.buffer }}">  
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
+  <div class="container wvu-z-index-content py-6">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
-        <h1 id="big-search-1-label" class="display-2 wvu-shout mb-4">{{ .heading  }}</h1>
-        <p class="helvetica-neue-light h2 mb-0">{{ .subheading }}</p> 
-      </div>
-    </div>   
-  </div>
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-12 mx-auto">
-      <div class="row">
-        <div class="col-md-24">
+        <h1 id="big-search-1-label" class="display-3 iowan-old-style mb-4">{{ if .topper.heading }}{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}{{ else }}{{ .title }}{{ end }}</h1>
+        <p class="helvetica-neue-light h2 mb-0">{{ .subheading }}</p>
+        <div class="d-flex justify-content-center mt-5">
+          {{ range $authorList }}
+            {{ if .image }}
+              <div class="ratio ratio-1x1 d-inline-block me-3" style="width: 50px;">
+                <img class="img-fluid rounded-circle object-fit" src="{{ .image.src }}" alt="{{ .image.alt }}" />
+              </div>
+            {{ end }}
+            <div class="d-inline-block h-100">{{ .name }}</div>
+          {{ end }}
         </div>
       </div>
     </div>

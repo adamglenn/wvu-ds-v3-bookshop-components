@@ -11,7 +11,9 @@ spec:
 blueprint:
   background_image:
   alt_text:
-  heading: Heading
+  heading:
+    - text: Heading
+      style:
   subheading: Subheading.
   styles:
     section:

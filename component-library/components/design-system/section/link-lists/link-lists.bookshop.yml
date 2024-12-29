@@ -17,7 +17,8 @@ blueprint:
     - topic:
       description:
       items:
-        - text:
+        - site_page:
+          text:
           url:
   config:
     is_main: true

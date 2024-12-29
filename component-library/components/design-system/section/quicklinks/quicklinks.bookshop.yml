@@ -17,6 +17,8 @@ blueprint:
       url: /url
     - text: Test Link
       ref: alumni
+  config:
+    edit_mode_only:
   layout:
     section:
       margin: default

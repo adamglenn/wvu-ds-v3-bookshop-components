@@ -22,7 +22,27 @@
                 <div class="col-12">
                   <ul class="wvu-ul-chevrons">
                     {{ range .items }}
-                      <li><a class="text-decoration-none text-wvu-neutral--warm-gray-dark" href="{{ .url }}">{{ .text }}</a></li>
+                      <!-- Can this be a shared partial or separate component? -->
+                      {{ $sitePages := site.Data.site_pages }}
+          
+                      {{ $text := "" }}
+                      {{ $url := .url }}
+                      <!-- Needs re-written, along with site-pages.json -->
+                      {{ if .site_page }}
+                        {{ $sitePage := .site_page }}
+                        {{ range $sitePages }}
+                          {{ if eq $sitePage .id }}
+                            {{ $text = .title }}
+                            {{ $url = .path }}
+                          {{ end }}
+                        {{ end }}
+                      {{ end }}
+
+                      {{ if .text }}
+                        {{ $text = .text }}
+                      {{ end }}
+
+                      <li><a class="text-decoration-none text-wvu-neutral--warm-gray-dark" href="{{ $url }}">{{ $text }}</a></li>
                     {{ end }}
                   </ul>
                 </div>

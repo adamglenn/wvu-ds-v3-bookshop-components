@@ -3,6 +3,7 @@ spec:
   structures:
     - content_blocks
     - article_blocks
+    - photo_essay_blocks
   label: "Backpage"
   description:
   icon:
