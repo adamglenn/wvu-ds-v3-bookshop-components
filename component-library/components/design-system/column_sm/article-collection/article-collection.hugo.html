@@ -1,0 +1,70 @@
+{{ $tags := slice }}
+{{ $tagsMatch := "any" }}
+
+{{ if .tags }}
+  {{ $tags = .tags }}
+{{ end }}
+
+{{ $articles := where site.Pages "Section" "articles" }}
+{{ $articles = where $articles "Params.tags" "intersect" $tags }}
+
+{{ $authorData := site.Data.people.authors }}
+
+<h2 class="h4 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+
+<div class="">
+  {{ range $articles }}
+    {{ $authors := slice }}
+    {{ if .Params.authors }}
+      {{ $authors = .Params.authors }}
+    {{ end }}
+    {{ $authorList := slice }}
+    {{ range $authorData }}
+      {{ $author := . }}
+      {{ range $authors }}
+        {{ if eq .author $author.id }}
+          {{ $authorList = $authorList | append $author }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    <div class="wvu-articles">
+      <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <div class="row">
+
+          <div class="wvu-article__thumb col-md-6">
+            <div class="ratio ratio-1x1 bg-light">
+              <a class="wvu-article-link" href="{{ .RelPermalink }}" aria-hidden="true" tabindex="-1">
+                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .Params.image.src "alt" .Params.image.alt )) }}
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-18 mt-3 mt-md-0">
+            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+
+            {{ if or (not .Params.config.hide_author) ( .Params.publishDate ) }}
+              <p class="small d-block">
+                {{ if not .Params.config.hide_author }}
+                  {{ range $authorList }}
+                    <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                      <span itemprop="name">
+                        {{ .name }}
+                      </span>
+                    </span>
+                  {{ end }}
+                {{ end }}
+
+                {{ if and (not .Params.config.hide_author) ( .Params.publishDate ) }} | {{ end }}
+
+                {{ if .Params.publishDate }}
+                  <time datetime="{{ .Params.publishDate }}">{{ .Params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                {{ end }}
+              </p>
+            {{ end }}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</div>

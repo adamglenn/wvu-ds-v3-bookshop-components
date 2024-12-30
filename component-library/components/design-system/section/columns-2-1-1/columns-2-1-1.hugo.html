@@ -1,0 +1,18 @@
+<section class="py-6">
+  <div class="container wvu-z-index-content">
+    <div class="row">
+      <div class="col-xl-12">
+        {{ partial "bookshop_bindings" `.column_a` }}
+        {{ partial "bookshop_partial" (slice "page" .column_a) }}
+      </div>
+      <div class="col-6">
+        {{ partial "bookshop_bindings" `.column_b` }}
+        {{ partial "bookshop_partial" (slice "page" .column_b) }}
+      </div>
+      <div class="col-6">
+        {{ partial "bookshop_bindings" `.column_c` }}
+        {{ partial "bookshop_partial" (slice "page" .column_c) }}
+      </div>
+    </div>
+  </div>
+</section>
