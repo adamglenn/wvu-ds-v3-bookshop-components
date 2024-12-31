@@ -60,7 +60,7 @@
           </div>
 
           <div class="col-md-18 mt-3 mt-md-0">
-            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ .Title }}</a></h2>
+            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
 
             {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
               <p class="small d-block">
