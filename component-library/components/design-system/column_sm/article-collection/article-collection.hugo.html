@@ -1,3 +1,5 @@
+{{ $articles := "" }}
+
 {{ $tags := slice }}
 {{ $tagsMatch := "any" }}
 
@@ -5,18 +7,36 @@
   {{ $tags = .tags }}
 {{ end }}
 
-{{ $articles := where site.Pages "Section" "articles" }}
-{{ $articles = where $articles "Params.tags" "intersect" $tags }}
-
 {{ $authorData := site.Data.people.authors }}
+
+{{ if not site.Params.env_bookshop_live }}
+  {{ $articles = where site.Pages "Section" "articles" }}
+  {{ $articles = where $articles "Params.tags" "intersect" $tags }}
+{{ else }}
+  {{ $articles = where site.Data.site_pages ".type" "articles" }}
+  {{ $articles = where $articles ".tags" "intersect" $tags }}
+{{ end }}
+
+{{ $articles }}
 
 <h2 class="h4 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 
 <div class="">
   {{ range $articles }}
+
+    {{ $params := "" }}
+    {{ $link := "" }}
+
+    {{ if not site.Params.env_bookshop_live }}
+      {{ $params = .Params }}
+      {{ $link = .RelPermalink }}
+    {{ else }}
+      {{ $params = . }}
+    {{ end }}
+
     {{ $authors := slice }}
-    {{ if .Params.authors }}
-      {{ $authors = .Params.authors }}
+    {{ if $params.authors }}
+      {{ $authors = $params.authors }}
     {{ end }}
     {{ $authorList := slice }}
     {{ range $authorData }}
@@ -33,18 +53,18 @@
 
           <div class="wvu-article__thumb col-md-6">
             <div class="ratio ratio-1x1 bg-light">
-              <a class="wvu-article-link" href="{{ .RelPermalink }}" aria-hidden="true" tabindex="-1">
-                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .Params.image.src "alt" .Params.image.alt )) }}
+              <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
+                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image.src "alt" $params.image.alt )) }}
               </a>
             </div>
           </div>
 
           <div class="col-md-18 mt-3 mt-md-0">
-            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ .Title }}</a></h2>
 
-            {{ if or (not .Params.config.hide_author) ( .Params.publishDate ) }}
+            {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
               <p class="small d-block">
-                {{ if not .Params.config.hide_author }}
+                {{ if not $params.config.hide_author }}
                   {{ range $authorList }}
                     <span class="wvu-article__author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
                       <span itemprop="name">
@@ -54,10 +74,10 @@
                   {{ end }}
                 {{ end }}
 
-                {{ if and (not .Params.config.hide_author) ( .Params.publishDate ) }} | {{ end }}
+                {{ if and (not $params.config.hide_author) ( $params.publishDate ) }} | {{ end }}
 
-                {{ if .Params.publishDate }}
-                  <time datetime="{{ .Params.publishDate }}">{{ .Params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
+                {{ if $params.publishDate }}
+                  <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
                 {{ end }}
               </p>
             {{ end }}
