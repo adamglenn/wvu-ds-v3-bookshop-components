@@ -7,22 +7,20 @@
   {{ end }}
 {{ end }}
 
-<h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+<h2 class="h4 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 
-{{ range .items }}
-  {{ $contact := . }}
-  {{ range $contacts }}
-    {{ if eq .id $contact }}
-      <div class="row mb-4">
-        {{ if .image }}
-          <div class="col-8">
+<div class="row gx-4">
+  {{ range .items }}
+    {{ $contact := . }}    
+    {{ range $contacts }}
+      {{ if eq .id $contact }}
+        <div class="col-8">
+          {{ if .image }}            
             <div class="ratio ratio-1x1">
-              <img class="object-fit" src="{{ .image.src }}" alt="{{ if .image.alt }}{{ .image.alt }}{{ else }}Portrait of {{ .name }}{{ end }}" />
+              <img class="object-fit-cover" src="{{ .image.src }}" alt="{{ if .image.alt }}{{ .image.alt }}{{ else }}Portrait of {{ .name }}{{ end }}" />
             </div>
-          </div>
-        {{ end }}
-        <div class="col">
-          <h3 class="h5">{{ .name }}</h3>
+          {{ end }}
+          <h3 class="h5 mt-4">{{ .name }}</h3>
           <p>
             {{ with .phone }}
               <span class="fa-solid fa-phone"></span> <a href="tel:{{ . }}">{{ . }}</a><br>
@@ -32,7 +30,7 @@
             {{ end }}
           </p>
         </div>
-      </div>
+      {{ end }}
     {{ end }}
   {{ end }}
-{{ end }}
+</div>

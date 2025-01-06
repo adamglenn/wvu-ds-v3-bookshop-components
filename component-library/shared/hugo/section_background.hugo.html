@@ -3,9 +3,11 @@
 {{ $pattern := "" }}
 {{ $patternColor := "" }}
 {{ $patternOpacity := "" }}
+{{ $tintOpacity := "" }}
 {{ $texture := false }}
 
 {{ if .layerStyles }}
+  Yes.
   {{ if .layerStyles.img }}
     {{ if .layerStyles.img.blend_mode }}
       {{ $blendMode = .layerStyles.img.blend_mode }}
@@ -25,6 +27,15 @@
       {{ $patternOpacity = .layerStyles.pattern.opacity }}
     {{ end }}
   {{ end }}
+  {{ if .layerStyles.tint }}
+    Yes.
+    {{ if .layerStyles.tint.opacity }}
+      Yes.
+      {{ $tintOpacity = .layerStyles.tint.opacity }}
+    {{ else }}
+      No.
+    {{ end }}
+  {{ end }}
   {{ if .layerStyles.texture }}
     {{ if eq .layerStyles.texture.enable true }}
       {{ $texture = true }}
@@ -32,11 +43,14 @@
   {{ end }}
 {{ end }}
 
+{{ .layerStyles }}
+Tint Opacity: {{ $tintOpacity }}
+
 <div class="wvu-bg-img">
   {{ if .image }}
     <img class="object-fit-cover h-100 w-100 {{ $blendMode }}" src="{{ .image }}" style="opacity: 0.{{ $opacity }}" />
     {{ if eq $blendMode "" }}
-      <div class="position-absolute wvu-bg-tint w-100 h-100"></div>
+      <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: 0.{{ $tintOpacity }}"></div>
     {{ end }}
   {{ end }}
   {{ if and .layerStyles .layerStyles.pattern .layerStyles.pattern.option }}

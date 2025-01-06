@@ -2,17 +2,18 @@
 spec:
   structures:
     - content_blocks
-  label: "Columns 2-1"
+  label: "YouTube Shorts"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  column_a: [bookshop:structure:column_blocks]
-  column_b: [bookshop:structure:column_blocks_md]
-  layout:
-  styles:
+  heading: Shorts
+  shorts:
+    - title:
+      video_id:
+      ratio: 9x16
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

@@ -2,17 +2,15 @@
 spec:
   structures:
     - content_blocks
-  label: "Columns 2-1"
+  label: "Student Profiles"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  column_a: [bookshop:structure:column_blocks]
-  column_b: [bookshop:structure:column_blocks_md]
-  layout:
-  styles:
+  heading:
+  items: []
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

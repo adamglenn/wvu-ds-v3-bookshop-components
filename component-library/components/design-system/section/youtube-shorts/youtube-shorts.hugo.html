@@ -1,0 +1,24 @@
+<section class="py-6">
+  <div class="container wvu-z-index-content">
+    <h2 class="text-center wvu-shout h1 wvu-text-letter-spacing-lg mb-5">
+      {{ .heading }}
+    </h2>
+    <div class="row">
+      <div class="col-xl-18 mx-xl-auto">
+        <div class="row gx-5 justify-content-center">
+          {{ range first 3 .shorts }}
+            {{ $title := "" }}
+            {{ if .title }}
+              {{ $title = .title }}
+            {{ end }}            
+            <div class="col-8">
+              <div class="ratio ratio-9x16">
+                <iframe src="https://www.youtube.com/embed/{{ .video_id }}" title="{{ $title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

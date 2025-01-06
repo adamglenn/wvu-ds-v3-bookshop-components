@@ -1,5 +1,10 @@
+{{ $heading := "" }}
 {{ $articles := "" }}
 {{ $limit := 5 }}
+
+{{ if .heading }}
+  {{ $heading = .heading }}
+{{ end }}
 
 {{ if .limit }}
   {{ $limit = .limit }}
@@ -21,10 +26,8 @@
   {{ $articles = where $articles ".tags" "intersect" $tags }}
 {{ end }}
 
-<h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
-
 <div class="">
-  {{ range first $limit $articles }}
+  {{ range first 1 $articles }}
 
     {{ $params := "" }}
     {{ $link := "" }}
@@ -53,7 +56,7 @@
       <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
         <div class="row">
 
-          <div class="wvu-article__thumb col-md-6">
+          <div class="wvu-article__thumb col-md-12">
             <div class="ratio ratio-1x1 bg-light">
               <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
                 {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image.src "alt" $params.image.alt )) }}
@@ -61,8 +64,10 @@
             </div>
           </div>
 
-          <div class="col-md-18 mt-3 mt-md-0">
-            <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
+          <div class="col-md-12 mt-3 mt-md-0">
+            <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ $heading }}</h2>
+
+            <h3 class="fs-4" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h3>
 
             {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
               <p class="small d-block">
@@ -82,6 +87,10 @@
                   <time datetime="{{ $params.publishDate }}">{{ $params.publishDate | time.Format "Monday, January 2, 2006" }}</time>
                 {{ end }}
               </p>
+            {{ end }}
+
+            {{ with $params.excerpt }}
+              {{ . | markdownify }}
             {{ end }}
           </div>
 
