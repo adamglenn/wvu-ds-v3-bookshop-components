@@ -10,10 +10,10 @@
 <h2 class="h4 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 
 <div class="row gx-4">
-  {{ range .items }}
+  {{ range .people }}
     {{ $contact := . }}    
     {{ range $contacts }}
-      {{ if eq .id $contact }}
+      {{ if eq .id $contact.id }}
         <div class="col-8">
           {{ if .image }}            
             <div class="ratio ratio-1x1">
