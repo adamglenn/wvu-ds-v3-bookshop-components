@@ -25,3 +25,4 @@ _inputs:
         text:
           - key: name
       values: data.people
+      value_key: id
