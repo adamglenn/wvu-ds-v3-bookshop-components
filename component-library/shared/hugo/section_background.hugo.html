@@ -5,9 +5,9 @@
 {{ $patternOpacity := "" }}
 {{ $tintOpacity := "" }}
 {{ $texture := false }}
+{{ $image := "" }}
 
 {{ if .layerStyles }}
-  Yes.
   {{ if .layerStyles.img }}
     {{ if .layerStyles.img.blend_mode }}
       {{ $blendMode = .layerStyles.img.blend_mode }}
@@ -28,12 +28,9 @@
     {{ end }}
   {{ end }}
   {{ if .layerStyles.tint }}
-    Yes.
     {{ if .layerStyles.tint.opacity }}
-      Yes.
       {{ $tintOpacity = .layerStyles.tint.opacity }}
     {{ else }}
-      No.
     {{ end }}
   {{ end }}
   {{ if .layerStyles.texture }}
