@@ -1,8 +1,13 @@
 {{ $src := .src }}
 {{ $size := "960x640" }}
+{{ $classes := "img-fluid" }}
 
 {{ if .size }}
   {{ $size = .size }}
+{{ end }}
+
+{{ if .classes }}
+  {{ $classes = .classes }}
 {{ end }}
 
 {{ if not site.Params.env_bookshop_live }}
@@ -15,7 +20,6 @@
   {{ end }}
 
   {{/* Resize images and add them to a variable  */}}
-  {{ if and $image (ne $image.MediaType.SubType "svg") }}{{ $src = ($image.Resize (printf "%s webp"  $size)).RelPermalink }}{{ end }}
 {{ end }}
 
-<img class="img-fluid" src="{{ $src }}" alt="{{ .alt }}">
+<img class="{{ $classes }}" src="{{ $src }}" alt="{{ .alt }}">

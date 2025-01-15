@@ -56,7 +56,7 @@
           <div class="wvu-article__thumb col-md-6">
             <div class="ratio ratio-1x1 bg-light">
               <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image.src "alt" $params.image.alt )) }}
+                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image.src "alt" $params.image.alt "classes" "h-100 object-fit-cover")) }}
               </a>
             </div>
           </div>

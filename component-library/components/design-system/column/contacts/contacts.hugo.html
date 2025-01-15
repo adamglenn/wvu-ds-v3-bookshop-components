@@ -11,9 +11,9 @@
 
 <div class="row gx-4">
   {{ range .people }}
-    {{ $contact := . }}    
+    {{ $contact := .person }}
     {{ range $contacts }}
-      {{ if eq .id $contact.id }}
+      {{ if and .id (eq .id $contact) }}
         <div class="col-8">
           {{ if .image }}            
             <div class="ratio ratio-1x1">

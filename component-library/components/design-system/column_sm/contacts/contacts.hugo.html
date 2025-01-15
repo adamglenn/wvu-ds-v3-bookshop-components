@@ -9,10 +9,10 @@
 
 <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 
-{{ range .items }}
-  {{ $contact := . }}
+{{ range .people }}
+  {{ $contact := .person }}
   {{ range $contacts }}
-    {{ if eq .id $contact }}
+    {{ if and .id (eq .id $contact) }}
       <div class="row mb-4">
         {{ if .image }}
           <div class="col-8">
