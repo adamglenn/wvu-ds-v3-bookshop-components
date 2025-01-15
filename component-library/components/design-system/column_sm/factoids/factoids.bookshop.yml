@@ -34,3 +34,5 @@ preview:
 _inputs:
   items:
     type: array
+    options:
+      structures: _structures.factoids
