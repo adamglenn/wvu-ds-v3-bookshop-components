@@ -2,14 +2,14 @@
 spec:
   structures:
     - column_blocks_sm
-  label: "Column Profile"
+  label: "Student Profile"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  person:
+  student:
   super_heading:
     label:
     text:
