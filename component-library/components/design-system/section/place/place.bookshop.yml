@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Student Profiles"
+  label: "Place"
   description:
   icon:
   tags: []
@@ -10,7 +10,11 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading:
-  items: []
+  subheading:
+  text:
+  ctas:
+    - text: Call to Action
+      url:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

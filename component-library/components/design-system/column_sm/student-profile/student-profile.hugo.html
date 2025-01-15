@@ -4,10 +4,10 @@
   {{ $superHeading = .super_heading }}
 {{ end }}
 
-{{ $person := .person }}
+{{ $student := .student }}
 {{ range $peopleData }}
   {{ if .id }}
-    {{ if eq .id $person }}
+    {{ if eq .id $student }}
       <div class="bg-wvu-accent--blue text-white border border-2 border-dark mt-5 ms-5">
         <div class="row gx-0">
           <div class="col-9">

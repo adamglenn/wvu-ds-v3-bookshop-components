@@ -2,7 +2,7 @@
 spec:
   structures:
     - topper
-  label: "Topper - Article Hero"
+  label: "Topper - Article"
   description:
   icon:
   tags: []
@@ -13,9 +13,6 @@ blueprint:
     - text: Heading
   subheading: Subheading.
   styles:
-    section:
-      background_c: bg-wvu-gold
-      text_c: text-wvu-blue
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

@@ -43,9 +43,6 @@
   {{ end }}
 {{ end }}
 
-{{ .layerStyles }}
-Tint Opacity: {{ $tintOpacity }}
-
 <div class="wvu-bg-img">
   {{ if .image }}
     <img class="object-fit-cover h-100 w-100 {{ $blendMode }}" src="{{ .image }}" style="opacity: 0.{{ $opacity }}" />

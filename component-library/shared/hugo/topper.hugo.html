@@ -1,5 +1,7 @@
 {{ if .topper }}
-  {{ if eq .topper.topper_type "Article Hero" }}
+  {{ if eq .topper.topper_type "Article" }}
+    {{ partial "bookshop" (slice "design-system/topper/article" .) }}  
+  {{ else if eq .topper.topper_type "Article Hero" }}
     {{ partial "bookshop" (slice "design-system/topper/article-hero" .) }}
   {{ else if eq .topper.topper_type "Hero" }}
     {{ partial "bookshop" (slice "design-system/topper/hero" .) }}
