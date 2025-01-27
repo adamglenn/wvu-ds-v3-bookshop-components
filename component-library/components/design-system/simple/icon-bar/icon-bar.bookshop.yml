@@ -1,27 +1,19 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - topper
-  label: "Topper - Hero w/Icons"
+  label: "Icon Bar"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  background_image:
-  alt_text:
-  heading:
-    - text: Heading
-  subheading: Subheading.
   items:
-    - icon: book
-      text: Text
+    - text:
+      icon:
       url:
   styles:
-    section:
-      background_c: bg-wvu-gold
-      text_c: text-wvu-blue
+    text_c:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

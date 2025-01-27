@@ -30,8 +30,10 @@
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
           <h1 class="h3 wvu-shout wvu-text-letter-spacing-lg mb-6">{{ .title }}</h1>
+          <h2 id="" class="display-5 oliviar-black text-uppercase mb-4">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
+        {{ else }}
+          <h1 id="" class="display-5 oliviar-black text-uppercase mb-4">{{ .title }}</h1>
         {{ end }}
-        <h1 id="big-search-1-label" class="display-5 oliviar-black text-uppercase mb-4">{{ if .topper.heading }}{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}{{ else }}{{ .title }}{{ end }}</h1>
         <p class="helvetica-neue-light h2 mb-0">{{ .topper.subheading }}</p> 
       </div>
     </div>
