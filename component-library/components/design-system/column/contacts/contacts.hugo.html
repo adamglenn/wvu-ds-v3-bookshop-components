@@ -17,7 +17,15 @@
         <div class="col-8">
           {{ if .image }}            
             <div class="ratio ratio-1x1">
-              <img class="object-fit-cover" src="{{ .image.src }}" alt="{{ if .image.alt }}{{ .image.alt }}{{ else }}Portrait of {{ .name }}{{ end }}" />
+              {{ $alt := "" }}
+              {{ if .image.alt }}
+                {{ $alt = .image.alt }}
+              {{ else }}
+                {{ if .name }}
+                  {{ $alt = (printf "%s%s" "Portrait of " .name) }}
+                {{ end }}
+              {{ end }}
+              {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image.src "width" 960 "height" 960 "classes" "object-fit-cover" "alt" $alt)) }}
             </div>
           {{ end }}
           <h3 class="h5 mt-4">{{ .name }}</h3>

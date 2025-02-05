@@ -1,4 +1,5 @@
 {{ $peopleData := site.Data.people.students }}
+
 {{ $superHeading := "" }}
 {{ if .super_heading }}
   {{ $superHeading = .super_heading }}
@@ -14,13 +15,14 @@
             <div class="mt-n5 ms-n5">
               <div class="ratio ratio-1x1 bg-light border border-2 border-dark wvu-hard-shadow">
                 {{ if .image }}
-                  <img class="object-fit" src="{{ .image }}" alt="Portrait of {{ .name }}" />
+                  {{ $alt := printf "%s%s" "Portrait of " .name }}
+                  {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover" "alt" $alt)) }}
                 {{ end }}
               </div>
             </div>
           </div>
           <div class="col-15">
-            {{ if $superHeading }}
+            {{ if or $superHeading.label $superHeading.text }}
               <div class="wvu-container-box-skewed-3 bg-wvu-gold p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="transform: rotate(-2deg)">
                 <p class="oliviar-black h5 text-uppercase">
                   <span class="d-block">{{ $superHeading.label }}</span>
