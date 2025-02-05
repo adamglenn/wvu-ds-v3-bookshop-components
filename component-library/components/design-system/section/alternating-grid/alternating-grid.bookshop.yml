@@ -15,7 +15,7 @@ blueprint:
     - heading:
       image:
       text:
-      ctas: []
+      ctas:
   postscript:
     text:
     postscript_links:
