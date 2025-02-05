@@ -1,49 +1,53 @@
-{{ $peopleData := site.Data.people.students }}
+{{ if site.Params.env_bookshop_live }}
+  <p>Live editing</p>
+{{ else }}
+  {{ $peopleData := site.Data.people.students }}
 
-{{ $superHeading := "" }}
-{{ if .super_heading }}
-  {{ $superHeading = .super_heading }}
-{{ end }}
+  {{ $superHeading := "" }}
+  {{ if .super_heading }}
+    {{ $superHeading = .super_heading }}
+  {{ end }}
 
-{{ $student := .student }}
-{{ range $peopleData }}
-  {{ if .id }}
-    {{ if eq .id $student }}
-      <div class="bg-wvu-accent--blue text-white border border-2 border-dark mt-5 ms-5">
-        <div class="row gx-0">
-          <div class="col-9">
-            <div class="mt-n5 ms-n5">
-              <div class="ratio ratio-1x1 bg-light border border-2 border-dark wvu-hard-shadow">
-                {{ if .image }}
-                  {{ $alt := printf "%s%s" "Portrait of " .name }}
-                  {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover" "alt" $alt)) }}
+  {{ $student := .student }}
+  {{ range $peopleData }}
+    {{ if .id }}
+      {{ if eq .id $student }}
+        <div class="bg-wvu-accent--blue text-white border border-2 border-dark mt-5 ms-5">
+          <div class="row gx-0">
+            <div class="col-9">
+              <div class="mt-n5 ms-n5">
+                <div class="ratio ratio-1x1 bg-light border border-2 border-dark wvu-hard-shadow">
+                  {{ if .image }}
+                    {{ $alt := printf "%s%s" "Portrait of " .name }}
+                    {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover" "alt" $alt)) }}
+                  {{ end }}
+                </div>
+              </div>
+            </div>
+            <div class="col-15">
+              {{ if or $superHeading.label $superHeading.text }}
+                <div class="wvu-container-box-skewed-3 bg-wvu-gold p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="transform: rotate(-2deg)">
+                  <p class="oliviar-black h5 text-uppercase">
+                    <span class="d-block">{{ $superHeading.label }}</span>
+                    {{ $superHeading.text }}
+                  </p>
+                </div>
+              {{ end }}
+              <div class="pt-4 px-4">
+                <h3 class="wvu-shout text-wvu-accent--yellow">{{ .name }}</h3>
+                {{ with .hometown }}
+                  <p class="iowan-old-style fs-5">{{ . }}</p>
                 {{ end }}
               </div>
             </div>
           </div>
-          <div class="col-15">
-            {{ if or $superHeading.label $superHeading.text }}
-              <div class="wvu-container-box-skewed-3 bg-wvu-gold p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="transform: rotate(-2deg)">
-                <p class="oliviar-black h5 text-uppercase">
-                  <span class="d-block">{{ $superHeading.label }}</span>
-                  {{ $superHeading.text }}
-                </p>
-              </div>
+          <div class="p-4">
+            {{ with .majors }}
+              <p><span class="wvu-shout text-wvu-accent--yellow">Majors:</span> {{ range . }}{{ . }}; {{ end }}</p>
             {{ end }}
-            <div class="pt-4 px-4">
-              <h3 class="wvu-shout text-wvu-accent--yellow">{{ .name }}</h3>
-              {{ with .hometown }}
-                <p class="iowan-old-style fs-5">{{ . }}</p>
-              {{ end }}
-            </div>
           </div>
         </div>
-        <div class="p-4">
-          {{ with .majors }}
-            <p><span class="wvu-shout text-wvu-accent--yellow">Majors:</span> {{ range . }}{{ . }}; {{ end }}</p>
-          {{ end }}
-        </div>
-      </div>
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

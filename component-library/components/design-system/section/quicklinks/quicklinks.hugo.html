@@ -13,11 +13,15 @@
           </h2>
         </div>
         <div class="col-xxl-16">
-          <ul class="wvu-ul-chevrons wvu-column-count-lg-3">
-            {{ range .links }}
-              <li>{{ partial "bookshop" (slice "design-system/generic/link" .) }}</li>
-            {{ end }}
-          </ul>
+          {{ if site.Params.env_bookshop_live }}
+            <p>Live editing</p>
+          {{ else }}
+            <ul class="wvu-ul-chevrons wvu-column-count-lg-3">
+              {{ range .links }}
+                <li>{{ partial "bookshop" (slice "design-system/generic/link" .) }}</li>
+              {{ end }}
+            </ul>
+          {{ end }}
         </div>
       </div>
     </div>

@@ -21,9 +21,6 @@ blueprint:
       url:
       icon: arrow-circle-right
   postscript_links:
-    - text: 
-      url:
-      icon:
   config:
     is_main: true
     id:
