@@ -18,6 +18,7 @@ blueprint:
   contacts:
     - contact:
   config:
+    edit_mode_only: false
     is_main: true
     section_id: directory
 

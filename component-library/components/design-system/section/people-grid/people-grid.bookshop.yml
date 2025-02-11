@@ -14,6 +14,7 @@ blueprint:
   people:
     - person:
   config:
+    edit_mode_only: false
     is_main:
     section_id:
     aria-labelledby: 

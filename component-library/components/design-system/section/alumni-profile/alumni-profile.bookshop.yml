@@ -14,6 +14,8 @@ blueprint:
   super_heading:
     label:
     text:
+  config:
+    edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

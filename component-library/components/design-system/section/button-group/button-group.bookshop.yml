@@ -21,6 +21,7 @@ blueprint:
       icon: arrow-circle-right
   postscript:
   config:
+    edit_mode_only: false
     is_main: false
     id:
     aria_labelledby:

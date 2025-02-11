@@ -13,6 +13,8 @@ blueprint:
   tags:
     - featured
   limit: 5
+  config:
+    edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

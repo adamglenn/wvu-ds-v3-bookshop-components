@@ -11,6 +11,8 @@ spec:
 blueprint:
   heading:
   student:
+  config:
+    edit_mode_only: false
   styles:
     color_palette:
     vibe:

@@ -24,6 +24,8 @@ blueprint:
       button:
         url:
   lead: Lead text.
+  config:
+    edit_mode_only: false
   layout:
     margin_y:
   styles:

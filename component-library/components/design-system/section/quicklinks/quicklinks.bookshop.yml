@@ -18,7 +18,7 @@ blueprint:
     - text: Test Link
       ref: alumni
   config:
-    edit_mode_only:
+    edit_mode_only: false
   layout:
     section:
       margin: default

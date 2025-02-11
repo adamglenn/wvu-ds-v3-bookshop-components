@@ -3,7 +3,7 @@
   {{ $sectionMargin = .layout.section.margin }}
 {{ end }}
 
-{{ if not .config.edit_mode_only }}
+{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
   <section class="py-6 bg-wvu-neutral--warm-gray-light bg-opacity-25">
     <div class="container wvu-z-index-content {{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }}">
       <div class="row">

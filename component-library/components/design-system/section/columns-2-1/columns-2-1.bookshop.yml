@@ -11,6 +11,8 @@ spec:
 blueprint:
   column_a: [bookshop:structure:column_blocks]
   column_b: [bookshop:structure:column_blocks_md]
+  config:
+    edit_mode_only: false
   layout:
   styles:
 

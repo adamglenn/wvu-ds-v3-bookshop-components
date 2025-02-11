@@ -13,6 +13,8 @@ spec:
 blueprint:
   main: [bookshop:structure:detail_blocks]
   sidebar: [bookshop:structure:column_blocks]
+  config:
+    edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

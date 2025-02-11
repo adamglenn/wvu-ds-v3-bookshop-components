@@ -26,6 +26,7 @@ blueprint:
       url:
       icon:
   config:
+    edit_mode_only: false
     is_main: true
     id:
     aria_labelledby:

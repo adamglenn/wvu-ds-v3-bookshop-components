@@ -34,6 +34,8 @@ blueprint:
           sm: col
         text_align: text-center
   postscript: Test Postscript
+  config:
+    edit_mode_only: false
   layout:
     padding:
     justify_content: justify-content-center
