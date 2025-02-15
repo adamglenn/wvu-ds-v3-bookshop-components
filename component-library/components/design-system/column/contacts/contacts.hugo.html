@@ -10,7 +10,7 @@
       {{ range .people }}
         {{ $contact := .person }}
         {{ range $contacts }}
-          {{ if and .uuid (eq .id $contact) }}
+          {{ if and .uuid (eq .uuid $contact) }}
             <div class="col-8">
               {{ if .image }}            
                 <div class="ratio ratio-1x1">

@@ -4,6 +4,14 @@
 {{ $alt := "" }}
 {{ $layerStyles := "" }}
 
+{{ if .background_image }}
+  {{ $image = .background_image }}
+{{ end }}
+
+{{ if .alt_text }}
+  {{ $alt = .alt_text }}
+{{ end }}
+
 {{ $stylesSection := "bg-dark text-white" }}
 {{ $stylesH2 := "display-2 wvu-shout wvu-bar" }}
 {{ $stylesLead := "fs-5" }}
