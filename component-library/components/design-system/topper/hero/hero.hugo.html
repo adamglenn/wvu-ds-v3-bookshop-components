@@ -23,7 +23,7 @@
 {{ if .topper.styles.background_layers }}{{ $layerStyles = .topper.styles.background_layers }}{{ end }}
 {{ if .topper.styles.heading.c }}{{ $headingColor = .topper.styles.heading.c }}{{ end }}
 
-<main class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative {{ .Params.topper.layout.buffer }}">  
+<header class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative {{ .Params.topper.layout.buffer }}">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="container wvu-z-index-content py-7">
     <div class="row">
@@ -46,4 +46,4 @@
       </div>
     </div>
   </div>
-</main>
+</header>

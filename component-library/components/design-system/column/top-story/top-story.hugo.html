@@ -52,7 +52,7 @@
         {{ range $authorData }}
           {{ $author := . }}
           {{ range $authors }}
-            {{ if eq .author $author.id }}
+            {{ if eq .uuid $author.id }}
               {{ $authorList = $authorList | append $author }}
             {{ end }}
           {{ end }}

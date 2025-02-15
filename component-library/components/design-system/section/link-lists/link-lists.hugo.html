@@ -32,7 +32,7 @@
                         {{ if .site_page }}
                           {{ $sitePage := .site_page }}
                           {{ range $sitePages }}
-                            {{ if eq $sitePage .id }}
+                            {{ if eq $sitePage .uuid }}
                               {{ $text = .title }}
                               {{ $url = .path }}
                             {{ end }}

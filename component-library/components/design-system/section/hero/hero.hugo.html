@@ -1,33 +1,24 @@
 {{ $id := "hero" }}
 {{ $ariaLabelledBy := "" }}
-{{ $backgroundColor := "" }}
 {{ $image := "" }}
 {{ $alt := "" }}
-{{ $backgroundColor := "bg-dark" }}
-{{ $textColor := "text-white" }}
 {{ $layerStyles := "" }}
-{{ $headingColor := "" }}
 
-{{ if .config.id }}{{ $id = .config.id }}{{ end }}
-{{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
-{{ if .styles.section.background_c }}{{ $backgroundColor = .styles.section.background_c }}{{ end }}
-{{ if .styles.section.text_c }}{{ $textColor = .styles.section.text_c }}{{ end }}
-{{ if .background_image }}{{ $image = .background_image }}{{ end }}
-{{ if .alt_text }}{{ $alt = .alt_text }}{{ end }}
-{{ if .styles.background_layers }}{{ $layerStyles = .styles.background_layers }}{{ end }}
-{{ if .styles.heading.c }}{{ $headingColor = .styles.heading.c }}{{ end }}
+{{ $stylesSection := "bg-dark text-white" }}
+{{ $stylesH2 := "display-2 wvu-shout wvu-bar" }}
+{{ $stylesLead := "fs-5" }}
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <main id="{{ $id }}" class="position-relative {{ $backgroundColor }} {{ $textColor }}" aria-labelledby="{{ $ariaLabelledBy }}-label">
+  <section id="{{ $id }}" class="position-relative {{ $stylesSection }}" aria-labelledby="{{ $ariaLabelledBy }}-label">
     {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
     <div class="container position-relative py-8 py-xxl-9">
       <div class="row">
         <div class="col col-md-14 col-xl-12">
           <div class="wvu-z-index-content">
-            <h1 id="{{ $ariaLabelledBy }}-label" class="display-2 wvu-shout wvu-bar mb-3" data-text="{{ .heading }}">{{ .heading }}</h1>
+            <h2 id="{{ $ariaLabelledBy }}-label" class="{{ $stylesH2 }} mb-3" data-text="{{ .heading }}">{{ .heading }}</h2>
 
             {{ if .lead }}
-              <p class="lead py-1">
+              <p class="py-1 {{ $stylesLead }}">
                 {{ .lead }}
               </p>
             {{ end }}
@@ -35,11 +26,7 @@
             {{ if .body }}
               <div class="mb-4">
                 {{- range $i, $l := .body }}
-                  {{- if eq $i 0 }}
-                    <p class="lead">{{- . }}</p>
-                  {{- else }}
-                    <p>{{ . }}</p>
-                  {{- end }}
+                  <p>{{ . }}</p>
                 {{- end }}
               </div>
             {{ end }}
@@ -62,5 +49,5 @@
         </div>
       </div>
     </div>
-  </main>
+  </section>
 {{ end }}

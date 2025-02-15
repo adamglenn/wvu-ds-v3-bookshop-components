@@ -15,7 +15,7 @@
           {{ $superHeading = .super_heading }}
         {{ end }}
         {{ range $profileData }}
-          {{ if eq .id $student }}
+          {{ if eq .uuid $student }}
             <div class="wvu-ds-bg-primary text-white border border-2 border-dark wvu-shadow-hard-dark">
               <div class="row gx-4">
                 <div class="col-12 ms-auto">

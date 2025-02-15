@@ -23,9 +23,13 @@ blueprint:
   postscript_links:
   config:
     edit_mode_only: false
-    is_main: true
     id:
-    aria_labelledby:
+  styles:
+    styles_section:
+    styles_h2:
+    styles_h2_label:
+    styles_lead:
+    styles_buttons:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

@@ -15,7 +15,7 @@
 {{ if $topper.styles.background_layers }}{{ $layerStyles = $topper.styles.background_layers }}{{ end }}
 {{ if $topper.styles.heading.c }}{{ $headingColor = $topper.styles.heading.c }}{{ end }}
 
-<main id="big-search-1" aria-labelledby="big-search-1-label" class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative">
+<header id="big-search-1" aria-labelledby="big-search-1-label" class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative">
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="container wvu-z-index-content py-7">
     <div class="row">
@@ -60,4 +60,4 @@
       <a class="text-wvu-blue" href="#">categories</a>.
     </p>  
   </div>
-</main>
+</header>

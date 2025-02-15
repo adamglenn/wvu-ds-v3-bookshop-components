@@ -14,7 +14,7 @@
 {{ range $authorData }}
   {{ $author := . }}
   {{ range $byline }}
-    {{ if eq .ref $author.id }}
+    {{ if eq .ref $author.uuid }}
       {{ $authorList = $authorList | append $author }}
     {{ end }}
   {{ end }}
@@ -22,7 +22,7 @@
 
 {{ $format := "Jan 2, 2006" }}
 
-<main id="big-search-1" aria-labelledby="big-search-1-label" class="position-relative">  
+<header id="big-search-1" aria-labelledby="big-search-1-label" class="position-relative">  
   <div class="container wvu-z-index-content py-6">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
@@ -54,4 +54,4 @@
       </div>
     </div>
   </div>
-</main>
+</header>

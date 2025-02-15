@@ -19,7 +19,7 @@
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <main id="{{ $id }}" class="py-6 position-relative {{ $backgroundColor }} {{ $textColor }}" aria-labelledby="{{ $ariaLabelledBy }}-label">
+  <section id="{{ $id }}" class="py-6 position-relative {{ $backgroundColor }} {{ $textColor }}" aria-labelledby="{{ $ariaLabelledBy }}-label">
     <div class="container position-relative">
       <div class="row">
         <div class="col-18 mx-auto position-relative">
@@ -67,6 +67,6 @@
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
 {{ end }}
