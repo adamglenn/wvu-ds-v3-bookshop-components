@@ -3,14 +3,7 @@
   {{ if site.Params.env_bookshop_live }}
     <p>Live editing</p>
   {{ else }}
-    {{ $contactsData := slice site.Data.people.administrators site.Data.people.faculty site.Data.people.staff }}
-    {{ $contacts := slice }}
-
-    {{ range $contactsData }}
-      {{ range . }}
-        {{ $contacts = $contacts | append . }}
-      {{ end }}
-    {{ end }}
+    {{ $contacts := site.Data.people }}
 
     <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 

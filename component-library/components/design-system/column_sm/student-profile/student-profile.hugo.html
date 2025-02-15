@@ -3,7 +3,7 @@
   {{ if site.Params.env_bookshop_live }}
     <p>Live editing</p>
   {{ else }}
-    {{ $peopleData := site.Data.people.students }}
+    {{ $peopleData := site.Data.people }}
 
     {{ $superHeading := "" }}
     {{ if .super_heading }}

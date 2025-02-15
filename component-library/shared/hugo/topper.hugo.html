@@ -1,13 +1,13 @@
 {{ if .topper }}
-  {{ if eq .topper.topper_type "Article" }}
+  {{ if eq .topper.topper_type "article" }}
     {{ partial "bookshop" (slice "design-system/topper/article" .) }}  
-  {{ else if eq .topper.topper_type "Article Hero" }}
+  {{ else if eq .topper.topper_type "article-hero" }}
     {{ partial "bookshop" (slice "design-system/topper/article-hero" .) }}
-  {{ else if eq .topper.topper_type "Hero" }}
+  {{ else if eq .topper.topper_type "hero" }}
     {{ partial "bookshop" (slice "design-system/topper/hero" .) }}
-  {{ else if eq .topper.topper_type "Hero - Big Search" }}
+  {{ else if eq .topper.topper_type "hero-big-search" }}
     {{ partial "bookshop" (slice "design-system/topper/hero-big-search" .) }}
-  {{ else if eq .topper.topper_type "Hero w/Icons" }}
+  {{ else if eq .topper.topper_type "hero-w-icons" }}
     {{ partial "bookshop" (slice "design-system/topper/hero-w-icons" .) }}
   {{ else }}
     {{ partial "bookshop" (slice "design-system/topper/default" .) }}
