@@ -14,6 +14,7 @@ blueprint:
   heading:
     - text: Heading
   subheading: Subheading.
+  placeholder:
   styles:
     section:
       background_c: bg-wvu-gold
@@ -24,3 +25,4 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  placeholder:
