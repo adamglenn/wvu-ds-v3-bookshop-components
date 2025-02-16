@@ -23,9 +23,7 @@ Palette: {{ $typographyPalette }}
             {{ end }}
           {{ else }}
             {{ if .params.name }}
-              {{ if $typography.h1 }}
-                <h1 class="display-4 {{ $typography.h1 }}">{{ .params.name }}</h1>
-              {{ end }}
+              <h1 class="display-4">{{ .params.name }}</h1>
             {{ end }}
           {{ end }}
           {{ if .params.hometown }}
