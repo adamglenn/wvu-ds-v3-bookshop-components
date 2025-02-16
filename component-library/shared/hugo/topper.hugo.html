@@ -1,20 +1,18 @@
 {{ if .topper }}
-  {{ if .topper }}
-    {{ if eq .topper.topper_type "article" }}
-      {{ partial "bookshop" (slice "design-system/topper/article" .) }}  
-    {{ else if eq .topper.topper_type "article-hero" }}
-      {{ partial "bookshop" (slice "design-system/topper/article-hero" .) }}
-    {{ else if eq .topper.topper_type "hero" }}
-      {{ partial "bookshop" (slice "design-system/topper/hero" .) }}
-    {{ else if eq .topper.topper_type "hero-big-search" }}
-      {{ partial "bookshop" (slice "design-system/topper/hero-big-search" .) }}
-    {{ else if eq .topper.topper_type "hero-w-icons" }}
-      {{ partial "bookshop" (slice "design-system/topper/hero-w-icons" .) }}
-    {{ else }}
-      {{ partial "bookshop" (slice "design-system/topper/default" .) }}
-    {{ end }}
+  {{ if eq .topper.topper_type "article" }}
+    {{ partial "bookshop" (slice "design-system/topper/article" .) }}  
+  {{ else if eq .topper.topper_type "article-hero" }}
+    {{ partial "bookshop" (slice "design-system/topper/article-hero" .) }}
+  {{ else if eq .topper.topper_type "hero" }}
+    {{ partial "bookshop" (slice "design-system/topper/hero" .) }}
+  {{ else if eq .topper.topper_type "hero-big-search" }}
+    {{ partial "bookshop" (slice "design-system/topper/hero-big-search" .) }}
+  {{ else if eq .topper.topper_type "hero-w-icons" }}
+    {{ partial "bookshop" (slice "design-system/topper/hero-w-icons" .) }}
+  {{ else }}
+    {{ partial "bookshop" (slice "design-system/topper/default" .) }}
   {{ end }}
-  {{ if .student_profile_topper }}
-    {{ partial "bookshop" (slice "design-system/topper/student-profile" .) }}
-  {{ end }}
+{{ end }}
+{{ if .student_profile_topper }}
+  {{ partial "bookshop" (slice "design-system/topper/student-profile" .) }}
 {{ end }}
