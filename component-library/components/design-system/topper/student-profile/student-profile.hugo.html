@@ -1,11 +1,6 @@
 {{ $typography := slice }}
-{{ $typographyPalettes := site.Data.styles.components_topper_student_profile_typography }}
+{{ $typographyPalettes := site.Data.styles.components.topper.student_profile.typography }}
 {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
-{{ $peopleData := site.Data.people }}
-
-Palettes: {{ $typographyPalettes }}<br>
-Palette: {{ $typographyPalette }}<br>
-People: {{ $peopleData }}
 
 {{ with $typographyPalette }}
   {{ with (index $typographyPalettes .) }}
@@ -25,11 +20,11 @@ People: {{ $peopleData }}
             {{ end }}
           {{ else }}
             {{ if .params.name }}
-              <h1 class="display-4">{{ .params.name }}</h1>
+              <h1 class="display-4 {{ $typography.h1 }}">{{ .params.name }}</h1>
             {{ end }}
           {{ end }}
           {{ if .params.hometown }}
-            <p class="fs-4">{{ .params.hometown }}</p>
+            <p class="fs-4 {{ $typography.hometown }}">{{ .params.hometown }}</p>
           {{ end }}
           {{ if .params.graduation_year }}
             <p class="">Class of {{ .params.graduation_year }}</p>
