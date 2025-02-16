@@ -1,5 +1,5 @@
 {{ $typography := slice }}
-{{ $typographyPalettes := site.Data.styles.components.topper.student_profile.typography }}
+{{ $typographyPalettes := site.Data.styles.components.topper.student_profile }}
 {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
 {{ $peopleData := site.Data.people }}
 
@@ -7,7 +7,11 @@ Palettes: {{ $typographyPalettes }}<br>
 Palette: {{ $typographyPalette }}<br>
 People: {{ $peopleData }}
 
-
+{{ with $typographyPalette }}
+  {{ with (index $typographyPalettes .) }}
+    {{ $typography = .}}
+  {{ end }}
+{{ end }}
 
 <section class="pt-6 pb-9 bg-light">
   <div class="container">
