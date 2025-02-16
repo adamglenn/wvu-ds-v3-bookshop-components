@@ -1,9 +1,11 @@
 {{ $typography := slice }}
 {{ $typographyPalettes := site.Data.styles.components.topper.student_profile.typography }}
 {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
+{{ $peopleData := site.Data.people }}
 
 Palettes: {{ $typographyPalettes }}<br>
-Palette: {{ $typographyPalette }}
+Palette: {{ $typographyPalette }}<br>
+People: {{ $peopleData }}
 
 {{ with $typographyPalette }}
   {{ with (index $typographyPalettes .) }}
