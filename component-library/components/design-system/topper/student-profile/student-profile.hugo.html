@@ -1,0 +1,14 @@
+<section>
+  <div class="container">
+    {{ if .params.heading }}
+      <h1>{{ .params.heading }}</h1>
+      {{ if .params.name }}
+        <p>{{ .params.name }}</p>
+      {{ end }}
+    {{ else }}
+      {{ if .params.name }}
+        <h1>{{ .params.name }}</h1>
+      {{ end }}
+    {{ end }}
+  </div>
+</section>

@@ -9,6 +9,8 @@
     {{ partial "bookshop" (slice "design-system/topper/hero-big-search" .) }}
   {{ else if eq .topper.topper_type "hero-w-icons" }}
     {{ partial "bookshop" (slice "design-system/topper/hero-w-icons" .) }}
+  {{ else if eq .topper.topper_type "student-profile" }}
+    {{ partial "bookshop" (slice "design-system/topper/student-profile" .) }}
   {{ else }}
     {{ partial "bookshop" (slice "design-system/topper/default" .) }}
   {{ end }}
