@@ -1,19 +1,19 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - student_profile_topper
-  label: "Topper - Student Profile"
+    - profile_sidebar_blocks
+  label: "Contacts"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  label:
-  heading:
-  subheading:
-  styles:
-    typography:
+  heading: CTA Stack
+  ctas:
+    - text:
+      url:
+      icon:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
