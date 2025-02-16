@@ -2,6 +2,9 @@
 {{ $typographyPalettes := site.Data.styles.components.topper.student_profile.typography }}
 {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
 
+Palettes: {{ $typographyPalettes }}<br>
+Palette: {{ $typographyPalette }}
+
 {{ with $typographyPalette }}
   {{ with (index $typographyPalettes .) }}
     {{ $typography = .}}
