@@ -31,11 +31,10 @@
               <h1 class="display-4 {{ $stylesH1 }}">{{ .params.name }}</h1>
             {{ end }}
           {{ end }}
-          {{ if .params.hometown }}
-            <p class="fs-4 {{ $stylesHometown }}">{{ .params.hometown }}</p>
-          {{ end }}
-          {{ if .params.graduation_year }}
-            <p class="">Class of {{ .params.graduation_year }}</p>
+          {{ if .params.position }}
+            {{ range .params.position }}
+              <p class="">{{ .title }}, {{ .organization }}</p>
+            {{ end }}
           {{ end }}
         </div>
       </div>
