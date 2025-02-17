@@ -1,14 +1,20 @@
 {{ $typography := slice }}
+{{ $stylesLabel := "" }}
 {{ $stylesH1 := "" }}
 {{ $stylesHometown := "" }}
+{{ $typographyPalette := "wvu_experience" }}
 
 {{ if not site.Params.env_bookshop_live }}
 
   {{ $typographyPalettes := site.Data.styles.components_topper_student_profile_typography }}
-  {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
+
+  {{ if .params.student_profile_topper.styles.typography }}
+    {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
+  {{ end }}
 
   {{ with $typographyPalette }}
     {{ with (index $typographyPalettes .) }}
+      {{ $stylesLabel = .label }}
       {{ $stylesH1 = .h1 }}
       {{ $stylesHometown = .hometown }}
     {{ end }}
@@ -21,6 +27,11 @@
     <div class="row gx-lg-0 align-items-center">
       <div class="col-lg-12">
         <div class="bg-white p-xl-5 me-xl-n5 wvu-z-index-content">
+          {{ if .params.graduation_year }}
+            <div class="mb-4">
+              <p class="{{ $stylesLabel }}"><span>Class of {{ .params.graduation_year }}</span></p>
+            </div>
+          {{ end }}
           {{ if .params.heading }}
             <h1 class="mb-3">{{ .params.heading }}</h1>
             {{ if .params.name }}
@@ -33,9 +44,6 @@
           {{ end }}
           {{ if .params.hometown }}
             <p class="fs-4 {{ $stylesHometown }}">{{ .params.hometown }}</p>
-          {{ end }}
-          {{ if .params.graduation_year }}
-            <p class="">Class of {{ .params.graduation_year }}</p>
           {{ end }}
         </div>
       </div>

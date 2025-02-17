@@ -1,3 +1,35 @@
+{{ $peopleData := slice }}
+
+{{ $typography := slice }}
+{{ $stylesContainer := "" }}
+{{ $stylesImageMargin := "" }}
+{{ $stylesImageContainer := "" }}
+{{ $stylesLabel := "" }}
+{{ $stylesH3 := "" }}
+{{ $stylesHometown := "" }}
+{{ $typographyPalette := "wvu_experience" }}
+
+{{ if not site.Params.env_bookshop_live }}
+
+  {{ $typographyPalettes := site.Data.styles.components_column_sm_student_profile_typography }}
+
+  {{ if .params.styles.typography }}
+    {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
+  {{ end }}
+
+  {{ with $typographyPalette }}
+    {{ with (index $typographyPalettes .) }}
+      {{ $stylesImageMargin = .image_margin }}
+      {{ $stylesImageContainer = .image_container }}
+      {{ $stylesContainer = .container }}
+      {{ $stylesLabel = .label }}
+      {{ $stylesH3 = .h3 }}
+      {{ $stylesHometown = .hometown }}
+    {{ end }}
+  {{ end }}
+
+{{ end }}
+
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   {{ if not site.Data }}
@@ -5,7 +37,12 @@
   {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
   {{ else }}
-    {{ $peopleData := site.Data.people }}
+
+    {{ if not site.Params.env_bookshop_live }}
+      {{ $peopleData = where site.RegularPages "Section" "people" }}
+    {{ else }}
+      {{ $peopleData = site.Data.people_data }}
+    {{ end }}
 
     {{ $superHeading := "" }}
     {{ if .super_heading }}
@@ -13,15 +50,25 @@
     {{ end }}
 
     {{ $student := .student }}
+    
     {{ range $peopleData }}
-      {{ if .uuid }}
-        {{ if eq .uuid $student }}
-          <div class="bg-wvu-accent--blue text-white border border-2 border-dark mt-5 ms-5">
+
+      {{ $item := slice }}
+
+      {{ if not site.Params.env_bookshop_live }}
+        {{ $item = .Params }}
+      {{ else }}
+        {{ $item = . }}
+      {{ end }}
+
+      {{ if $item.uuid }}
+        {{ if eq $item.uuid $student }}
+          <div class="{{ $stylesContainer }}">
             <div class="row gx-0">
               <div class="col-9">
-                <div class="mt-n5 ms-n5">
-                  <div class="ratio ratio-1x1 bg-light border border-2 border-dark wvu-hard-shadow">
-                    {{ if .image }}
+                <div class="{{ $stylesImageMargin }}">
+                  <div class="ratio ratio-1x1 bg-light {{ $stylesImageContainer }}">
+                    {{ if $item.image }}
                       {{ $alt := printf "%s%s" "Portrait of " .name }}
                       {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover" "alt" $alt)) }}
                     {{ end }}
@@ -30,25 +77,25 @@
               </div>
               <div class="col-15">
                 {{ if or $superHeading.label $superHeading.text }}
-                  <div class="wvu-container-box-skewed-3 bg-wvu-gold p-3 pb-2 me-n3 ms-n4 mb-3 mt-n5" style="transform: rotate(-2deg)">
-                    <p class="oliviar-black h5 text-uppercase">
+                  <div class="{{ $stylesLabel }}">
+                    <p>
                       <span class="d-block">{{ $superHeading.label }}</span>
                       {{ $superHeading.text }}
                     </p>
                   </div>
                 {{ end }}
-                <div class="pt-4 px-4">
-                  <h3 class="wvu-shout text-wvu-accent--yellow">{{ .name }}</h3>
-                  {{ with .hometown }}
-                    <p class="iowan-old-style fs-5">{{ . }}</p>
+                <div class="">
+                  <h3 class="{{ $stylesH3 }}">{{ $item.name }}</h3>
+                  {{ with $item.hometown }}
+                    <p class="fs-5 {{ $stylesHometown }}">{{ . }}</p>
                   {{ end }}
                 </div>
               </div>
-            </div>
-            <div class="p-4">
-              {{ with .majors }}
-                <p><span class="wvu-shout text-wvu-accent--yellow">Majors:</span> {{ range . }}{{ . }}; {{ end }}</p>
-              {{ end }}
+              <div class="col-24 p-4">
+                {{ with $item.majors }}
+                  <p><span class="wvu-shout text-wvu-accent--yellow">Majors:</span> {{ range . }}{{ .title }}; {{ end }}</p>
+                {{ end }}
+              </div>
             </div>
           </div>
         {{ end }}
