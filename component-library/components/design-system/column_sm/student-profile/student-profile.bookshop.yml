@@ -18,6 +18,8 @@ blueprint:
   config:
     edit_mode_only: false
     hide_collection_pages: true
+  styles:
+    typography: wvu_experience
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

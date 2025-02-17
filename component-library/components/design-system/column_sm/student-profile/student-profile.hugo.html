@@ -9,28 +9,8 @@
 {{ $stylesHometown := "" }}
 {{ $typographyPalette := "wvu_experience" }}
 
-{{ if not site.Params.env_bookshop_live }}
 
-  {{ $typographyPalettes := site.Data.styles.components_column_sm_student_profile_typography }}
 
-  {{ if .params.styles.typography }}
-    {{ $typographyPalette := .params.student_profile_topper.styles.typography }}
-  {{ end }}
-
-  {{ with $typographyPalette }}
-    {{ with (index $typographyPalettes .) }}
-      {{ $stylesImageMargin = .image_margin }}
-      {{ $stylesImageContainer = .image_container }}
-      {{ $stylesContainer = .container }}
-      {{ $stylesLabel = .label }}
-      {{ $stylesH3 = .h3 }}
-      {{ $stylesHometown = .hometown }}
-    {{ end }}
-  {{ end }}
-
-{{ end }}
-
-{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
@@ -101,6 +81,5 @@
         {{ end }}
       {{ end }}
     {{ end }}
-  {{ end }}
 
 {{ end }}
