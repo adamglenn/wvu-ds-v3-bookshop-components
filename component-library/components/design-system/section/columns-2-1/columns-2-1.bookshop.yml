@@ -9,8 +9,8 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  column_a: [bookshop:structure:column_blocks]
-  column_b: [bookshop:structure:column_blocks_md]
+  column_a:
+  column_b:
   config:
     edit_mode_only: false
   layout:
