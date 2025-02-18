@@ -23,15 +23,6 @@
   {{ $headingColor = .topper.heading_c }}
 {{ end }}
 
-{{ if not site.Params.env_bookshop_live }}
-  {{ $vibes := site.Data.styles.components_topper_hero }}
-  {{ with $vibe }}
-    {{ with (index $vibes .) }}
-      {{ $styles = . }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-
 {{ if .topper.background_image }}{{ $image = .topper.background_image }}{{ end }}
 {{ if .topper.alt_text }}{{ $alt = .topper.alt_text }}{{ end }}
 
@@ -39,7 +30,7 @@
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
 {{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
 
-<header class="text-center {{ $backgroundColor }} position-relative">  
+<header class="text-center {{ $styles.section }} {{ $backgroundColor }} position-relative">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="container wvu-z-index-content {{ $styles.container}}">
     <div class="row">
