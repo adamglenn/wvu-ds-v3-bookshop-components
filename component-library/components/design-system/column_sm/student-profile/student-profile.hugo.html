@@ -1,16 +1,26 @@
 {{ $peopleData := slice }}
 
-{{ $typography := slice }}
-{{ $stylesContainer := "" }}
-{{ $stylesImageMargin := "" }}
-{{ $stylesImageContainer := "" }}
-{{ $stylesLabel := "" }}
-{{ $stylesH3 := "" }}
-{{ $stylesHometown := "" }}
-{{ $typographyPalette := "wvu_experience" }}
+{{ $vibe := "wvu_experience" }}
+{{ $styles := slice }}
 
+{{ if .styles.vibe }}
+  {{ $vibe = .styles.vibe }}
+{{ end }}
 
+{{ if .styles.elements }}
+  {{ $styles = .styles.elements }}
+{{ end }}
 
+{{ if not site.Params.env_bookshop_live }}
+  {{ $vibes := site.Data.styles.components_column_sm_student_profile_vibes }}
+  {{ with $vibe }}
+    {{ with (index $vibes .) }}
+      {{ $styles = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   {{ if not site.Data }}
     {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
@@ -43,11 +53,11 @@
 
       {{ if $item.uuid }}
         {{ if eq $item.uuid $student }}
-          <div class="{{ $stylesContainer }}">
+          <div class="{{ $styles.container }}">
             <div class="row gx-0">
               <div class="col-9">
-                <div class="{{ $stylesImageMargin }}">
-                  <div class="ratio ratio-1x1 bg-light {{ $stylesImageContainer }}">
+                <div class="{{ $styles.image_margin }}">
+                  <div class="ratio ratio-1x1 bg-light {{ $styles.image_container }}">
                     {{ if $item.image }}
                       {{ $alt := printf "%s%s" "Portrait of " .name }}
                       {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover" "alt" $alt)) }}
@@ -57,7 +67,7 @@
               </div>
               <div class="col-15">
                 {{ if or $superHeading.label $superHeading.text }}
-                  <div class="{{ $stylesLabel }}">
+                  <div class="{{ $styles.label }}">
                     <p>
                       <span class="d-block">{{ $superHeading.label }}</span>
                       {{ $superHeading.text }}
@@ -65,9 +75,9 @@
                   </div>
                 {{ end }}
                 <div class="">
-                  <h3 class="{{ $stylesH3 }}">{{ $item.name }}</h3>
+                  <h3 class="wvu-shout {{ $styles.heading }}">{{ $item.name }}</h3>
                   {{ with $item.hometown }}
-                    <p class="fs-5 {{ $stylesHometown }}">{{ . }}</p>
+                    <p class="fs-5 {{ $styles.hometown }}">{{ . }}</p>
                   {{ end }}
                 </div>
               </div>
@@ -81,5 +91,6 @@
         {{ end }}
       {{ end }}
     {{ end }}
+  {{ end }}
 
 {{ end }}

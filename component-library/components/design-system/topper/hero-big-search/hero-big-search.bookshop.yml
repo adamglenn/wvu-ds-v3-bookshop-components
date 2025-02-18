@@ -15,10 +15,17 @@ blueprint:
     - text: Heading
   subheading: Subheading.
   placeholder:
-  styles:
-    section:
-      background_c: bg-wvu-gold
-      text_c: text-wvu-blue
+  vibe: down_to_business
+  background_c: bg-dark text-white
+  heading_c:
+  background_layers:
+    img_blend_mode:
+    img_opacity: .4
+    pattern: 
+    pattern_c: bg-white
+    pattern_opacity: .2
+    tint_opacity:
+    texture: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

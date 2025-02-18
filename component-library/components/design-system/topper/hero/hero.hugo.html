@@ -1,40 +1,56 @@
 {{ $image := "" }}
 {{ $alt := "" }}
+{{ $backgroundColor := "" }}
 {{ $layerStyles := "" }}
-{{ $sectionMargin := "" }}
+{{ $headingColor := "" }}
 
-{{ if .topper.layout.margin }}
-  {{ $sectionMargin = .topper.layout.margin }}
+{{ $vibe := "wvu_experience" }}
+{{ $styles := slice }}
+
+{{ if .topper.vibe }}
+  {{ $vibe = .topper.vibe }}
+{{ end }}
+
+{{ if .topper.styles }}
+  {{ $styles = .topper.styles }}
+{{ end }}
+
+{{ if .topper.background_c }}
+  {{ $backgroundColor = .topper.background_c }}
+{{ end }}
+
+{{ if .topper.heading_c }}
+  {{ $headingColor = .topper.heading_c }}
+{{ end }}
+
+{{ if not site.Params.env_bookshop_live }}
+  {{ $vibes := site.Data.styles.components_topper_hero }}
+  {{ with $vibe }}
+    {{ with (index $vibes .) }}
+      {{ $styles = . }}
+    {{ end }}
+  {{ end }}
 {{ end }}
 
 {{ if .topper.background_image }}{{ $image = .topper.background_image }}{{ end }}
 {{ if .topper.alt_text }}{{ $alt = .topper.alt_text }}{{ end }}
 
-{{ $backgroundColor := "" }}
-{{ $backgroundColor := "bg-dark" }}
-{{ $textColor := "text-white" }}
-{{ $layerStyles := "" }}
-{{ $headingColor := "" }}
-
 {{ if .config.id }}{{ $id = .config.id }}{{ end }}
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
-{{ if .topper.styles.background_c }}{{ $backgroundColor = .topper.styles.background_c }}{{ end }}
-{{ if .topper.styles.text_c }}{{ $textColor = .topper.styles.text_c }}{{ end }}
-{{ if .topper.styles.background_layers }}{{ $layerStyles = .topper.styles.background_layers }}{{ end }}
-{{ if .topper.styles.heading.c }}{{ $headingColor = .topper.styles.heading.c }}{{ end }}
+{{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
 
-<header class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} text-center {{ $backgroundColor }} {{ $textColor }} position-relative {{ .Params.topper.layout.buffer }}">  
+<header class="text-center {{ $backgroundColor }} position-relative">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
-  <div class="container wvu-z-index-content py-7">
+  <div class="container wvu-z-index-content {{ $styles.container}}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
-          <h1 class="h3 wvu-shout wvu-text-letter-spacing-lg mb-6">{{ .title }}</h1>
-          <h2 id="" class="display-5 oliviar-black text-uppercase mb-4">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
+          <h1 class="{{ $styles.superheading }} mb-6">{{ .title }}</h1>
+          <h2 id="" class="{{ $styles.heading }} text-{{ $headingColor }} mb-4">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
         {{ else }}
-          <h1 id="" class="display-5 oliviar-black text-uppercase mb-4">{{ .title }}</h1>
+          <h1 id="" class="{{ $styles.heading }} text-{{ $headingColor }} mb-4">{{ .title }}</h1>
         {{ end }}
-        <p class="helvetica-neue-light h2 mb-0">{{ .topper.subheading }}</p> 
+        <p class="{{ $styles.subheading }} mb-0">{{ .topper.subheading }}</p> 
       </div>
     </div>
   </div>

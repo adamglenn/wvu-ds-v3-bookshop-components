@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - place_blocks
   label: "Alternating Grid"
   description:
   icon:

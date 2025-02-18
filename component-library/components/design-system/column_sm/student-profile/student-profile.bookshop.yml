@@ -19,7 +19,14 @@ blueprint:
     edit_mode_only: false
     hide_collection_pages: true
   styles:
-    typography: wvu_experience
+    vibe: wvu_experience
+    elements:
+      container:
+      image_margin:
+      image_container:
+      label:
+      heading:
+      hometown:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
