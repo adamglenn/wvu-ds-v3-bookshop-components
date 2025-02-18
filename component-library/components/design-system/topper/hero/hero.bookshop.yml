@@ -26,6 +26,11 @@ blueprint:
     pattern_opacity: .2
     tint_opacity:
     texture: false
+  styles:
+    container:
+    superheading:
+    heading:
+    subheading:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
