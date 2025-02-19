@@ -26,6 +26,7 @@ blueprint:
   lead: Lead text.
   config:
     edit_mode_only: false
+    hide_collection_pages: true
   layout:
     margin_y:
   styles:
