@@ -17,25 +17,24 @@
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  {{ if not site.Data }}
-    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-  {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
-    {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
-  {{ else }}
-
-    <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
-      <div class="container position-relative wvu-z-index-content py-5">
-        {{ if .heading }}
-          <div class="row text-center mb-5">
-            <div class="col-xl-12 mx-xl-auto">
-              <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg text-wvu-accent--blue-dark">{{ .heading }}</h2>
-              {{ with .lead }}
-                <p class="lead text-wvu-accent--blue-dark">{{ . }}</p>
-              {{ end }}
-            </div>
+  <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
+    <div class="container position-relative wvu-z-index-content py-5">
+      {{ if .heading }}
+        <div class="row text-center mb-5">
+          <div class="col-xl-12 mx-xl-auto">
+            <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg text-wvu-accent--blue-dark">{{ .heading }}</h2>
+            {{ with .lead }}
+              <p class="lead text-wvu-accent--blue-dark">{{ . }}</p>
+            {{ end }}
           </div>
-        {{ end }}
-        
+        </div>
+      {{ end }}
+      
+      {{ if not site.Data }}
+        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
+      {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
+        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
+      {{ else }}
         <div class="row gx-4 text-center">
           {{ range .items }}
             {{ $sitePages := site.Data.site_pages }}
@@ -74,10 +73,9 @@
               </div>
             </div>
           {{ end }}
-        </div>
+        {{ end }}
       </div>
-    </section>
-
-  {{ end }}
+    </div>
+  </section>
 
 {{ end }}
