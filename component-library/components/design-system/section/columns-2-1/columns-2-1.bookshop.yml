@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: "Columns 2-1"
   description:
-  icon:
+  icon: doc_to_right
   tags: []
 
 # Defines the structure of this component, as well as the default values

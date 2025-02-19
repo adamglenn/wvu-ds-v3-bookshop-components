@@ -28,12 +28,15 @@
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
-          <h1 class="{{ $superheadingStyles }} mb-6">{{ .title }}</h1>
-          <h2 id="" class="{{ $headingStyles }} mb-4">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
+          <h1 class="{{ $superheadingStyles }}">{{ .title }}</h1>
+          <h2 id="" class="{{ $headingStyles }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
         {{ else }}
-          <h1 id="" class="{{ $headingStyles }} mb-4">{{ .title }}</h1>
+          <h1 id="" class="{{ $headingStyles }}">{{ .title }}</h1>
         {{ end }}
-        <p class="{{ $subheadingStyles }} mb-0">{{ .topper.subheading }}</p> 
+        <p class="{{ $subheadingStyles }} mt-4">{{ .topper.subheading }}</p>
+        <div class="mt-4">
+          {{ .topper.body | markdownify }}
+        </div>
       </div>
     </div>
   </div>

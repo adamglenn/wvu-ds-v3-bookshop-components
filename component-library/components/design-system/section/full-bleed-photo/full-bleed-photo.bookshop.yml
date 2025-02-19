@@ -5,7 +5,7 @@ spec:
     - place_blocks
   label: "Full-Bleed Photo"
   description:
-  icon:
+  icon: panorama
   tags: []
 
 # Defines the structure of this component, as well as the default values

@@ -4,7 +4,7 @@ spec:
     - content_blocks
   label: "Calendar Events"
   description:
-  icon:
+  icon: calendar_blocks
   tags: []
 
 # Defines the structure of this component, as well as the default values
