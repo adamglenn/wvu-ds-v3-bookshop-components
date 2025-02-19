@@ -22,6 +22,10 @@
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
 {{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
 
+{{ $testMap := partial "bookshop_partial" (slice "typography_palettes" .) }}
+
+{{ $testMap }}
+
 <header class="text-center {{ $sectionStyles }} position-relative">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
