@@ -22,18 +22,16 @@
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
 {{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
 
-{{ $testMap := partial "bookshop_partial" (slice "typography_palettes" .) }}
-
-<header class="text-center {{ $testMap.section }} position-relative">  
+<header class="text-center {{ $sectionStyles }} position-relative">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
           <h1 class="{{ $superheadingStyles }}">{{ .title }}</h1>
-          <h2 id="" class="{{ $testMap.heading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
+          <h2 id="" class="{{ $headingStyles }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
         {{ else }}
-          <h1 id="" class="{{ $testMap.heading }}">{{ .title }}</h1>
+          <h1 id="" class="{{ $headingStyles }}">{{ .title }}</h1>
         {{ end }}
         <p class="{{ $subheadingStyles }} mt-4">{{ .topper.subheading }}</p>
         <div class="mt-4">
