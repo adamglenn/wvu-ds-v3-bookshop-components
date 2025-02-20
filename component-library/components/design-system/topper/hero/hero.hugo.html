@@ -7,8 +7,8 @@
 {{ $headingStyles := "" }}
 {{ $subheadingStyles := "" }}
 
-{{ $typography := "wvu_experience" }}
-{{ $typographyData := site.Data.styles.components_topper_hero_typography }}
+{{ $vibe := "wvu_experience" }}
+{{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
 {{ $typographySuperheading := "" }}
 {{ $typographyHeading := "" }}
 {{ $typographySubheading := "" }}
@@ -21,8 +21,8 @@
   {{ $subheadingStyles = .subheading }}
 {{ end }}
 
-{{ with .topper.typography }}
-  {{ with (index $typographyData .) }}
+{{ with .topper.vibe }}
+  {{ with (index $vibeData .) }}
     {{ $typographySuperheading = .superheading }}
     {{ $typographyHeading = .heading }}
     {{ $typographySubheading = .subheading }}
@@ -36,18 +36,18 @@
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
 {{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
 
-<header class="text-center {{ $sectionStyles }} position-relative">  
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "layerStyles" $layerStyles)) }}
+<header class="text-center {{ $sectionStyles }} py-7 bg-wvu-accent--blue text-white position-relative">  
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "vibe" .topper.vibe "layerStyles" $layerStyles "enableBlend" .topper.enable_blend "enablePattern" .topper.enable_pattern)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
-          <h1 class="{{ $typographySuperheading }}">{{ .title }}</h1>
+          <h1 class="{{ $typographySuperheading }} h4">{{ .title }}</h1>
           <h2 id="" class="{{ $typographyHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
         {{ else }}
           <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
         {{ end }}
-        <p class="{{ $typographySubheading }} mt-4">{{ .topper.subheading }}</p>
+        <p class="{{ $typographySubheading }} h3 mt-4">{{ .topper.subheading }}</p>
         <div class="mt-4">
           {{ .topper.body | markdownify }}
         </div>
