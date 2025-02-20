@@ -15,7 +15,6 @@ blueprint:
     - text: Heading
       style:
   subheading: Subheading.
-  styles:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
