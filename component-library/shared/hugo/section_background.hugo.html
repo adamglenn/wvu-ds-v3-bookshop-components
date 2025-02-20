@@ -9,30 +9,6 @@
 {{ $image := "" }}
 {{ $imageClasses := "object-fit-cover h-100 w-100" }}
 
-{{ if .layerStyles }}
-  {{ if .layerStyles.img_blend_mode }}
-    {{ $blendMode = .layerStyles.img_blend_mode }}
-  {{ end }}
-  {{ if .layerStyles.img_opacity }}
-    {{ $opacity = .layerStyles.img_opacity }}
-  {{ end }}
-  {{ if .layerStyles.pattern }}
-    {{ $pattern = .layerStyles.pattern }}
-  {{ end }}
-  {{ if .layerStyles.pattern_c }}
-    {{ $patternColor = .layerStyles.pattern_c }}
-  {{ end }}
-  {{ if .layerStyles.pattern_opacity }}
-    {{ $patternOpacity = .layerStyles.pattern_opacity }}
-  {{ end }}
-  {{ if .layerStyles.tint_opacity }}
-      {{ $tintOpacity = .layerStyles.tint_opacity }}
-  {{ end }}
-  {{ if .layerStyles.texture }}
-    {{ $texture = true }}
-  {{ end }}
-{{ end }}
-
 {{ if .vibe }}
   {{ $vibe = .vibe }}
 {{ end }}
@@ -53,6 +29,10 @@
 {{ else if .enableBlend }}
   {{ $blendMode = "wvu-bg-blend-mode-luminosity" }}
   {{ $opacity = "0.2" }}
+{{ end }}
+
+{{ if .tint_opacity }}
+  {{ $tintOpacity = .tint_opacity }}
 {{ end }}
 
 {{ $imageClasses = printf "%s%s%s" $imageClasses " " $blendMode }}
