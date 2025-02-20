@@ -15,17 +15,7 @@ blueprint:
     - text: Heading
       style:
   subheading: Subheading.
-  background_c: bg-dark text-white
-  heading_c:
-  vibe: down_to_business
-  enable_pattern: true
-  enable_blend: false
-  background_layers:
-    img_blend_mode:
-    img_opacity:
-    pattern_c: bg-white
-    pattern_opacity: 0.1
-    tint_opacity: 0.7
+  styles:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

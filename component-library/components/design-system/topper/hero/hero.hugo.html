@@ -1,25 +1,21 @@
 {{ $image := "" }}
 {{ $alt := "" }}
-{{ $sectionStyles := "" }}
-{{ $layerStyles := "" }}
-{{ $containerStyles := "" }}
-{{ $superheadingStyles := "" }}
-{{ $headingStyles := "" }}
-{{ $subheadingStyles := "" }}
 
 {{ $vibe := "wvu_experience" }}
 {{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
+{{ $colorData := site.Data.styles.components_topper_hero_color }}
+
+{{ $layerStyles := "" }}
+{{ $containerStyles := "" }}
+
 {{ $typographySuperheading := "" }}
 {{ $typographyHeading := "" }}
 {{ $typographySubheading := "" }}
 
-{{ with .topper.styles }}
-  {{ $sectionStyles = .section }}
-  {{ $containerStyles = .container }}
-  {{ $superheadingStyles = .superheading }}
-  {{ $headingStyles = .heading }}
-  {{ $subheadingStyles = .subheading }}
-{{ end }}
+{{ $colorSection := "" }}
+{{ $colorSuperHeading := "" }}
+{{ $colorHeading := "" }}
+{{ $colorHighlight := "" }}
 
 {{ with .topper.vibe }}
   {{ with (index $vibeData .) }}
@@ -29,21 +25,31 @@
   {{ end }}
 {{ end }}
 
+{{ with .topper.color_palette }}
+  {{ with (index $colorData .) }}
+    {{ $colorSection = .section }}
+    {{ $colorSuperHeading = .superheading }}
+    {{ $colorHeading = .heading }}
+    {{ $colorHighlight = .highlight }}
+  {{ end }}
+{{ end }}
+
 {{ if .topper.background_image }}{{ $image = .topper.background_image }}{{ end }}
 {{ if .topper.alt_text }}{{ $alt = .topper.alt_text }}{{ end }}
 
 {{ if .config.id }}{{ $id = .config.id }}{{ end }}
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
 {{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
+{{ if .topper.margin }}{{ $containerStyles = .topper.margin }}{{ end }}
 
-<header class="text-center {{ $sectionStyles }} py-7 bg-wvu-accent--blue text-white position-relative">  
+<header class="text-center {{ $colorSection }} py-7 position-relative">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "vibe" .topper.vibe "layerStyles" $layerStyles "enableBlend" .topper.enable_blend "enablePattern" .topper.enable_pattern)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
           <h1 class="{{ $typographySuperheading }} h4">{{ .title }}</h1>
-          <h2 id="" class="{{ $typographyHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
+          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading "colorHighlight" $colorHighlight)) }}</h2>
         {{ else }}
           <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
         {{ end }}
