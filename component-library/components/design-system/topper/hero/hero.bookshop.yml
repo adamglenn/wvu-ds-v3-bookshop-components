@@ -15,7 +15,6 @@ blueprint:
     - text: Heading
       style:
   subheading: Subheading.
-  vibe: down_to_business
   background_c: bg-dark text-white
   heading_c:
   vibe: down_to_business
