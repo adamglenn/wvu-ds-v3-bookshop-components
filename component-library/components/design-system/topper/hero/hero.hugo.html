@@ -6,6 +6,10 @@
 {{ $superheadingStyles := "" }}
 {{ $headingStyles := "" }}
 {{ $subheadingStyles := "" }}
+{{ $typographyData := site.Data.styles.components_topper_hero_typography }}
+{{ $typographySuperheading := "" }}
+{{ $typographyHeading := "" }}
+{{ $typographySubheading := "" }}
 
 {{ with .topper.styles }}
   {{ $sectionStyles = .section }}
@@ -13,6 +17,14 @@
   {{ $superheadingStyles = .superheading }}
   {{ $headingStyles = .heading }}
   {{ $subheadingStyles = .subheading }}
+{{ end }}
+
+{{ with .topper.typography }}
+  {{ with (index $typographyData .) }}
+    {{ $typographySuperheading = .superheading }}
+    {{ $typographyHeading = .heading }}
+    {{ $typographySubheading = .subheading }}
+  {{ end }}
 {{ end }}
 
 {{ if .topper.background_image }}{{ $image = .topper.background_image }}{{ end }}
@@ -28,12 +40,12 @@
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
         {{ if .topper.heading }}
-          <h1 class="{{ $superheadingStyles }}">{{ .title }}</h1>
-          <h2 id="" class="{{ $headingStyles }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
+          <h1 class="{{ $typographySuperheading }}">{{ .title }}</h1>
+          <h2 id="" class="{{ $typographyHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading)) }}</h2>
         {{ else }}
-          <h1 id="" class="{{ $headingStyles }}">{{ .title }}</h1>
+          <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
         {{ end }}
-        <p class="{{ $subheadingStyles }} mt-4">{{ .topper.subheading }}</p>
+        <p class="{{ $typographySubheading }} mt-4">{{ .topper.subheading }}</p>
         <div class="mt-4">
           {{ .topper.body | markdownify }}
         </div>
