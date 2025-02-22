@@ -5,6 +5,8 @@
 {{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
 {{ $colorData := site.Data.styles.components_topper_hero_color }}
 
+{{ $styles := .topper.styles }}
+
 {{ $layerStyles := "" }}
 {{ $containerStyles := "" }}
 
@@ -17,7 +19,7 @@
 {{ $colorHeading := "" }}
 {{ $colorHighlight := "" }}
 
-{{ with .topper.vibe }}
+{{ with $styles.vibe }}
   {{ with (index $vibeData .) }}
     {{ $typographySuperheading = .superheading }}
     {{ $typographyHeading = .heading }}
@@ -25,7 +27,7 @@
   {{ end }}
 {{ end }}
 
-{{ with .topper.color_palette }}
+{{ with $styles.color_palette }}
   {{ with (index $colorData .) }}
     {{ $colorSection = .section }}
     {{ $colorSuperHeading = .superheading }}
@@ -40,7 +42,7 @@
 {{ if .config.id }}{{ $id = .config.id }}{{ end }}
 {{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
 {{ if .topper.background_layers }}{{ $layerStyles = .topper.background_layers }}{{ end }}
-{{ if .topper.margin }}{{ $containerStyles = .topper.margin }}{{ end }}
+{{ if $styles.margin }}{{ $containerStyles = $styles.margin }}{{ end }}
 
 <header class="text-center {{ $colorSection }} py-7 position-relative">  
   {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "vibe" .topper.vibe "layerStyles" $layerStyles "enableBlend" .topper.enable_blend "enablePattern" .topper.enable_pattern)) }}

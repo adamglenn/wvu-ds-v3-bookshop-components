@@ -15,12 +15,13 @@ blueprint:
     - text: Heading
       style:
   subheading: Subheading.
-  vibe: down_to_business
-  color_palette: wvu_blue
-  enable_blend: false
-  enable_pattern: false
-  tint_opacity: 0.5
-  margin:
+  styles:
+    vibe: down_to_business
+    color_palette: wvu_blue
+    enable_blend: false
+    enable_pattern: false
+    tint_opacity: 0.5
+    margin:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
