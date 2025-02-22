@@ -2,8 +2,6 @@
 {{ $alt := "" }}
 
 {{ $vibe := "wvu_experience" }}
-{{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
-{{ $colorData := site.Data.styles.components_topper_hero_color }}
 
 {{ $styles := .topper.styles }}
 
@@ -19,20 +17,25 @@
 {{ $colorHeading := "" }}
 {{ $colorHighlight := "" }}
 
-{{ with $styles.vibe }}
-  {{ with (index $vibeData .) }}
-    {{ $typographySuperheading = .superheading }}
-    {{ $typographyHeading = .heading }}
-    {{ $typographySubheading = .subheading }}
-  {{ end }}
-{{ end }}
+{{ if not site.Params.env_bookshop_live }}
+  {{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
+  {{ $colorData := site.Data.styles.components_topper_hero_color }}
 
-{{ with $styles.color_palette }}
-  {{ with (index $colorData .) }}
-    {{ $colorSection = .section }}
-    {{ $colorSuperHeading = .superheading }}
-    {{ $colorHeading = .heading }}
-    {{ $colorHighlight = .highlight }}
+  {{ with $styles.vibe }}
+    {{ with (index $vibeData .) }}
+      {{ $typographySuperheading = .superheading }}
+      {{ $typographyHeading = .heading }}
+      {{ $typographySubheading = .subheading }}
+    {{ end }}
+  {{ end }}
+
+  {{ with $styles.color_palette }}
+    {{ with (index $colorData .) }}
+      {{ $colorSection = .section }}
+      {{ $colorSuperHeading = .superheading }}
+      {{ $colorHeading = .heading }}
+      {{ $colorHighlight = .highlight }}
+    {{ end }}
   {{ end }}
 {{ end }}
 
@@ -58,14 +61,6 @@
         <p class="{{ $typographySubheading }} h3 mt-4">{{ .topper.subheading }}</p>
         <div class="mt-4">
           {{ .topper.body | markdownify }}
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-12 mx-auto">
-      <div class="row">
-        <div class="col-md-24">
         </div>
       </div>
     </div>
