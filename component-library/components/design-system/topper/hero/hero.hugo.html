@@ -1,21 +1,21 @@
 {{ $image := "" }}
 {{ $alt := "" }}
 
-{{ $vibe := "wvu_experience" }}
+{{ $vibe := "down_to_business" }}
 
 {{ $styles := .topper.styles }}
 
 {{ $layerStyles := "" }}
 {{ $containerStyles := "" }}
 
-{{ $typographySuperheading := "" }}
-{{ $typographyHeading := "" }}
-{{ $typographySubheading := "" }}
+{{ $typographySuperheading := "wvu-shout wvu-text-letter-spacing-lg" }}
+{{ $typographyHeading := "display-4 wvu-shout text-uppercase" }}
+{{ $typographySubheading := "helvetica-neue-light" }}
 
-{{ $colorSection := "" }}
+{{ $colorSection := "bg-wvu-blue text-white" }}
 {{ $colorSuperHeading := "" }}
 {{ $colorHeading := "" }}
-{{ $colorHighlight := "" }}
+{{ $colorHighlight := "bg-wvu-accent--sunset text-dark" }}
 
 {{ if not site.Params.env_bookshop_live }}
   {{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
