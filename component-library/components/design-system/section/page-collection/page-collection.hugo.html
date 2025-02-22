@@ -35,9 +35,9 @@
       {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
         {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
       {{ else }}
+        {{ $sitePages := site.Data.site_pages }}
         <div class="row gx-4 text-center">
           {{ range .items }}
-            {{ $sitePages := site.Data.site_pages }}
             
             {{ $pageTitle := "" }}
             {{ $description := "" }}
