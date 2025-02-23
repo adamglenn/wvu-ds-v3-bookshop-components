@@ -54,7 +54,7 @@
       <div class="col-xl-16 mx-xl-auto">
         {{ if .heading }}
           <h1 class="{{ $typographySuperheading }} h4">{{ .title }}</h1>
-          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .topper.heading "colorHighlight" $colorHighlight)) }}</h2>
+          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .heading "colorHighlight" $colorHighlight)) }}</h2>
         {{ else }}
           <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
         {{ end }}
