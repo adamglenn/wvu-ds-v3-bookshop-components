@@ -1,31 +1,12 @@
 {{ $sectionMargin := "py-6" }}
 {{ $layerStyles := "" }}
 
-{{ if .layout.section.margin }}
-  {{ $sectionMargin = .layout.section.margin }}
-{{ end }}
-
 {{ $panelStyles := "rounded-2" }}
 {{ $itemHeadingStyles := "oliviar-black h2 text-wvu-blue" }}
 
-{{ if .config.id }}{{ $id = .config.id }}{{ end }}
-{{ if .config.aria_labelledby }}{{ $ariaLabelledBy = .config.aria_labelledby }}{{ end }}
-{{ if .styles.section.background_c }}{{ $backgroundColor = .styles.section.background_c }}{{ end }}
-{{ if .styles.section.text_c }}{{ $textColor = .styles.section.text_c }}{{ end }}
-{{ if .styles.background_layers }}{{ $layerStyles = .styles.background_layers }}{{ end }}
-{{ if .styles.heading.c }}{{ $headingColor = .styles.heading.c }}{{ end }}
-
-{{ if and .styles .styles.panels }}
-  {{ $panelStyles = .styles.panels }}
-{{ end }}
-{{ if and .styles .styles.item_headings }}
-  {{ $itemHeadingStyles = .styles.item_headings }}
-{{ end }}
-
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
-    {{ partial "bookshop_partial" (slice "section_background" (dict "layerStyles" $layerStyles)) }}
+  <section class="{{ .styles.margin }} position-relative">
     <div class="container position-relative {{ .layout.margin_y }}">
       <div class="p-5 p-xxl-6 bg-white wvu-z-index-content">
         <div class="row">
@@ -44,13 +25,9 @@
             {{ range .items }}
               <div class="position-relative bg-light mb-3">
                 <div class="row gx-4">
-                  {{ $pageTitle := "" }}
-                  {{ if .title }}
-                    {{ $pageTitle = .title }}
-                  {{ end }}
                   <div class="col">
                     <div class=" p-4 p-xl-5 h-100 {{ $panelStyles }}">
-                      <h3 class="{{ $itemHeadingStyles }}">{{ $pageTitle }}</h3>
+                      <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
                       {{ with .text }}
                         <p class="mb-0">{{ . }}</p>
                       {{ end }}
