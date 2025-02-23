@@ -17,27 +17,7 @@
 {{ $colorHeading := "" }}
 {{ $colorHighlight := "bg-wvu-accent--sunset text-dark" }}
 
-{{ if not site.Params.env_bookshop_live }}
-  {{ $vibeData := site.Data.styles.components_topper_hero_vibe }}
-  {{ $colorData := site.Data.styles.components_topper_hero_color }}
 
-  {{ with $styles.vibe }}
-    {{ with (index $vibeData .) }}
-      {{ $typographySuperheading = .superheading }}
-      {{ $typographyHeading = .heading }}
-      {{ $typographySubheading = .subheading }}
-    {{ end }}
-  {{ end }}
-
-  {{ with $styles.color_palette }}
-    {{ with (index $colorData .) }}
-      {{ $colorSection = .section }}
-      {{ $colorSuperHeading = .superheading }}
-      {{ $colorHeading = .heading }}
-      {{ $colorHighlight = .highlight }}
-    {{ end }}
-  {{ end }}
-{{ end }}
 
 {{ if .background_image }}{{ $image = .background_image }}{{ end }}
 {{ if .alt_text }}{{ $alt = .alt_text }}{{ end }}
