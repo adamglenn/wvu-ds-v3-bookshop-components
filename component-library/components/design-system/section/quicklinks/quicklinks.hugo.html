@@ -14,7 +14,7 @@
         </div>
         <div class="col-xxl-16">
           {{ if site.Params.env_bookshop_live }}
-            <p>Live editing {{ .heading }}</p>
+            <p>Live editing {{ . }}</p>
           {{ else }}
             <ul class="wvu-ul-chevrons wvu-column-count-lg-3">
               {{ range .links }}
