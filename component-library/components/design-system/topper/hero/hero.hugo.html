@@ -17,8 +17,6 @@
 {{ $colorHeading := "" }}
 {{ $colorHighlight := "bg-wvu-accent--sunset text-dark" }}
 
-
-
 {{ if .background_image }}{{ $image = .background_image }}{{ end }}
 {{ if .alt_text }}{{ $alt = .alt_text }}{{ end }}
 
@@ -28,7 +26,6 @@
 {{ if $styles.margin }}{{ $containerStyles = $styles.margin }}{{ end }}
 
 <header class="text-center {{ $colorSection }} py-7 position-relative">  
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "vibe" .vibe "layerStyles" $layerStyles "enableBlend" .enable_blend "enablePattern" .enable_pattern)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
@@ -40,7 +37,7 @@
         {{ end }}
         <p class="{{ $typographySubheading }} h3 mt-4">{{ .subheading }}</p>
         <div class="mt-4">
-          {{ .body | markdownify }}
+          {{ .body_text }}
         </div>
       </div>
     </div>

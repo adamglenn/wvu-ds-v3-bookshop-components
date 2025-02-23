@@ -16,6 +16,7 @@ blueprint:
     - text: Heading
       highlight:
   subheading: Subheading.
+  body_text:
   styles:
     vibe: down_to_business
     color_palette: wvu_blue
@@ -29,3 +30,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  body_text:
+    type: textarea
