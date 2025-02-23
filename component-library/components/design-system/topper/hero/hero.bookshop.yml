@@ -14,7 +14,7 @@ blueprint:
   alt_text:
   heading:
     - text: Heading
-      style:
+      heading_style:
   subheading: Subheading.
   styles:
     vibe: down_to_business
