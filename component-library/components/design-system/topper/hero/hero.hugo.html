@@ -16,7 +16,6 @@
 {{ $colorHighlight := "bg-wvu-accent--sunset text-dark" }}
 
 <header id="{{ .name }}" class="text-center {{ $colorSection }} py-7 position-relative">  
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" .alt_text "vibe" .vibe "enableBlend" .enable_blend "enablePattern" .enable_pattern)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
