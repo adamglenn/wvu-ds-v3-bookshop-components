@@ -23,7 +23,7 @@
           {{ if .label }}
             <h1 class="{{ $typographySuperheading }} h4">{{ .label }}</h1>
           {{ end }}
-          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ partial "bookshop_partial" (slice "heading" (dict "heading" .heading "colorHighlight" $colorHighlight)) }}</h2>
+          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ range .heading }}{{ . }}{{ end }}</h2>
         {{ else }}
           <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
         {{ end }}
