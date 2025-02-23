@@ -28,7 +28,7 @@
 {{ if $styles.margin }}{{ $containerStyles = $styles.margin }}{{ end }}
 
 <header class="text-center {{ $colorSection }} py-7 position-relative">  
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "vibe" .topper.vibe "layerStyles" $layerStyles "enableBlend" .topper.enable_blend "enablePattern" .topper.enable_pattern)) }}
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $image "alt" $alt "vibe" .vibe "layerStyles" $layerStyles "enableBlend" .enable_blend "enablePattern" .enable_pattern)) }}
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
