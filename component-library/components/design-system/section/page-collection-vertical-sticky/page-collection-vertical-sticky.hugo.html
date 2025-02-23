@@ -26,14 +26,6 @@
 
   <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
     {{ partial "bookshop_partial" (slice "section_background" (dict "layerStyles" $layerStyles)) }}
-    <!-- 
-    <div class="wvu-bg-img">
-      <div class="position-absolute w-50 h-100 d-flex justify-content-start align-items-end" style="left: 50%">
-        <div class="h-100 position-absolute" style="content: ''; transform: skew(340deg); left: 0; width: 200% !important; background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);"></div>
-      </div>
-    </div>
-    -->
     <div class="container position-relative {{ .layout.margin_y }}">
       <div class="p-5 p-xxl-6 bg-white wvu-z-index-content">
         <div class="row">

@@ -13,16 +13,13 @@ blueprint:
   items:
     - title: Item 1 Title
       text: Item 1 text.
-      button:
-        url:
+      url:
     - title: Item 2 Title
       text: Item 2 text.
-      button:
-        url:
+      url:
     - title: Item 3 Title
       text: Item 3 text.
-      button:
-        url:
+      url:
   lead: Lead text.
   config:
     edit_mode_only: false

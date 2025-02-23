@@ -13,10 +13,7 @@ blueprint:
   heading: Quicklinks
   links:
     - text: Text
-      ref:
       url: /url
-    - text: Test Link
-      ref: alumni
   config:
     edit_mode_only: false
   layout:
