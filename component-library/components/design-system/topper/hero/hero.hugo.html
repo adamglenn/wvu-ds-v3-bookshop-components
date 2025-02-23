@@ -15,21 +15,21 @@
 {{ $colorHeading := "" }}
 {{ $colorHighlight := "bg-wvu-accent--sunset text-dark" }}
 
-<header id="{{ .name }}" class="text-center {{ $colorSection }} py-7 position-relative">  
+<header id="{{ .topper.name }}" class="text-center {{ $colorSection }} py-7 position-relative">  
   <div class="container wvu-z-index-content {{ $containerStyles }}">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
-        {{ if .heading }}
-          {{ if .label }}
-            <h1 class="{{ $typographySuperheading }} h4">{{ .label }}</h1>
+        {{ if .topper.heading }}
+          {{ if .title }}
+            <h1 class="{{ $typographySuperheading }} h4">{{ .title }}</h1>
           {{ end }}
-          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ range .heading }}{{ .text }}{{ end }}</h2>
+          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ range .topper.heading }}{{ .text }}{{ end }}</h2>
         {{ else }}
           <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
         {{ end }}
-        <p class="{{ $typographySubheading }} h3 mt-4">{{ .subheading }}</p>
+        <p class="{{ $typographySubheading }} h3 mt-4">{{ .topper.subheading }}</p>
         <div class="mt-4">
-          {{ .body_text }}
+          {{ .topper.body_text }}
         </div>
       </div>
     </div>
