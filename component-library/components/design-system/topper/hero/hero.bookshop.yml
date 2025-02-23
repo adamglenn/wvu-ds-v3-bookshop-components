@@ -2,7 +2,6 @@
 spec:
   structures:
     - topper
-    - content_blocks
   label: "Topper - Hero"
   description:
   icon:
