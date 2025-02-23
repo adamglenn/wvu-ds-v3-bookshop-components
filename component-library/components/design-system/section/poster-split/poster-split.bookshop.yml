@@ -10,7 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   name: poster-split
-  background_image:
+  image:
   alt_text:
   heading:
     - Heading Line 1
