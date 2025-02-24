@@ -3,18 +3,6 @@
 {{ $gridClasses := "col" }}
 {{ $itemHeadingStyles := "iowan-old-style h1" }}
 
-{{ if .layout.section.margin }}
-  {{ $sectionMargin = .layout.section.margin }}
-{{ end }}
-
-{{ if and .styles .styles.panels }}
-  {{ $panelStyles = .styles.panels }}
-{{ end }}
-
-{{ if and .styles .styles.item_headings }}
-  {{ $itemHeadingStyles = .styles.item_headings }}
-{{ end }}
-
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   <section class="py-6 position-relative">
