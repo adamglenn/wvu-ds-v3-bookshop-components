@@ -18,7 +18,7 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   <section class="py-6 position-relative">
-    <div class="container position-relative wvu-z-index-content py-5">
+    <div class="container position-relative wvu-z-index-content {{ .styles.margin }}">
       {{ if .heading }}
         <div class="row text-center mb-5">
           <div class="col-xl-12 mx-xl-auto">
@@ -35,7 +35,7 @@
           <div class="{{ $gridClasses }}">
             <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }}">
               <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
-              <p>{{ .description }}</p>
+              <p>{{ .text }}</p>
               <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
             </div>
           </div>
