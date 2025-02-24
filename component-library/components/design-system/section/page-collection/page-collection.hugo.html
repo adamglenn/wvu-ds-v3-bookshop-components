@@ -17,12 +17,12 @@
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <section class="{{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
+  <section class="py-6 position-relative">
     <div class="container position-relative wvu-z-index-content py-5">
       {{ if .heading }}
         <div class="row text-center mb-5">
           <div class="col-xl-12 mx-xl-auto">
-            <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg text-wvu-accent--blue-dark">{{ .heading }}</h2>
+            <h2 class="h1 helvetica-neue-condensed-black text-uppercase wvu-text-letter-spacing-lg text-wvu-accent--blue-dark">{{ range .heading }}{{ .text }}{{ end }}</h2>
             {{ with .lead }}
               <p class="lead text-wvu-accent--blue-dark">{{ . }}</p>
             {{ end }}
@@ -30,49 +30,15 @@
         </div>
       {{ end }}
       
-      {{ if not site.Data }}
-        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-      {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
-        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
-      {{ else }}
-        {{ $sitePages := site.Data.site_pages }}
-        <div class="row gx-4 text-center">
-          {{ range .items }}
-            
-            {{ $pageTitle := "" }}
-            {{ $description := "" }}
-            {{ $url := "" }}
-
-            <!-- Needs re-written, along with site-pages.json -->
-            {{ if .site_page }}
-              {{ $sitePage := .site_page }}
-              {{ range $sitePages }}
-                {{ if eq $sitePage .uuid }}
-                  {{ $pageTitle = .title }}
-                  {{ $description = .description }}
-                  {{ $url = .path }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-
-            {{ if .title }}
-              {{ $pageTitle = .title }}
-            {{ end }}
-            {{ if .text }}
-              {{ $description = .text }}
-            {{ end }}
-            {{ if .url }}
-              {{ $url = .url }}
-            {{ end }}
-
-            <div class="{{ $gridClasses }}">
-              <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }}">
-                <h3 class="{{ $itemHeadingStyles }}">{{ $pageTitle }}</h3>
-                <p>{{ $description }}</p>
-                <a class="stretched-link" href="{{ $url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
-              </div>
+      <div class="row gx-4 text-center">
+        {{ range .items }}
+          <div class="{{ $gridClasses }}">
+            <div class="position-relative px-5 py-6 h-100 {{ $panelStyles }}">
+              <h3 class="{{ $itemHeadingStyles }}">{{ .title }}</h3>
+              <p>{{ .description }}</p>
+              <a class="stretched-link" href="{{ .url }}"><span class="fa-thin fa-arrow-circle-right display-4 text-wvu-neutral--cream"></span></a>
             </div>
-          {{ end }}
+          </div>
         {{ end }}
       </div>
     </div>
