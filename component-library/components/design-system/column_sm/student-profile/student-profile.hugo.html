@@ -23,7 +23,7 @@
   {{ end }}
 
   {{ if .student }}
-    {{ $peopleData = where site.RegularPages "Section" "people" }}
+    {{ $peopleData = site.Data.people_data }}
     {{ $student := .student }}
 
     {{ range $peopleData }}
