@@ -1,8 +1,8 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <section id="big-search-1" aria-labelledby="big-search-1-label" class="py-6 text-center bg-wvu-gold text-wvu-blue position-relative">  
+  <section id="big-search-1" aria-labelledby="big-search-1-label" class="section-component py-6 text-center bg-wvu-gold text-wvu-blue position-relative">  
     <div class="container wvu-z-index-content">      
-      <h2 id="big-search-1-label" class="display-2 wvu-shout mb-3">Big Search Header</h2>
-      <p class="helvetica-neue-light h3 mb-0">Type your search term below.</p>    
+      <h2 id="big-search-1-label" class="display-2 wvu-shout mb-3">{{ .heading }}</h2>
+      <p class="helvetica-neue-light h3 mb-0">{{ .subheading }}</p>    
       <div class="row d-flex justify-content-center my-2">
         <div class="col-md-12 mx-auto">
           <div class="row mb-4">
@@ -31,10 +31,16 @@
             </div>
           </div>
         </div>
-      </div>      
-      <p class="mb-0">Not sure what to search for? Browse our 
-        <a class="text-wvu-blue" href="#">categories</a>.
-      </p>  
+      </div>
+      {{ with .postscript }}
+        <div class="text-center mt-5">
+          {{ .copy | markdownify }}
+
+          {{ range .postscript_links }}
+            {{ partial "bookshop" (slice "design-system-generic/button" .) }}
+          {{ end }}
+        </div>
+      {{ end }}
     </div>
   </section>
 {{ end }}

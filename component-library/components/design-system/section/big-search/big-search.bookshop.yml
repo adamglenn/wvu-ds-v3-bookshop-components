@@ -9,6 +9,12 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  label: Label
+  heading: Big Search Heading
+  subheading: Subheading.
+  postscript:
+    copy:
+    postscript_links:
   config:
     edit_mode_only: false
 

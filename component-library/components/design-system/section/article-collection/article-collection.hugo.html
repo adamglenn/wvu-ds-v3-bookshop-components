@@ -14,64 +14,69 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
   <section class="section-component py-7">
-    {{ if not site.Data }}
-      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-    {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) .student }}
-      {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
-    {{ else }}
-
-      {{ $authorData := site.Data.people.authors }}
-
-      {{ if not site.Params.env_bookshop_live }}
-        {{ $articles = where site.Pages "Section" "articles" }}
-        {{ $articles = where $articles "Params.tags" "intersect" $tags }}
+    <div class="container">
+      {{ if not site.Data }}
+        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
+      {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
+        {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
       {{ else }}
-        {{ $articles = where site.Data.site_pages ".type" "articles" }}
-        {{ $articles = where $articles ".tags" "intersect" $tags }}
-      {{ end }}
 
-      <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
+        {{ $authorData := site.Data.people.authors }}
 
-      <div class="row">
-        {{ range first $limit $articles }}
+        {{ if not site.Params.env_bookshop_live }}
+          {{ $articles = where site.Pages "Section" "articles" }}
+          {{ $articles = where $articles "Params.tags" "intersect" $tags }}
+        {{ else }}
+          {{ $articles = where site.Data.site_pages ".type" "articles" }}
+          {{ $articles = where $articles ".tags" "intersect" $tags }}
+        {{ end }}
 
-          {{ $params := "" }}
-          {{ $link := "" }}
+        <h2 class="h6 oliviar-black mb-4 border-top border-1 border-wvu-blue pt-2">{{ .heading }}</h2>
 
-          {{ if not site.Params.env_bookshop_live }}
-            {{ $params = .Params }}
-            {{ $link = .RelPermalink }}
-          {{ else }}
-            {{ $params = . }}
-          {{ end }}
+        <div class="row">
+          {{ range first $limit $articles }}
 
-          {{ $authors := slice }}
-          {{ if $params.authors }}
-            {{ $authors = $params.authors }}
-          {{ end }}
-          {{ $authorList := slice }}
-          {{ range $authorData }}
-            {{ $author := . }}
-            {{ range $authors }}
-              {{ if eq .uuid $author.id }}
-                {{ $authorList = $authorList | append $author }}
+            {{ $params := "" }}
+            {{ $link := "" }}
+
+            {{ if not site.Params.env_bookshop_live }}
+              {{ $params = .Params }}
+              {{ $link = .RelPermalink }}
+            {{ else }}
+              {{ $params = . }}
+            {{ end }}
+
+            {{ $authors := slice }}
+
+            {{ if $params.authors }}
+              {{ $authors = $params.authors }}
+            {{ end }}
+            
+            {{ $authorList := slice }}
+            
+            {{ range $authorData }}
+              {{ $author := . }}
+              {{ range $authors }}
+                {{ if eq .uuid $author.id }}
+                  {{ $authorList = $authorList | append $author }}
+                {{ end }}
               {{ end }}
             {{ end }}
-          {{ end }}
-          
-          <div class="col">
-            <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
-              <div class="row">
+            
+            <div class="col-6">
+              <div class="mb-4" itemscope="" itemtype="http://schema.org/BlogPosting">
 
-                <div class="wvu-article__thumb col-md-6">
-                  <div class="ratio ratio-1x1 bg-light">
-                    <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
-                      {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image.src "width" 100 "height" 100 "classes" "h-100 object-fit-cover" "alt" $params.image.alt)) }}
-                    </a>
+                {{ if $params.image.src }}
+                  <div class="wvu-article__thumb mb-4">
+                    <div class="ratio ratio-3x2 bg-light">
+                      <a class="wvu-article-link" href="{{ $link }}" aria-hidden="true" tabindex="-1">
+                        {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" $params.image.src "width" 960 "height" 640 "classes" "h-100 w-100 object-fit-cover" "alt" $params.image.alt)) }}
+                      </a>
+                    </div>
                   </div>
-                </div>
+                {{ end }}
 
-                <div class="col-md-18 mt-3 mt-md-0">
+                <div class="mt-3 mt-md-0">
                   <h2 class="fs-5" itemprop="headline"><a class="newsletter-link" href="{{ $link }}">{{ $params.title }}</a></h2>
 
                   {{ if or (not $params.config.hide_author) ( $params.publishDate ) }}
@@ -97,10 +102,10 @@
 
               </div>
             </div>
-          </div>
-        {{ end }}
-      </div>
-    {{ end }}
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
   </section>
 
 {{ end }}
