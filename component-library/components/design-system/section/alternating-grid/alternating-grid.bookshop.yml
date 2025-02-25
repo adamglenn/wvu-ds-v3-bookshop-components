@@ -11,13 +11,11 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   heading:
-  image:
-  alt_text:
-  copy:
   items:
     - heading:
       image:
-      text:
+      alt_text:
+      copy:
       ctas:
   postscript:
     text:
