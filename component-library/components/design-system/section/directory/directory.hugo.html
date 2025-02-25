@@ -1,13 +1,6 @@
-{{ $directoryData := slice site.Data.people.administrators site.Data.people.faculty site.Data.people.staff }}
-{{ $directory := slice }}
+{{ $directoryData := where site.Data.people_data "dir_include" true }}
 
-{{ range $directoryData }}
-  {{ range . }}
-    {{ $directory = $directory | append . }}
-  {{ end }}
-{{ end }}
-
-{{ $directory = sort $directory "last_name" "asc" }}
+{{ $directory := sort $directoryData "last_name" "asc" }}
 
 <!-- Loop By: sort_order -->
 <section id="wvu-main-content" class="py-6">  
@@ -55,7 +48,7 @@
                       <p class="mb-0 py-2">
                         <strong class="d-block">{{ .name }}</strong>
                         {{ range .position }}
-                          <span class="d-block">{{ . }}</span>
+                          <span class="d-block">{{ .title }}, {{ .organization }}</span>
                         {{ end }}
                       </p>
                     </div>
@@ -66,16 +59,13 @@
                     <div class="col-12">
                       <p class="mb-0 py-2">
                         {{ with .phone }}
-                          <a href="tel:{{ . }}">{{ . }}</a><br>
+                          {{ range . }}
+                            <a href="tel:{{ .number }}">{{ .number }}</a><br>
+                          {{ end }}
                         {{ end }}
                         {{ with .email }}
-                          <a href="mailto:{{ . }}">{{ . }}</a><br>
-                        {{ end }}
-                        {{ if .building }}
-                          {{ if .map_link }}
-                            <a href="{{ .map_link }}">{{ .room_number }} {{ .building }}</a>
-                          {{ else }}
-                            {{ .room_number }} {{ .building }}
+                          {{ range . }}
+                            <a href="mailto:{{ .email }}">{{ .email }}</a><br>
                           {{ end }}
                         {{ end }}
                       </p>

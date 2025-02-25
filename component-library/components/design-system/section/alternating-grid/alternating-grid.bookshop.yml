@@ -4,7 +4,7 @@ spec:
     - content_blocks
     - place_blocks
   label: "Alternating Grid"
-  description:
+  description: Display a series of related content blocks, each with a photo, text, and call-to-action.
   icon: sync_alt
   tags: []
 
