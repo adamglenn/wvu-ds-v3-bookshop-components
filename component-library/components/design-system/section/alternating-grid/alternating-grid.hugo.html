@@ -40,6 +40,16 @@
               </div>
             </div>
           {{ end }}
+
+          {{ with .postscript }}
+            <div class="text-center mt-5">
+              {{ .copy | markdownify }}
+
+              {{ range .postscript_links }}
+                {{ partial "bookshop" (slice "design-system-generic/button" .) }}
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
       </div>
 

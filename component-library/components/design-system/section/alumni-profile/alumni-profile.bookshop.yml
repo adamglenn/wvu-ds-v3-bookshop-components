@@ -9,11 +9,13 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  heading:
-  alum:
-  super_heading:
-    label:
-    text:
+  heading: Heading
+  name: Firstname Lastname
+  image:
+  label:
+    - Label
+  info:
+    - Morgantown, WV
   config:
     edit_mode_only: false
 
