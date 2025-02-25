@@ -4,6 +4,11 @@
       <div class="col-xxl-18 mx-xxl-auto">
         <h2 class="h1 helvetica-neue-light mb-5">{{ .heading }}</h2>
         {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons)) }}
+        {{ with .postscript }}
+          <div class="mt-4">
+            {{ . | markdownify }}
+          </div>
+        {{ end }}
       </div>
     </div>
   </section>

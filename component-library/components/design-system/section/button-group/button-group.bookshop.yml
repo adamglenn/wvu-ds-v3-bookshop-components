@@ -4,13 +4,11 @@ spec:
     - content_blocks
   label: "Button Group"
   description:
-  icon:
+  icon: 
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  background_image:
-  alt_text:
   heading: Heading
   body:
     - Lede.
@@ -18,13 +16,11 @@ blueprint:
   buttons:
     - text: Call to Action
       url:
-      icon: arrow-circle-right
+      icon: 
   postscript:
+    copy:
   config:
     edit_mode_only: false
-    is_main: false
-    id:
-    aria_labelledby:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
