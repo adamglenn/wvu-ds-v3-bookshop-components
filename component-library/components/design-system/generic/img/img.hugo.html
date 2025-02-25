@@ -1,14 +1,10 @@
-{{- $src := "" -}}
+{{- $src := .src -}}
 {{- $size := "960x640" -}}
 {{- $height := 960 }}
 {{- $width := 640 }}
 {{- $classes := "" -}}
 {{- $opacity := "1" -}}
 {{- $alt := "" }}
-
-{{ if .src }}
-  {{ $src := .src }}
-{{ end }}
 
 {{ if .width }}
   {{ $width = .width }}
