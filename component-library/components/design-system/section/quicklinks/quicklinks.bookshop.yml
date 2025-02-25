@@ -4,7 +4,7 @@ spec:
     - content_blocks
     - default_content_blocks
   label: "Quicklinks"
-  description: Display a collection of links that are relevant to your audience.
+  description: A collection of relevant links.
   icon:
   tags: []
 
