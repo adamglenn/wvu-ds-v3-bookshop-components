@@ -1,13 +1,32 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
+
+  {{ $order := "" }}
+
   <section class="py-6">
     <div class="container">
-      {{ range .items }}
-        <div class="row">
-          <div class="col-lg-6">
-            Image
+
+      <h2>{{ .heading }}</h2>
+
+      {{ range $i, $_ := .items }}
+
+        {{ if not ( modBool $i 2 ) }}
+          {{ $order = "order-md-3" }}
+        {{ else }}
+          {{ $order = "order-md-1" }}
+        {{ end }}
+
+        <div class="row gx-xl-4 mb-4">
+          <div class="col-lg-6 {{ $order }}">
+            <div class="ratio ratio-3x2">
+              {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 640 "classes" "object-fit-cover" "alt" .alt_text)) }}
+            </div>
           </div>
-          <div class="col-lg-6">
-            Content
+          <div class="col-lg-6 order-2">
+            <h3>{{ .heading }}</h3>
+            {{ .copy | markdownify }}
+            {{ range .ctas }}
+              <a class="btn btn-primary btn-sm mb-1" href="{{ .url }}">{{ .text }}{{ if .icon }} <span class="fa-regular fa-{{ .icon }}"></span>{{ end }}</a>
+            {{ end }}
           </div>
         </div>
       {{ end }}
