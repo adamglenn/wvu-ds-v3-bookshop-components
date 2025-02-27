@@ -12,6 +12,9 @@ blueprint:
   heading: Heading
   subheading:
   event_feed:
+  postscript:
+    copy:
+    postscript_links:
   config:
     edit_mode_only: false
 

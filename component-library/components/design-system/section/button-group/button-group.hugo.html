@@ -1,19 +1,19 @@
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
   <section class="text-center py-7 bg-light">
-    <div class="row">
-      <div class="col-xxl-18 mx-xxl-auto">
-        <h2 class="h1 helvetica-neue-light mb-5">{{ .heading }}</h2>
-        <div>
-          {{ range .body }}
-            <span>{{ . }}</span>
+    <div class="container wvu-z-index-content">
+      <div class="row">
+        <div class="col-xxl-18 mx-xxl-auto">
+          <h2 class="display-5 wvu-shout wvu-text-letter-spacing-lg mb-3">{{ .heading }}</h2>
+          <div class="mb-4 helvetica-neue-light fs-5">
+            {{ .body | markdownify }}
+          </div>
+          {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons "size" "btn-lg")) }}
+          {{ with .postscript }}
+            <div class="mt-4">
+              {{ partial "bookshop" (slice "design-system/simple/postscript" .) }}
+            </div>
           {{ end }}
         </div>
-        {{ partial "bookshop" (slice "design-system/generic/button-group" (dict "buttons" .buttons)) }}
-        {{ with .postscript }}
-          <div class="mt-4">
-            {{ . | markdownify }}
-          </div>
-        {{ end }}
       </div>
     </div>
   </section>

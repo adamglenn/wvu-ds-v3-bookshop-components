@@ -11,13 +11,13 @@ spec:
 blueprint:
   heading: Heading
   body:
-    - Lede.
-    - Body.
   buttons:
     - text: Call to Action
       url:
       icon: 
   postscript:
+    copy:
+    postscript_links:
   config:
     edit_mode_only: false
 
@@ -26,5 +26,7 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  body:
+    type: markdown
   postscript:
     type: markdown
