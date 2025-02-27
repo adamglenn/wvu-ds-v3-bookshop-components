@@ -3,23 +3,6 @@
 {{ $layerStyles := "" }}
 {{ $sectionMargin := "" }}
 
-{{ $authorData := site.Data.people.authors }}
-
-{{ $byline := slice }}
-{{ if .byline }}
-  {{ $byline = .byline }}
-{{ end }}
-
-{{ $authorList := slice }}
-{{ range $authorData }}
-  {{ $author := . }}
-  {{ range $byline }}
-    {{ if eq .ref $author.uuid }}
-      {{ $authorList = $authorList | append $author }}
-    {{ end }}
-  {{ end }}
-{{ end }}
-
 {{ $format := "Jan 2, 2006" }}
 
 <header id="big-search-1" aria-labelledby="big-search-1-label" class="py-9 text-center bg-dark text-white position-relative {{ .Params.topper.layout.buffer }}">  
@@ -33,23 +16,48 @@
         {{ end }}
         <p class="mt-5 mb-0 iowan-old-style text-uppercase">{{ .publishDate.Format $format }}</p>
         <div class="d-flex justify-content-center mt-5">
-          {{ range $authorList }}
-            {{ if .image }}
-              <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
-                <img class="rounded-circle object-fit h-100 w-100" src="{{ .image.src }}" alt="{{ .image.alt }}" />
+
+          {{ if not site.Data }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
+          {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) .student }}
+            {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide collection pages' is currently selected in this component to speed up the editing of other areas - to see the pages here uncheck 'hide collection pages'" ) ) }}
+          {{ else }}
+
+            {{ $authorData := site.Data.people.authors }}
+
+            {{ $byline := slice }}
+            {{ if .byline }}
+              {{ $byline = .byline }}
+            {{ end }}
+
+            {{ $authorList := slice }}
+            {{ range $authorData }}
+              {{ $author := . }}
+              {{ range $byline }}
+                {{ if eq .ref $author.uuid }}
+                  {{ $authorList = $authorList | append $author }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+
+            {{ range $authorList }}
+              {{ if .image }}
+                <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
+                  <img class="rounded-circle object-fit h-100 w-100" src="{{ .image.src }}" alt="{{ .image.alt }}" />
+                </div>
+              {{ end }}
+              
+              <div class="d-inline-block h-100 text-start">
+                <p class="small">
+                  <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
+                  <span class="d-block">
+                    {{ range .position }}
+                      {{ . }}
+                    {{ end }}
+                  </span>
+                </p>
               </div>
             {{ end }}
-            
-            <div class="d-inline-block h-100 text-start">
-              <p class="small">
-                <span class="d-block helvetica-neue-bold text-uppercase">{{ .name }}</span>
-                <span class="d-block">
-                  {{ range .position }}
-                    {{ . }}
-                  {{ end }}
-                </span>
-              </p>
-            </div>
           {{ end }}
         </div>
       </div>
