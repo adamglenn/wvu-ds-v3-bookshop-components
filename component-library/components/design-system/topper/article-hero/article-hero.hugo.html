@@ -10,16 +10,16 @@
   <div class="container wvu-z-index-content py-6">
     <div class="row">
       <div class="col-xl-16 mx-xl-auto">
-        <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-4">{{ if .topper.heading }}{{ .heading }}{{ else }}{{ .title }}{{ end }}</h1>
+        <h1 id="big-search-1-label" class="display-5 iowan-old-style mb-4">{{ if .article_topper.heading }}{{ .article_topper.heading }}{{ else }}{{ .title }}{{ end }}</h1>
         {{ if .topper.subheading }}
-          <p class="helvetica-neue-light fs-3 mb-0">{{ .topper.subheading }}</p>
+          <p class="helvetica-neue-light fs-3 mb-0">{{ .article_topper.subheading }}</p>
         {{ end }}
         <p class="mt-5 mb-0 iowan-old-style text-uppercase">{{ .publishDate.Format $format }}</p>
         <div class="d-flex justify-content-center mt-5">
 
           {{ if not site.Data }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "This component will not display the collection pages inside the bookshop browser" ) ) }}
-          {{ else if and (site.Params.env_bookshop_live) (.config.hide_collection_pages) }}
+          {{ else if and (site.Params.env_bookshop_live) (.article_topper.config.hide_collection_pages) }}
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide dynamic content' is currently selected in this component to speed up the editing of other areas - to see authors here uncheck 'hide dynamic content'" ) ) }}
           {{ else }}
 
