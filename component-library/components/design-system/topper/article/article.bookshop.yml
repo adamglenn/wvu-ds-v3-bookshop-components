@@ -2,6 +2,7 @@
 spec:
   structures:
     - topper
+    - article_topper
   label: "Topper - Article"
   description:
   icon: crown
