@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Icon Bar"
-  description:
-  icon:
+  description: Horizontal icons with links.
+  icon: view_week
   tags: []
 
 # Defines the structure of this component, as well as the default values

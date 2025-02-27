@@ -1,14 +1,5 @@
-{{ $sectionMargin := "py-7" }}
-{{ $layerStyles := "" }}
-
-{{ if .layout.section.margin }}
-  {{ $sectionMargin = .layout.section.margin }}
-{{ end }}
-
-{{ if .styles.background_layers }}{{ $layerStyles = .styles.background_layers }}{{ end }}
-
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
-  <section class="c-link-lists {{ partial "bookshop_partial" (slice "section_margin" $sectionMargin) }} position-relative">
+  <section class="c-link-lists py-7 position-relative">
     <div class="container">    
       <div class="row">
         <div class="col-xxl-18 mx-xxl-auto">
@@ -23,27 +14,7 @@
                   <div class="col-12">
                     <ul class="wvu-ul-chevrons">
                       {{ range .items }}
-                        <!-- Can this be a shared partial or separate component? -->
-                        {{ $sitePages := site.Data.site_pages }}
-            
-                        {{ $text := "" }}
-                        {{ $url := .url }}
-                        <!-- Needs re-written, along with site-pages.json -->
-                        {{ if .site_page }}
-                          {{ $sitePage := .site_page }}
-                          {{ range $sitePages }}
-                            {{ if eq $sitePage .uuid }}
-                              {{ $text = .title }}
-                              {{ $url = .path }}
-                            {{ end }}
-                          {{ end }}
-                        {{ end }}
-
-                        {{ if .text }}
-                          {{ $text = .text }}
-                        {{ end }}
-
-                        <li><a class="text-decoration-none text-wvu-neutral--warm-gray-dark" href="{{ $url }}">{{ $text }}</a></li>
+                        <li><a class="text-decoration-none text-wvu-neutral--warm-gray-dark" href="{{ .url }}">{{ .text }}</a></li>
                       {{ end }}
                     </ul>
                   </div>

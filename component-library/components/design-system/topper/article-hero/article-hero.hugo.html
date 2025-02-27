@@ -23,7 +23,7 @@
             {{ partial "bookshop" (slice "design-system/generic/collection-tooltip" (dict "text" "'Hide dynamic content' is currently selected in this component to speed up the editing of other areas - to see authors here uncheck 'hide dynamic content'" ) ) }}
           {{ else }}
 
-            {{ $authorData := site.Data.people.authors }}
+            {{ $authorData := where site.Data.people_data "schema" "author-profile" }}
 
             {{ $byline := slice }}
             {{ if .byline }}
@@ -41,7 +41,7 @@
             {{ end }}
 
             {{ range $authorList }}
-              {{ if .image }}
+              {{ if .profile_image }}
                 <div class="ratio ratio-1x1 d-inline-block me-3" style="height: 50px; width: 50px;">
                   <img class="rounded-circle object-fit h-100 w-100" src="{{ .image.src }}" alt="{{ .image.alt }}" />
                 </div>
