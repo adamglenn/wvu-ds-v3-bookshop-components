@@ -10,6 +10,8 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   topper_type: article-hero
+  image:
+  image_alt:
   heading: Article Heading
   subheading: Subheading.
   show_byline: true
