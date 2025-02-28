@@ -9,6 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  topper_type: hero
   name: hero-topper
   label: ""
   background_image: ""
@@ -20,7 +21,7 @@ blueprint:
   body_text: ""
   styles:
     vibe: down-to-business
-    color_palette: wvu-blue
+    color_palette: wvu-accent--blue-dark
     enable_blend: false
     enable_pattern: false
     tint_opacity: 0.5
