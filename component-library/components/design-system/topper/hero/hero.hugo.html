@@ -1,35 +1,24 @@
 {{ $image := "" }}
 
-{{ $vibe := "down_to_business" }}
-
-{{ $styles := .styles }}
-
 {{ $containerStyles := "" }}
 
-{{ $typographySuperheading := "wvu-shout wvu-text-letter-spacing-lg" }}
-{{ $typographyHeading := "display-4 wvu-shout text-uppercase" }}
-{{ $typographySubheading := "helvetica-neue-light" }}
-
-{{ $colorSection := "bg-wvu-blue text-white" }}
-{{ $colorSuperHeading := "" }}
-{{ $colorHeading := "" }}
-{{ $colorHighlight := "bg-wvu-accent--sunset text-dark" }}
-
-<header id="{{ .topper.name }}" class="text-center {{ $colorSection }} py-7 position-relative">  
-  <div class="container wvu-z-index-content {{ $containerStyles }}">
-    <div class="row">
-      <div class="col-xl-16 mx-xl-auto">
-        {{ if .topper.heading }}
-          {{ if .title }}
-            <h1 class="{{ $typographySuperheading }} h4">{{ .title }}</h1>
+<header id="{{ .topper.name }}" class=" vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} ">
+  <div class="color-bg-primary text-center py-7 position-relative">
+    <div class="container wvu-z-index-content {{ $containerStyles }}">
+      <div class="row">
+        <div class="col-xl-16 mx-xl-auto">
+          {{ if .topper.heading }}
+            {{ if .title }}
+              <h1 class="vibe-label h5 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
+            {{ end }}
+            <h2 id="" class="vibe-primary-heading color-secondary display-3">{{ range .topper.heading }}<span>{{ .text }} </span>{{ end }}</h2>
+          {{ else }}
+            <h1 id="" class="vibe-primary-heading">{{ .title }}</h1>
           {{ end }}
-          <h2 id="" class="{{ $typographyHeading }} {{ $colorHeading }} mt-6">{{ range .topper.heading }}{{ .text }}{{ end }}</h2>
-        {{ else }}
-          <h1 id="" class="{{ $typographyHeading }}">{{ .title }}</h1>
-        {{ end }}
-        <p class="{{ $typographySubheading }} h3 mt-4">{{ .topper.subheading }}</p>
-        <div class="mt-4">
-          {{ .topper.body_text }}
+          <p class="vibe-subheading h3 mt-4">{{ .topper.subheading }}</p>
+          <div class="vibe-body mt-4">
+            {{ .topper.body_text }}
+          </div>
         </div>
       </div>
     </div>
