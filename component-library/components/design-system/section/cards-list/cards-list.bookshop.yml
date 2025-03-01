@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Object List"
+  label: "Cards List"
   description:
   icon:
   tags: []
@@ -11,7 +11,7 @@ spec:
 blueprint:
   heading: "Hello World!"
   subheading:
-  text:
+  label: 
   items:
     - image:
       image_alt:
@@ -28,3 +28,4 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  item_text: markdown
