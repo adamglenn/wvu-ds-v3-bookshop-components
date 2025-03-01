@@ -2,7 +2,7 @@
 
 {{ $containerStyles := "" }}
 
-<header id="{{ .topper.name }}" class=" vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} ">
+<header id="{{ .topper.name }}" class="vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} ">
   <div class="color-bg-primary text-center py-7 position-relative">
     <div class="container wvu-z-index-content {{ $containerStyles }}">
       <div class="row">
@@ -11,7 +11,11 @@
             {{ if .title }}
               <h1 class="vibe-label h5 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
             {{ end }}
-            <h2 id="" class="vibe-primary-heading color-secondary display-3">{{ range .topper.heading }}<span>{{ .text }} </span>{{ end }}</h2>
+            <h2 id="" class="vibe-primary-heading display-3">
+              {{ range .topper.heading }}
+                <span class="d-inline-block">{{ .text }} </span>
+              {{ end }}
+            </h2>
           {{ else }}
             <h1 id="" class="vibe-primary-heading">{{ .title }}</h1>
           {{ end }}
