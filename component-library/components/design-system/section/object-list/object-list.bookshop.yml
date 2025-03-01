@@ -9,9 +9,17 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  image:
+  image_alt:
   heading: "Hello World!"
   subheading:
+  text:
   items:
+    - heading:
+      text:
+      links:
+        - text:
+          url:
   config:
     edit_mode_only: false
 
