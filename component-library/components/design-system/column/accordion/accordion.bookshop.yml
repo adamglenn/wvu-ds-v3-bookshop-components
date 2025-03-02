@@ -4,7 +4,7 @@ spec:
     - detail_blocks
   label: "Accordion"
   description:
-  icon:
+  icon: top_panel_open
   tags: []
 
 # Defines the structure of this component, as well as the default values
