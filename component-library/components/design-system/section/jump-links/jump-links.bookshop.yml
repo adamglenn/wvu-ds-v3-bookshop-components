@@ -1,18 +1,21 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - detail_blocks
-  label: "CTA Stack"
+    - content_blocks
+  label: "Jump Links"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  buttons:
+  heading: "Hello World!"
+  items:
     - text:
-      url:
-      color:
+      description:
+      anchor:
+  config:
+    edit_mode_only: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
