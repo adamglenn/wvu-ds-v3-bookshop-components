@@ -1,4 +1,8 @@
-{{ $title := .title }}
+{{ $title := "Page Title" }}
+
+{{ if .title }}
+  {{ $title = .title }}
+{{ end }}
 
 {{ if .topper.heading }}
   {{ $title = .topper.heading }}
