@@ -1,0 +1,24 @@
+{{ $image := "" }}
+{{ $src := "" }}
+<div class="row gx-1">
+  {{ range .photos }}
+    {{- if not site.Params.env_bookshop_live -}}
+      {{/*  Get the image, either from its remote or local source  */}}
+      {{ if hasPrefix $src "http"}}
+        {{ $image = resources.GetRemote $src }}
+      {{ else }}
+        {{ $image = resources.Get $src }}
+      {{ end }}
+    
+      {{/* Resize images and add them to a variable  */}}
+      {{ if and $image (ne $image.MediaType.SubType "svg") }}
+        {{ $src = $image.Fit.RelPermalink }}
+      {{ end }}
+    {{- end -}}
+    <div class="col mb-1">
+      <a class="js-parvus-lightbox parvus-gallery__link">
+        <img class="" loading="lazy" decoding="async" src="{{ $src }}" alt="{{ .alt_text }}" />
+      </a>
+    </div>
+  {{ end }}
+</div>

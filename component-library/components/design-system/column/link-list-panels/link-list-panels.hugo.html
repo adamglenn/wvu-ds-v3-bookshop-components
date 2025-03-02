@@ -5,7 +5,9 @@
       <div class="col">
         <div class="p-4">
           <p class="mb-1"><a class="helvetica-neue-bold text-dark text-decoration-none stretched-link" href="{{ .url }}">{{ .text }}</a></p>
-          {{ if .description }}<p class="mb-0">{{ .description }}</p>{{ end }}
+          {{ if .list_description }}
+            <p class="mb-0">{{ .list_description }}</p>
+          {{ end }}
         </div>
       </div>
       {{ if .icon }}
