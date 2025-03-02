@@ -10,9 +10,9 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   tabs:
-    - link: Tab 1
+    - label: Tab 1
       text: Tab 1 text.
-    - link: Tab 2
+    - label: Tab 2
       text: Tab 2 text.
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

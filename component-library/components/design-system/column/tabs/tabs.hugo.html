@@ -1,7 +1,7 @@
 <ul class="nav nav-underline mb-4" id="tabs" role="tablist">
   {{ range $index, $element := .tabs }}
     <li class="nav-item">
-      <a class="nav-link{{ if eq $index 0 }} active{{ end }}" data-bs-toggle="tab" href="#{{ .link | urlize }}-tab-pane">{{ .link }}</a>
+      <a class="nav-link{{ if eq $index 0 }} active{{ end }}" data-bs-toggle="tab" href="#{{ .label | urlize }}-tab-pane">{{ .label }}</a>
     </li>
   {{ end }}
 </ul>
