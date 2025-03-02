@@ -21,7 +21,6 @@ blueprint:
     - title: Item 3 Title
       text: Item 3 text.
       url:
-  lead: Lead text.
   config:
     edit_mode_only: false
   styles:

@@ -15,9 +15,7 @@ blueprint:
     - person:
   config:
     edit_mode_only: false
-    is_main:
-    section_id:
-    aria-labelledby: 
+    hide_collection_pages: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

@@ -5,6 +5,7 @@
 {{- $classes := "" -}}
 {{- $opacity := "1" -}}
 {{- $alt := "" }}
+{{- $imageProcess := "fill" }}
 
 {{ if .width }}
   {{ $width = .width }}
@@ -26,6 +27,10 @@
   {{ $alt = .alt }}
 {{ end }}
 
+{{ if .imageProcess }}
+  {{ $imageProcess := .imageProcess }}
+{{ end }}
+
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
   {{/*  Get the image, either from its remote or local source  */}}
@@ -37,7 +42,11 @@
 
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
-    {{ $src = ($image.Fill (printf "%dx%d webp" $width $height)).RelPermalink }}
+    {{ if eq .imageProcess "fit" }}
+      {{ $src = ($image.Fit (printf "%dx%d webp Lanczos" $width $height)).RelPermalink }}
+    {{ else }}
+      {{ $src = ($image.Fill (printf "%dx%d webp Lanczos" $width $height)).RelPermalink }}
+    {{ end }}
   {{ end }}
 {{- end -}}
 

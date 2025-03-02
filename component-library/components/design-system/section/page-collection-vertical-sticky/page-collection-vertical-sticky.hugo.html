@@ -1,4 +1,3 @@
-{{ $sectionMargin := "py-6" }}
 {{ $layerStyles := "" }}
 
 {{ $panelStyles := "rounded-2" }}
@@ -6,7 +5,7 @@
 
 {{ if or site.Params.env_bookshop_live (ne .config.edit_mode_only true) }}
 
-  <section class="{{ .styles.margin }} position-relative">
+  <section class="section-component py-6 position-relative">
     <div class="container position-relative {{ .layout.margin_y }}">
       <div class="p-5 p-xxl-6 bg-white wvu-z-index-content">
         <div class="row">

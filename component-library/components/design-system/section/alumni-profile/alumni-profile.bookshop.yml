@@ -12,10 +12,18 @@ blueprint:
   heading: Heading
   name: Firstname Lastname
   image:
+  is_cutout: false
   label:
     - Label
   info:
     - Morgantown, WV
+  ctas:
+    - text: Call to Action
+      url:
+      icon:
+    - text: Call to Action
+      url:
+      icon: 
   config:
     edit_mode_only: false
 
@@ -24,3 +32,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  is_cutout:
+    type: switch

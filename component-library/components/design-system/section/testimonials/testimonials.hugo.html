@@ -7,20 +7,23 @@
   <section class="py-0">
     <div class="container py-6">
       <div class="row gx-4 justify-content-center">
-        {{ $peopleData := site.Data.people }}
         {{ range .testimonials }}
-          {{ $person := .person }}
-          {{ range $peopleData }}
-            {{ if eq .name $person }}
-              <div class="col-6 text-center">
-                <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .heading }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
-                <blockquote class="ms-0 border-0 border-wvu-gold">
-                  <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
-                  <p class="iowan-old-style fs-4 mb-0">{{ .quote | markdownify }}</p>   
-                </blockquote>
+          <div class="col-6 text-center">
+            <h2 class="h6 helvetica-neue-condensed-black wvu-text-letter-spacing-lg text-uppercase mb-4">{{ with .heading }}{{ . }}{{ else }}The WVU Experience{{ end }}</h2>
+            <blockquote class="ms-0 border-0 border-wvu-gold">
+              <span class="d-block wvu-shout text-wvu-gold display-1 mb-n3">“</span>
+              <p class="iowan-old-style fs-4 mb-0">{{ .quote | markdownify }}</p>   
+            </blockquote>
+            <div class="ratio ratio-1x1">
+              <div class="h-100 w-100 rounded-circle overflow-hidden">
+                {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 960 "height" 960 "classes" "object-fit-cover")) }}
               </div>
-            {{ end }}
-          {{ end }}
+            </div>
+            <p>
+              <span class="d-block">{{ .name }}</span>
+              <span class="d-block helvetica-neue-light">{{ .title }}</span>
+            </p>
+          </div>
         {{ end }}
       </div>
     </div>
