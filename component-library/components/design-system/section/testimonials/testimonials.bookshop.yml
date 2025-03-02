@@ -12,7 +12,8 @@ blueprint:
   heading:
   subheading:
   testimonials:
-    - name:
+    - label:
+      name:
       title:
       image:
       quote:
