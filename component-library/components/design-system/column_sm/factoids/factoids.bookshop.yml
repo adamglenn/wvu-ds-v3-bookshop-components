@@ -2,7 +2,6 @@
 spec:
   structures:
     - column_blocks_sm
-    - detail_sidebar_blocks
   label: "Factoids"
   description:
   icon:
