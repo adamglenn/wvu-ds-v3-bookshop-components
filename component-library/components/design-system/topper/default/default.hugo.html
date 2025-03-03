@@ -4,9 +4,7 @@
   {{ $title = .title }}
 {{ end }}
 
-{{ if .topper.heading }}
-  {{ $title = .topper.heading }}
-{{ end }}
+{{ . }}
 
 <header class="pt-6 pb-5 position-relative bg-light">
   <div class="container wvu-z-index-content">

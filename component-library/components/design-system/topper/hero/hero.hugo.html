@@ -22,7 +22,7 @@
           {{ end }}
           <p class="vibe-subheading h3 mt-4">{{ .topper.subheading }}</p>
           <div class="vibe-body mt-4">
-            {{ .topper.body_text }}
+            {{ .topper.body_text | markdownify }}
           </div>
         </div>
       </div>
