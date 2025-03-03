@@ -39,7 +39,6 @@
 
 <div class="wvu-bg-img">
   {{ if .image }}
-    {{ partial "bookshop" (slice "design-system/generic/img" (dict "src" .image "width" 1920 "height" 1280 "classes" $imageClasses "opacity" $opacity "alt" .alt_text)) }}
     {{ if not .styles.enable_blend }}
       <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: {{ $tintOpacity }}"></div>
     {{ end }}
