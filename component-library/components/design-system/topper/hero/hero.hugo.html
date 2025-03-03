@@ -2,8 +2,8 @@
 
 {{ $containerStyles := "" }}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} section-component">
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" .background_image "alt" .alt_text)) }}
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} section-component position-relative">
+  {{ partial "bookshop_partial" (slice "section_background" (dict "image" .topper.background_image "alt" .alt_text "styles" .topper.styles)) }}
   <div class="color-bg-primary text-center py-7 position-relative">
     <div class="container wvu-z-index-content {{ $containerStyles }}">
       <div class="row">
