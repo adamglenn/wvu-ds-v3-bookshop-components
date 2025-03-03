@@ -24,15 +24,15 @@
   {{ $patternOpacity = "0.1" }}
 {{ end }}
 
-{{ if and (eq $vibe "nostalgic") .enableBlend }}
+{{ if and (eq $vibe "nostalgic") .styles.enable_blend }}
   {{ $blendMode = "wvu-bg-blend-mode-lighten" }}
-{{ else if .enableBlend }}
+{{ else if .styles.enable_blend }}
   {{ $blendMode = "wvu-bg-blend-mode-luminosity" }}
   {{ $opacity = "0.2" }}
 {{ end }}
 
-{{ if .tint_opacity }}
-  {{ $tintOpacity = .tint_opacity }}
+{{ if .styles.tint_opacity }}
+  {{ $tintOpacity = .styles.tint_opacity }}
 {{ end }}
 
 {{ $imageClasses = printf "%s%s%s" $imageClasses " " $blendMode }}
@@ -40,7 +40,7 @@
 <div class="wvu-bg-img">
   <p>Test.</p>
   {{ if .image }}
-    <img class="{{ $classes }}" src="{{ .image }}" style="opacity: {{ $opacity }}" alt="{{ $alt}}" />
+    <img class="{{ $imageClasses }}" src="{{ .image }}" style="opacity: {{ $opacity }}" alt="{{ $alt}}" />
     {{ if not .styles.enable_blend }}
       <div class="position-absolute wvu-bg-tint w-100 h-100" style="opacity: {{ $tintOpacity }}"></div>
     {{ end }}
