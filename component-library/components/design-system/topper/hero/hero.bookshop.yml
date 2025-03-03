@@ -10,15 +10,14 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   topper_type: hero
-  name: hero-topper
-  label: ""
-  background_image: ""
-  alt_text: ""
+  label:
+  background_image:
+  alt_text:
   heading:
-    - text: ""
-      highlight: ""
+    - text:
+      highlight:
   subheading: Subheading.
-  body_text: ""
+  body_text:
   styles:
     vibe: down-to-business
     color_palette:
