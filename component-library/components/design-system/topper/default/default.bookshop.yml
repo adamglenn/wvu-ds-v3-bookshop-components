@@ -9,6 +9,7 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
+  _bookshop_name: design-system/topper/default
   topper_type: default
   label:
   background_image:
@@ -18,7 +19,7 @@ blueprint:
   body_text:
   styles:
     vibe: down-to-business
-    color_palette: wvu-accent--blue-dark
+    color_palette:
     enable_blend: false
     enable_pattern: false
     tint_opacity: 0.5
