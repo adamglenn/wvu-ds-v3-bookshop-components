@@ -23,7 +23,7 @@
 {{- end -}}
 
 <header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} section-component position-relative">
-  {{ partial "bookshop_partial" (slice "section_background" (dict "image" $src "alt" .alt_text "styles" .topper.styles)) }}
+  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .topper.styles)) }}
   <div class="color-bg-primary text-center py-7 position-relative">
     <div class="container wvu-z-index-content {{ $containerStyles }}">
       <div class="row">
