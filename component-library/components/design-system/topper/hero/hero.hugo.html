@@ -21,7 +21,7 @@
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} {{ .topper.styles.background_c }} section-component position-relative">
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ .topper.styles.background_c }} position-relative">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .topper.styles)) }}
   <div class="color-bg-primary text-center py-7 position-relative">
     <div class="container wvu-z-index-content {{ $containerStyles }}">
@@ -31,13 +31,13 @@
             {{ if .title }}
               <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
             {{ end }}
-            <h2 id="" class="vibe-primary-heading color-heading display-4 {{ .topper.heading_c }}">
+            <h2 id="" class="vibe-primary-heading display-4 text-{{ .topper.heading_c }}">
               {{ range .topper.heading }}
                 <span class="d-inline-block">{{ .text }} </span>
               {{ end }}
             </h2>
           {{ else }}
-            <h1 id="" class="vibe-primary-heading color-heading display-3 {{ .topper.styles.heading_c }}">{{ .title }}</h1>
+            <h1 id="" class="vibe-primary-heading display-3 text-{{ .topper.styles.heading_c }}">{{ .title }}</h1>
           {{ end }}
           <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
           <div class="vibe-body mt-4">
