@@ -14,14 +14,14 @@
   {{/* Resize images and add them to a variable  */}}
   {{ if and $image (ne $image.MediaType.SubType "svg") }}
     {{ if eq .imageProcess "fit" }}
-      {{ $src = ($image.Fit (printf "%dx%d webp Lanczos" 1920 1080)).RelPermalink }}
+      {{ $src = ($image.Fit (printf "%dx%d webp" 1920 1080)).RelPermalink }}
     {{ else }}
-      {{ $src = ($image.Fill (printf "%dx%d webp Lanczos" 1920 1080)).RelPermalink }}
+      {{ $src = ($image.Fill (printf "%dx%d webp" 1920 1080)).RelPermalink }}
     {{ end }}
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} section-component position-relative">
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} color-palette-{{ .topper.styles.color_palette }} {{ .topper.styles.background_c }} section-component position-relative">
   {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .topper.styles)) }}
   <div class="color-bg-primary text-center py-7 position-relative">
     <div class="container wvu-z-index-content {{ $containerStyles }}">
@@ -29,17 +29,17 @@
         <div class="col-xl-16 mx-xl-auto">
           {{ if .topper.heading }}
             {{ if .title }}
-              <h1 class="vibe-label h5 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
+              <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
             {{ end }}
-            <h2 id="" class="vibe-primary-heading color-heading display-3">
+            <h2 id="" class="vibe-primary-heading color-heading display-4 {{ .topper.heading_c }}">
               {{ range .topper.heading }}
                 <span class="d-inline-block">{{ .text }} </span>
               {{ end }}
             </h2>
           {{ else }}
-            <h1 id="" class="vibe-primary-heading color-heading display-3">{{ .title }}</h1>
+            <h1 id="" class="vibe-primary-heading color-heading display-3 {{ .topper.styles.heading_c }}">{{ .title }}</h1>
           {{ end }}
-          <p class="vibe-subheading h3 mt-4">{{ .topper.subheading }}</p>
+          <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
           <div class="vibe-body mt-4">
             {{ .topper.body_text | markdownify }}
           </div>
