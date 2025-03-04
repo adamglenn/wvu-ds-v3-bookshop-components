@@ -13,14 +13,14 @@ blueprint:
   background_image:
   alt_text:
   heading:
-    - text:
+    - text: Heading
       highlight:
   subheading: Subheading.
   body_text:
   styles:
     vibe: down-to-business
-    background_c: bg-white text-dark
-    heading_c: text-wvu-blue
+    background_c:
+    heading_c:
     enable_blend: false
     enable_pattern: false
     tint_opacity: 0.5

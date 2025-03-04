@@ -1,6 +1,19 @@
 {{ $src := .topper.background_image }}
+{{ $backgroundColor := "bg-white text-dark" }}
+{{ $headingColor := "text-wvu-blue" }}
 
-{{ $containerStyles := "" }}
+{{ if .topper.background_image }}
+  {{ $backgroundColor = "bg-dark text-white" }}
+  {{ $headingColor = "text-wvu-gold" }}
+{{ end }}
+
+{{ if and .topper.styles .topper.styles.background_c }}
+  {{ $backgroundColor = .topper.styles.background_c }}
+{{ end }}
+
+{{ if and .topper.styles .topper.styles.heading_c }}
+  {{ $backgroundColor = .topper.styles.heading_c }}
+{{ end }}
 
 {{- if not site.Params.env_bookshop_live -}}
   {{ $image := "" }}
@@ -21,28 +34,26 @@
   {{ end }}
 {{- end -}}
 
-<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ .topper.styles.background_c }} position-relative">
-  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .alt_text "styles" .topper.styles)) }}
-  <div class="color-bg-primary text-center py-7 position-relative">
-    <div class="container wvu-z-index-content {{ $containerStyles }}">
-      <div class="row">
-        <div class="col-xl-16 mx-xl-auto">
-          {{ if .topper.heading }}
-            {{ if .title }}
-              <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
-            {{ end }}
-            <h2 id="" class="vibe-primary-heading display-4 text-{{ .topper.heading_c }}">
-              {{ range .topper.heading }}
-                <span class="d-inline-block">{{ .text }} </span>
-              {{ end }}
-            </h2>
-          {{ else }}
-            <h1 id="" class="vibe-primary-heading display-3 text-{{ .topper.styles.heading_c }}">{{ .title }}</h1>
+<header id="{{ .topper.name }}" class="c-topper-hero vibe-{{ .topper.styles.vibe }} {{ $backgroundColor }} position-relative py-7 text-center">
+  {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
+  <div class="container wvu-z-index-content {{ .topper.styles.margin }}">
+    <div class="row">
+      <div class="col-xl-16 mx-xl-auto">
+        {{ if .topper.heading }}
+          {{ if .title }}
+            <h1 class="vibe-label h6 mb-6 text-uppercase wvu-text-letter-spacing-lg">{{ .title }}</h1>
           {{ end }}
-          <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
-          <div class="vibe-body mt-4">
-            {{ .topper.body_text | markdownify }}
-          </div>
+          <h2 id="" class="vibe-primary-heading display-4 text-{{ $headingColor }}">
+            {{ range .topper.heading }}
+              <span class="d-inline-block">{{ .text }} </span>
+            {{ end }}
+          </h2>
+        {{ else }}
+          <h1 id="" class="vibe-primary-heading display-3 text-{{ $headingColor }}">{{ .title }}</h1>
+        {{ end }}
+        <p class="vibe-subheading h4 mt-4">{{ .topper.subheading }}</p>
+        <div class="vibe-body mt-4">
+          {{ .topper.body_text | markdownify }}
         </div>
       </div>
     </div>
