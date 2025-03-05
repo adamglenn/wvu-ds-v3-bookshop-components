@@ -10,8 +10,11 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   column_a:
+    column_blocks:
   column_b:
+    column_sm_blocks:
   column_c:
+    column_sm_blocks:
   config:
     edit_mode_only: false
   layout:
