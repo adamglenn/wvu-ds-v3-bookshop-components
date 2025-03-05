@@ -27,3 +27,5 @@ preview:
 _inputs:
   column_blocks:
     type: object
+  column_sm_blocks:
+    type: object

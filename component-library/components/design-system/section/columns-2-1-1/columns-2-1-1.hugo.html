@@ -2,22 +2,22 @@
   <section class="py-6">
     <div class="container wvu-z-index-content">
       <div class="row justify-content-center gx-xl-5">
-        {{ if .column_a }}
+        {{ if and .column_a.columns_blocks .column_a.columns_blocks._bookshop_name }}
           <div class="col-xl-12">
-            {{ partial "bookshop_bindings" `.column_a` }}
-            {{ partial "bookshop" (slice .column_a._bookshop_name .) }}
+            {{ partial "bookshop_bindings" `.column_a.column_blocks` }}
+            {{ partial "bookshop" (slice .column_a.column_blocks._bookshop_name .column_a.column_blocks) }}
           </div>
         {{ end }}
-        {{ if .column_b }}
+        {{ if and .column_b.columns_sm_blocks .column_b.columns_sm_blocks._bookshop_name }}
           <div class="col-6">
-            {{ partial "bookshop_bindings" `.column_b` }}
-            {{ partial "bookshop" (slice .column_b._bookshop_name .) }}
+            {{ partial "bookshop_bindings" `.column_b.column_sm_blocks` }}
+            {{ partial "bookshop" (slice .column_b.column_sm_blocks._bookshop_name .column_b.column_sm_blocks) }}
           </div>
         {{ end }}
-        {{ if .column_c }}
+        {{ if and .column_c.columns_sm_blocks .column_c.columns_sm_blocks._bookshop_name }}
           <div class="col-6">
-            {{ partial "bookshop_bindings" `.column_c` }}
-            {{ partial "bookshop" (slice .column_c._bookshop_name .) }}
+            {{ partial "bookshop_bindings" `.column_c.column_sm_blocks` }}
+            {{ partial "bookshop" (slice .column_c.column_sm_blocks._bookshop_name .column_c.column_sm_blocks) }}
           </div>
         {{ end }}
       </div>
