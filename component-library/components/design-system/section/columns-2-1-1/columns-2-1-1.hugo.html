@@ -2,7 +2,7 @@
   <section class="py-6">
     <div class="container wvu-z-index-content">
       <div class="row justify-content-center gx-xl-5">
-        {{ if and .column_a.columns_blocks .column_a.columns_blocks._bookshop_name }}
+        {{ if and .column_a.column_blocks .column_a.column_blocks._bookshop_name }}
           <div class="col-xl-12">
             {{ partial "bookshop_bindings" `.column_a.column_blocks` }}
             {{ partial "bookshop" (slice .column_a.column_blocks._bookshop_name .column_a.column_blocks) }}
