@@ -1,1 +1,7 @@
-<h2 id="" class="c-heading {{ .classes }} {{ if .bar_location }}wvu-bar--{{ .bar_location }}{{ end }}">{{ .text }}</h2>
+{{ $classes := "" }}
+
+{{ if .classes }}
+  {{ $classes = .classes }}
+{{ end }}
+
+<h2 id="" class="c-heading {{ $classes }}">{{ .text }}</h2>
