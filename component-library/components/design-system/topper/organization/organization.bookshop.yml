@@ -1,8 +1,8 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
-    - student_profile_topper
-  label: "Topper - Student Profile"
+    - organization_topper
+  label: "Topper - Organization"
   description:
   icon: crown
   tags: []
@@ -12,6 +12,7 @@ blueprint:
   label:
   heading:
   subheading:
+  use_large_background: false
   styles:
     vibe: down-to-business
     background_c:
@@ -26,5 +27,5 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  enable_blend:
-    hidden: true
+  use_large_background:
+    type: switch
