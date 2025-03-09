@@ -60,9 +60,19 @@
       <div class="col-lg-12">
         <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">{{ .params._schema | humanize }}</p>
         <div class="bg-white text-dark p-xl-5 me-xl-n5 wvu-z-index-content">
-
+          {{ if .params.location }}
+            <div class="mb-4">
+              <p class="oliviar-black"><span class="fa-regular fa-location-dot"></span> <span>{{ .params.location }}</span></p>
+            </div>
+          {{ end }}
           <h1 class="display-4 oliviar-black mb-4">{{ .params.name_of_organization }}</h1>
-
+          {{ with .params.contacts }}
+            <p>
+              {{ range . }}
+                <span class="d-block">{{ .name }} {{ with .phone }}/ <a href="tel:{{ . }}">{{ . }}</a>{{ end }} {{ with .email }}/ <a href="mailto:{{ . }}">{{ . }}</a>{{ end }}</span>
+              {{ end }}
+            </p>
+          {{ end }}
         </div>
       </div>
       
