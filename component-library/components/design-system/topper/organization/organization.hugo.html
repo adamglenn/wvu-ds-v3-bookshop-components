@@ -47,7 +47,7 @@
 {{- end -}}
 
 <section class="py-6 {{ .topper.styles.background_c }} position-relative">
-  {{ if and .params.image .params.use_large_background }}
+  {{ if and .params.image .params.organization_topper.use_large_background }}
     {{ partial "bookshop_partial" (slice "section_background_alt" (dict "image" $src "alt" .topper.alt_text "styles" .topper.styles)) }}
   {{ end }}
   <div class="wvu-bg-img">
@@ -61,12 +61,12 @@
         <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">{{ .params._schema }}</p>
         <div class="bg-white text-dark p-xl-5 me-xl-n5 wvu-z-index-content">
 
-          <h1 class="display-4 oliviar-black mb-4">{{ .params.name_of_organization }}</h1>
+          <h1 class="display-4 oliviar-black mb-4">{{ .title }}</h1>
 
         </div>
       </div>
       
-      {{ if and .params.image (not .params.use_large_background) }}
+      {{ if and .params.image (not .params.organization_topper.use_large_background) }}
         <div class="col-lg-12">
           <img class="img-fluid" src="{{ $src}}" alt="" />
         </div>
