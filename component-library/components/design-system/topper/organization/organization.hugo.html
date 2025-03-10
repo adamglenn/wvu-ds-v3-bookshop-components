@@ -59,26 +59,46 @@
     <div class="row gx-lg-0 align-items-center">
       <div class="col-lg-12">
         <p class="wvu-shout wvu-text-letter-spacing-lg ms-lg-4 text-wvu-accent--yellow">{{ .params._schema | humanize }}</p>
-        <div class="bg-white text-dark p-xl-5 me-xl-n5 wvu-z-index-content">
-          {{ if .params.location }}
-            <div class="mb-4">
-              <p class="oliviar-black"><span class="fa-regular fa-location-dot"></span> <span>{{ .params.location }}</span></p>
-            </div>
-          {{ end }}
-          <h1 class="display-4 oliviar-black mb-4">{{ .params.name_of_organization }}</h1>
-          {{ with .params.contacts }}
-            <p>
-              {{ range . }}
-                <span class="d-block">{{ .name }} {{ with .phone }}/ <a href="tel:{{ . }}">{{ . }}</a>{{ end }} {{ with .email }}/ <a href="mailto:{{ . }}">{{ . }}</a>{{ end }}</span>
+        <div class="bg-white text-dark p-4 p-xl-5 me-xl-n5 wvu-z-index-content">
+          <div class="row">
+            <div class="col-18">
+              {{ if .params.location }}
+                <div class="mb-4">
+                  <p class="oliviar-black"><span class="fa-regular fa-location-dot"></span> <span>{{ .params.location }}</span></p>
+                </div>
               {{ end }}
-            </p>
-          {{ end }}
+              <h1 class="display-4 oliviar-black">{{ .params.name_of_organization }}</h1>
+              {{ with .params.contacts }}
+                <h2 class="wvu-shout h6 mt-5">Contact</h2>
+                <p>
+                  {{ range . }}
+                    <span class="d-block"><span class="d-inline-block me-3"><span class="fa-regular fa-user"></span> {{ .name }}</span> {{ with .phone }}<span class="d-inline-block me-3"><span class="fa-regular fa-phone"></span> <a href="tel:{{ . }}">{{ . }}</a></span>{{ end }} {{ with .email }}<span class="d-inline-block"><span class="fa-regular fa-envelope"></span> <a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}</span>
+                  {{ end }}
+                </p>
+              {{ end }}
+              {{ with .params.social_media_accounts }}
+                <h2 class="wvu-shout h6 mt-5">Follow</h2>
+                <ul class="list-inline">
+                  {{ range . }}
+                    <li class="list-inline-item"><a class="text-decoration-none" href="{{ .url }}"><span class="fa-brands fa-facebook"></span> {{ .platform }}</a></li>
+                  {{ end }}
+                </ul>
+              {{ end }}
+            </div>
+            <div class="col-6">
+              <div class="ratio ratio-1x1 bg-light border border-1 border-dark rounded-3">
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       
       {{ if and .params.image (not .params.organization_topper.use_large_background) }}
         <div class="col-lg-12">
-          <img class="img-fluid" src="{{ $src}}" alt="" />
+          <div class="ratio ratio-3x2">
+            <img class="img-fluid object-fit-cover" src="{{ $src}}" alt="" />
+          </div>
         </div>
       {{ end }}
     </div>
